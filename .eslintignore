@@ -1,0 +1,6 @@
+# !src
+dist
+public
+./*.js
+assets
+*.js
