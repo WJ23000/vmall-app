@@ -9,9 +9,9 @@
 
 <script setup>
 const title = ref("Hello");
-onLoad(()=>{
-  console.log("生命周期")
-})
+onLoad(() => {
+  console.log("生命周期");
+});
 </script>
 
 <style>
