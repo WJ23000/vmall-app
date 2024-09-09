@@ -1,5 +1,5 @@
 {
-  "name": "uni-preset-vue",
+  "name": "vmall-app",
   "version": "0.0.0",
   "scripts": {
     "dev:app": "uni -p app",

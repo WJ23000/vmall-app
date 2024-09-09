@@ -6,7 +6,7 @@
  * @FilePath: \medical-examination\README.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
-#  product-compare
+#  vmall-app
 
 ## 简介
 基于 vue3 和 uniapp 搭建的模版，用于快速开发
@@ -42,7 +42,7 @@
   - npx husky add .husky/pre-commit
   - [commitlint](https://commitlint.js.org/#/)
   - 全局安装：npm install commitizen -g
-  - 项目内初始化：commitizen init cz-conventional-changelog --save --save-exact
+  - 项目内初始化：commitizen init cz-conventional-changelog --save --save-exact --force
   - [lint-staged](https://www.npmjs.com/package/lint-staged)
 - 版本检测
 

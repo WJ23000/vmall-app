@@ -3,7 +3,7 @@
  * @Date: 2024-02-28 16:57:19
  * @LastEditors: 汪军 624473119@qq.com
  * @LastEditTime: 2024-02-29 15:36:31
- * @FilePath: \product-compare\src\utils\base64srcLocal.js
+ * @FilePath: \vmall-app\src\utils\base64srcLocal.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 function getLocalFilePath(path) {
