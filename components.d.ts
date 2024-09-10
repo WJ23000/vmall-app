@@ -7,19 +7,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    Banner: typeof import('./src/components/home/banner.vue')['default']
-    CarGrid: typeof import('./src/components/home/car-grid.vue')['default']
-    Contact: typeof import('./src/components/contact/index.vue')['default']
-    DownMenu: typeof import('./src/components/down-menu/index.vue')['default']
-    Empty: typeof import('./src/components/empty/index.vue')['default']
-    Grid: typeof import('./src/components/home/grid.vue')['default']
-    ModelConfirm: typeof import('./src/components/model-confirm/index.vue')['default']
-    MomentCell: typeof import('./src/components/moment-cell/index.vue')['default']
-    PageLayout: typeof import('./src/components/page-layout/index.vue')['default']
-    PkRow: typeof import('./src/components/pk-row/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    ScrollTab: typeof import('./src/components/scroll-tab/index.vue')['default']
-    ShopCell: typeof import('./src/components/shop-cell/index.vue')['default']
   }
 }

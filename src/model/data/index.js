@@ -1,18 +1,22 @@
-/*
- * @Author: 汪军 624473119@qq.com
- * @Date: 2023-10-22 18:01:37
- * @LastEditors: 汪军 624473119@qq.com
- * @LastEditTime: 2023-11-29 14:43:40
- * @FilePath: \app-formwork\src\model\data\index.js
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- */
-import { mockList, blockList, operationList, natureList } from "./data";
-export const STORAGE_CONFIG = {
-  USER_INFO: "userInfo",
-  InvitationCode: "invitationCode",
-  PosterFilePath: "posterFilePath",
-  MockList: mockList,
-  BlockList: blockList,
-  OperationList: operationList,
-  NatureList: natureList
+// 用户
+import { STORAGE_CONFIG } from "./user";
+
+// other
+import { BANNER_DATA, GRID_DATA, GOODS_DATA } from "./home";
+import { CLASSIFY_DATA } from "./classify";
+import { GOODS_BANNER_DATA } from "./goods";
+import { ORDER_GRID_DATA, FEATURE_GRID_DATA, FEATURE_GRID_DATA2 } from "./mine";
+import { CITY_DATA } from "./area";
+
+export  {
+  STORAGE_CONFIG,
+  BANNER_DATA,
+  GRID_DATA,
+  GOODS_DATA,
+  CLASSIFY_DATA,
+  GOODS_BANNER_DATA,
+  ORDER_GRID_DATA,
+  FEATURE_GRID_DATA,
+  FEATURE_GRID_DATA2,
+  CITY_DATA
 };
