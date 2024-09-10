@@ -27,11 +27,11 @@ const props = defineProps({
 
 // 轮播图切换时触发
 const onSwiperChange = (e) => {
-  console.log("当前索引", e);
+  // console.log("当前索引", e);
 };
 // 点击轮播图时触发
 const onSwiperClick = (e) => {
-  console.log("当前索引", e);
+  // console.log("当前索引", e);
 };
 </script>
 

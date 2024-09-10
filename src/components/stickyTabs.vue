@@ -2,12 +2,12 @@
 view.sticky-tabs.flex.justify-center
   up-tabs(
     :list="tabList"
-    :scrollable="false",
-    lineWidth="30",
-    lineColor="#f56c6c",
-    :activeStyle="activeStyle",
-    :inactiveStyle="inactiveStyle",
-    itemStyle="padding: 0px 15px; height: 44px;",
+    :scrollable="false"
+    lineWidth="30"
+    lineColor="#f56c6c"
+    :activeStyle="activeStyle"
+    :inactiveStyle="inactiveStyle"
+    :itemStyle="itemStyle"
     @click="onTabClick")
 </template>
 
@@ -31,6 +31,10 @@ const inactiveStyle = ref({
   color: "#606266",
   fontSize: "28rpx",
   transform: "scale(1)"
+});
+const itemStyle = ref({
+  padding: "0px 15px", 
+  height: "44px"
 });
 
 const onTabClick = (item) => {

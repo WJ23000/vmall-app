@@ -9,14 +9,10 @@ view.vmall-home
     view.pt-20
       SlideGrid(:gridList="gridList")
   view.content
-    up-sticky(:bgColor="stickyBgColor", :offset-top="offsetTop")
+    up-sticky(:bgColor="stickyBgColor" :offset-top="offsetTop")
       StickyTabs(:tabList="tabList")
     view.px-10
-      Waterfall(
-        v-if="flowList", 
-        :loadStatus="loadStatus", 
-        :flowList="flowList", 
-        @addRandomData="addRandomData")
+      Waterfall(ref="waterfallRef" :loadStatus="loadStatus" :flowList.sync="flowList" @addRandomData="addRandomData")
   BackTop(:backTop="backTop")
 </template>
 
@@ -40,8 +36,8 @@ const offsetTop = ref("42");
 // 商品瀑布流列表
 const loadStatus = ref("loadmore");
 const flowList = ref([]);
-const isRefresh = ref(false);
 const goodsList = ref(GOODS_DATA);
+const waterfallRef = ref();
 // 返回顶部
 const backTop = ref(0);
 
@@ -80,32 +76,27 @@ onPageScroll((e) => {
 // 触底加载
 onReachBottom(() => {
   console.log("触底加载");
-  loadStatus.value = "loading";
   if (flowList.value.length > 32) {
     loadStatus.value = "nomore";
     return;
   }
-  // 模拟数据加载
-  setTimeout(() => {
-    addRandomData();
-    loadStatus.value = "loadmore";
-  }, 800);
+  loadStatus.value = "loading";
+  addRandomData();
 });
 // 下拉刷新
 onPullDownRefresh(() => {
   console.log("下拉刷新");
-  // 正常情况下接口返回应该很会很快。故意延迟调用，让用户有在刷新的体验感
-  if (isRefresh.value) {
-    return;
+  // 瀑布流数据清空
+  if (waterfallRef.value) {
+    waterfallRef.value.onClear();
   }
-  isRefresh.value = true;
+  // 正常情况下接口返回应该很会很快。故意延迟调用，让用户有在刷新的体验感
   loadStatus.value = "loading";
   flowList.value = [];
-  console.log("列表", flowList.value);
   setTimeout(() => {
-    isRefresh.value = false;
     addRandomData();
-  }, 800);
+    uni.stopPullDownRefresh();
+  }, 300);
 });
 
 const addRandomData = () => {

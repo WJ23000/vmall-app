@@ -23,8 +23,8 @@ view.waterfall
         view.shop-tag
           view.shop-tag-owner 自营
           view.shop-tag-text 放心购
-  //- view.pb-10
-  up-loadmore(:status="loadStatus" @loadmore="onAddRandomData")
+  view.pb-10
+    up-loadmore(:status="loadStatus" @loadmore="onAddRandomData")
 </template>
 
 <script setup>
@@ -42,16 +42,17 @@ const props = defineProps({
   }
 });
 
-const shopList = ref();
+const uWaterfallRef = ref();
+const shopList = ref([]);
 
 watch(
-  props.flowList,
+  () => props.flowList,
   (newValue, oldValue) => {
     shopList.value = props.flowList;
   },
   {
-    deep: true,
-    immediate: true
+    immediate: true,
+    deep: true
   }
 );
 
@@ -63,6 +64,12 @@ const onAddRandomData = () => {
 const decimal = (value, type) => {
   return value.split(".")[type];
 };
+
+// 瀑布流数据清空
+const onClear = () => {
+  uWaterfallRef.value.clear();
+};
+defineExpose({ onClear });
 </script>
 
 <style lang="scss" scoped>
@@ -125,14 +132,13 @@ const decimal = (value, type) => {
     color: $uni-color-error;
     margin-top: 10rpx;
     .price {
-			font-size: 32rpx;
-			font-weight: bold;
-		}
-		.unit,
-		.decimal {
-			font-size: 24rpx;
-		}
+      font-size: 32rpx;
+      font-weight: bold;
+    }
+    .unit,
+    .decimal {
+      font-size: 24rpx;
+    }
   }
-
 }
 </style>
