@@ -5,7 +5,7 @@
 				"navigationBarTitleText": "首页",
 				"backgroundColor": "#ededed",
 				"titleNView": false,
-				"enablePullDownRefresh": true 
+				"enablePullDownRefresh": true
 			}
 		},
 		{
@@ -71,6 +71,7 @@
 		]
 	},
 	"easycom": {
+		"autoscan": true,
     "custom": {
       "^u--(.*)": "uview-plus/components/u-$1/u-$1.vue",
       "^up-(.*)": "uview-plus/components/u-$1/u-$1.vue",

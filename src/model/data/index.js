@@ -2,7 +2,7 @@
 import { STORAGE_CONFIG } from "./user";
 
 // other
-import { BANNER_DATA, GRID_DATA, GOODS_DATA } from "./home";
+import { BANNER_DATA, GRID_DATA,TAB_DATA, GOODS_DATA } from "./home";
 import { CLASSIFY_DATA } from "./classify";
 import { GOODS_BANNER_DATA } from "./goods";
 import { ORDER_GRID_DATA, FEATURE_GRID_DATA, FEATURE_GRID_DATA2 } from "./mine";
@@ -12,6 +12,7 @@ export  {
   STORAGE_CONFIG,
   BANNER_DATA,
   GRID_DATA,
+  TAB_DATA,
   GOODS_DATA,
   CLASSIFY_DATA,
   GOODS_BANNER_DATA,
