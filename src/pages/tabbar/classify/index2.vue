@@ -28,9 +28,9 @@ view.vmall-classify
 </template>
 
 <script setup>
+import { getCurrentInstance } from "vue";
 import FixedSearch from "@/components/search/fixedSearch.vue";
 import { CLASSIFY_DATA } from "@/model";
-import { getCurrentInstance } from "vue";
 
 const instance = getCurrentInstance();
 const tabbar = CLASSIFY_DATA;
@@ -135,7 +135,7 @@ page {
   .u-tab-item-active::before {
     content: "";
     position: absolute;
-    border-left: 4px solid #f56c6c;
+    border-left: 4px solid #fa3534;
     height: 32rpx;
     left: 0;
     top: 39rpx;

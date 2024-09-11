@@ -1,6 +1,6 @@
 <template lang="pug">
 view.slide-grid
-	u-scroll-list(indicatorColor="#fff0f0", indicatorActiveColor="#f56c6c")
+	u-scroll-list(indicatorColor="#fff0f0", indicatorActiveColor="#fa3534")
 		view.scroll-list
 			view.scroll-list__line(
 				v-for="(item, index) in gridList"
@@ -46,7 +46,7 @@ const onGridClick = (item) => {
       }
 
       &__text {
-        color: #f56c6c;
+        color: #fa3534;
         text-align: center;
         font-size: 24rpx;
         margin-top: 10rpx;
@@ -63,7 +63,7 @@ const onGridClick = (item) => {
       &__text {
         font-size: 24rpx;
         width: 24rpx;
-        color: #f56c6c;
+        color: #fa3534;
         line-height: 32rpx;
       }
     }

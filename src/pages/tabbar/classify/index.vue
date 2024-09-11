@@ -27,9 +27,9 @@ view.vmall-classify
 </template>
 
 <script setup>
+import { getCurrentInstance } from "vue";
 import FixedSearch from "@/components/search/fixedSearch.vue";
 import { CLASSIFY_DATA } from "@/model";
-import { getCurrentInstance } from "vue";
 
 const instance = getCurrentInstance();
 const scrollTop = ref(0); //tab标题的滚动条位置
@@ -174,125 +174,127 @@ page {
 }
 </style>
 <style lang="scss" scoped>
-.u-wrap {
-  height: calc(100vh);
-  /* #ifdef H5 */
-  height: calc(100vh - var(--window-bottom));
-  /* #endif */
-  display: flex;
-  flex-direction: column;
-}
-
-.u-search-box {
-  padding: 18rpx 30rpx;
-}
-
-.u-menu-wrap {
-  flex: 1;
-  display: flex;
-  overflow: hidden;
-}
-
-.u-search-inner {
-  background-color: rgb(234, 234, 234);
-  border-radius: 100rpx;
-  display: flex;
-  align-items: center;
-  padding: 10rpx 16rpx;
-}
-
-.u-search-text {
-  font-size: 26rpx;
-  color: $u-tips-color;
-  margin-left: 10rpx;
-}
-
-.u-tab-view {
-  width: 200rpx;
-  height: 100%;
-}
-
-.u-tab-item {
-  height: 110rpx;
-  background: #f6f6f6;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 26rpx;
-  color: #444;
-  font-weight: 400;
-  line-height: 1;
-}
-
-.u-tab-item-active {
-  position: relative;
-  color: #000;
-  font-size: 30rpx;
-  font-weight: 600;
-  background: #fff;
-}
-
-.u-tab-item-active::before {
-  content: "";
-  position: absolute;
-  border-left: 4px solid #f56c6c;
-  height: 32rpx;
-  left: 0;
-  top: 39rpx;
-}
-
-.u-tab-view {
-  height: 100%;
-}
-
-.right-box {
-  background-color: rgb(250, 250, 250);
-}
-
-.page-view {
-  padding: 16rpx;
-}
-
-.class-item {
-  margin-bottom: 30rpx;
-  background-color: #fff;
-  padding: 16rpx;
-  border-radius: 8rpx;
-}
-
-.class-item:last-child {
-  min-height: 100vh;
-}
-
-.item-title {
-  font-size: 26rpx;
-  color: $u-main-color;
-  font-weight: bold;
-}
-
-.item-menu-name {
-  font-weight: normal;
-  font-size: 24rpx;
-  color: $u-main-color;
-}
-
-.item-container {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.thumb-box {
-  width: 33.333333%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin-top: 20rpx;
-}
-
-.item-menu-image {
-  width: 120rpx;
-  height: 120rpx;
+.vmall-classify {
+  .u-wrap {
+    height: calc(100vh);
+    /* #ifdef H5 */
+    height: calc(100vh - var(--window-bottom));
+    /* #endif */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .u-search-box {
+    padding: 18rpx 30rpx;
+  }
+  
+  .u-menu-wrap {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+  }
+  
+  .u-search-inner {
+    background-color: rgb(234, 234, 234);
+    border-radius: 100rpx;
+    display: flex;
+    align-items: center;
+    padding: 10rpx 16rpx;
+  }
+  
+  .u-search-text {
+    font-size: 26rpx;
+    color: $u-tips-color;
+    margin-left: 10rpx;
+  }
+  
+  .u-tab-view {
+    width: 200rpx;
+    height: 100%;
+  }
+  
+  .u-tab-item {
+    height: 110rpx;
+    background: #f6f6f6;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26rpx;
+    color: #444;
+    font-weight: 400;
+    line-height: 1;
+  }
+  
+  .u-tab-item-active {
+    position: relative;
+    color: #000;
+    font-size: 30rpx;
+    font-weight: 600;
+    background: #fff;
+  }
+  
+  .u-tab-item-active::before {
+    content: "";
+    position: absolute;
+    border-left: 4px solid #fa3534;
+    height: 32rpx;
+    left: 0;
+    top: 39rpx;
+  }
+  
+  .u-tab-view {
+    height: 100%;
+  }
+  
+  .right-box {
+    background-color: rgb(250, 250, 250);
+  }
+  
+  .page-view {
+    padding: 16rpx;
+  }
+  
+  .class-item {
+    margin-bottom: 30rpx;
+    background-color: #fff;
+    padding: 16rpx;
+    border-radius: 8rpx;
+  }
+  
+  .class-item:last-child {
+    min-height: 100vh;
+  }
+  
+  .item-title {
+    font-size: 26rpx;
+    color: $u-main-color;
+    font-weight: bold;
+  }
+  
+  .item-menu-name {
+    font-weight: normal;
+    font-size: 24rpx;
+    color: $u-main-color;
+  }
+  
+  .item-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .thumb-box {
+    width: 33.333333%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 20rpx;
+  }
+  
+  .item-menu-image {
+    width: 120rpx;
+    height: 120rpx;
+  }
 }
 </style>

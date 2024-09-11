@@ -4,7 +4,7 @@ view.sticky-tabs.flex.justify-center
     :list="tabList"
     :scrollable="false"
     lineWidth="30"
-    lineColor="#f56c6c"
+    lineColor="#fa3534"
     :activeStyle="activeStyle"
     :inactiveStyle="inactiveStyle"
     :itemStyle="itemStyle"

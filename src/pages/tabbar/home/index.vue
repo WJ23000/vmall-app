@@ -17,6 +17,7 @@ view.vmall-home
 </template>
 
 <script setup>
+import { random, guid } from "uview-plus";
 import FixedSearch from "@/components/search/fixedSearch.vue";
 import Search from "@/components/search/search.vue";
 import Banner from "@/components/banner.vue";
@@ -25,7 +26,6 @@ import StickyTabs from "@/components/stickyTabs.vue";
 import Waterfall from "@/components/waterfall.vue";
 import BackTop from "@/components/backTop.vue";
 import { BANNER_DATA, GRID_DATA, TAB_DATA, GOODS_DATA } from "@/model";
-import { random, guid } from "uview-plus";
 
 const bannerList = ref(BANNER_DATA);
 const gridList = ref(GRID_DATA);
