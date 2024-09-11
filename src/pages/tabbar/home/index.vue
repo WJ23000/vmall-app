@@ -116,11 +116,14 @@ page {
   background-color: #ededed;
 }
 </style>
-<style lang="stylus" scoped>
-.vmall-home
-  .header
+<style lang="scss" scoped>
+.vmall-home {
+  .header {
     background: linear-gradient(to top, #ededed, #ff6666, #fa3534);
     padding: 0rpx 20rpx;
-  .content
+  }
+  .content {
     background: #ededed;
+  }
+}
 </style>
