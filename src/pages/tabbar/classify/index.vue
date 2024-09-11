@@ -236,7 +236,7 @@ page {
 .u-tab-item-active::before {
   content: "";
   position: absolute;
-  border-left: 4px solid $u-primary;
+  border-left: 4px solid #f56c6c;
   height: 32rpx;
   left: 0;
   top: 39rpx;
