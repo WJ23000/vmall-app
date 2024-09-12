@@ -8,48 +8,36 @@ view.vmall-cart
     template(#right)
       text.f-24(@click="onRightEdit") 编辑
   view.page-content
-    view(v-if="cartItems.length > 0 ? true : false")
-      view.cart-cell(v-for="(item,index) in cartItems" :key="index")
-        view.cart-box(:data-id="item.id" :data-index="index")
-          view.icon-main
-            image(:src="iconXz" v-if="item.selected" @click="selectedCart(index)" :data-index="index")
-            image(:src="iconWxz" v-else @click="selectedCart(index)" :data-index="index")
-          view.cart-main
-            view.left_image
-              image.cart-image(:src="item.url")
-            view.left_box
-              text.cart-title {{item.title}}
-              text.cart-specif {{item.specif}}
-              view.cart-count
-                view.cart-money
-                  text.cart-unit ￥
-                  text.cart-price {{item.price}}
-                view
-                  text(@click='reduce'  class="input cart-reduce"  :data-index="index") -
-                  text(class="input cart-text") {{item.value}}
-                  text(@click='add' class="input cart-add"  :data-index="index") +
-      <!-- 底部 -->
+    view(v-if="cartList.length > 0 ? true : false")
+      Cart(
+        :cartList="cartList" 
+        @delete="onDelete" 
+        @select="onSelect"
+        @minus="onMinus"
+        @add="onAdd")
+      //- 底部-删除
       view(v-if="showBottom")
         view.del-bottom
-          view.cart-bottom-cell(@click='cancel') 取消
-          view(class='cart-bottom-cell del-color' @click='del') 删除({{delCount}})
+          view.cart-bottom-cell(@click='onCancel') 取消
+          view(class='cart-bottom-cell del-color' @click='onDeleteAll') 删除({{ deleteCount }})
+      //- 底部-结算
       view(v-else)
         view.cart-bottom
           view.cart-bottom-icon
-            image(:src="iconXz" v-if="CheckAll" @click="select")
-            image(:src="iconWxz" v-else @click="select")
+            image(:src="iconXz" v-if="CheckAll" @click="onSelectAll")
+            image(:src="iconWxz" v-else @click="onSelectAll")
           view.checkAll 全选
           view.cart-sum
             text.sum_text 合计：
-            text.sum_color ￥{{total}}元
+            text.sum_color ￥{{ totalPrice }}元
           view.cart-pay
-            text.cart_pay(@click="payOrder") 去结算({{goodsCount}})
-    <!--如果无数据，则显示数据-->
+            text.cart_pay(@click="payOrder") 去结算({{ goodsCount }})
+    //- 如果无数据，则显示数据
     u-empty(
       v-else
       mode="car"
       icon="http://cdn.uviewui.com/uview/empty/car.png")
-  <!-- 为您推荐 -->
+  //- 为您推荐
   view.wrap
     u-divider(text="为您推荐")
     Waterfall(ref="waterfallRef" :loadStatus="loadStatus" :flowList.sync="flowList" @addRandomData="addRandomData")
@@ -58,36 +46,16 @@ view.vmall-cart
 
 <script setup>
 import { random, guid } from "uview-plus";
+import Cart from "@/components/cart.vue";
 import Waterfall from "@/components/waterfall.vue";
 import BackTop from "@/components/backTop.vue";
-import { GOODS_DATA } from "@/model";
+import { GOODS_DATA, CART_GOODS_DATA } from "@/model";
 
-const cartItems = ref([
-  {
-    id: 1,
-    title: "sk-ii sk2神仙水小灯泡精华大红瓶面霜套装",
-    price: 1540.0,
-    specif: "自营",
-    value: 1,
-    sell: 101,
-    url: "http://cdn.wjaxx.xyz/goods/img.jpg",
-    selected: false
-  },
-  {
-    id: 2,
-    title: "Whoo后天气丹礼盒花献光彩紧颜水乳礼盒7件",
-    price: 1590.0,
-    specif: "专卖店",
-    value: 2,
-    sell: 102,
-    url: "http://cdn.wjaxx.xyz/goods/img2.jpg",
-    selected: false
-  }
-]);
-const total = ref(0);
+const cartList = ref([...CART_GOODS_DATA]);
+const totalPrice = ref(0);
 const CheckAll = ref(false);
 const goodsCount = ref(0);
-const delCount = ref(0);
+const deleteCount = ref(0);
 const showBottom = ref(false);
 const iconXz = ref("http://cdn.wjaxx.xyz/cart/check-xz.png");
 const iconWxz = ref("http://cdn.wjaxx.xyz/cart/check-wxz.png");
@@ -105,129 +73,98 @@ onLoad(() => {
 
 // 购物车
 // 全选
-const select = (e) => {
-  let setCheckAll = CheckAll.value;
-
-  setCheckAll = !setCheckAll;
-  const setCartItems = cartItems.value;
-
-  for (let i = 0; i < setCartItems.length; i++) {
-    setCartItems[i].selected = setCheckAll;
+const onSelectAll = (e) => {
+  for (let i = 0; i < cartList.value.length; i++) {
+    cartList.value[i].selected = !CheckAll.value;
   }
-
-  (cartItems.value = setCartItems), (CheckAll.value = setCheckAll);
-  // 计算总金额
+  CheckAll.value = !CheckAll.value;
   getSumTotal();
-  // 计算商品数量
   getGoodsCount();
-  // 计算删除数量
-  delGoodsCount();
+  deleteGoodsCount();
+};
+// 反选
+const onSelect = (index) => {
+  cartList.value[index].selected = !cartList.value[index].selected;
+  CheckAll.value = !cartList.value.some((item) => item.selected == false);
+  getSumTotal();
+  getGoodsCount();
+  deleteGoodsCount();
 };
 // 加
-const add = (e) => {
-  const setCartItems = cartItems.value; // 获取购物车列表
-  console.log("触发了不");
-  const index = e.currentTarget.dataset.index; // 获取当前点击事件的下标索引
-  console.log(index);
-  let value = setCartItems[index].value; // 获取购物车里面的value值
-
-  value++;
-  setCartItems[index].value = value;
-  cartItems.value = setCartItems;
+const onAdd = (index) => {
+  cartList.value[index].quantity++;
   getSumTotal();
 };
 // 减
-const reduce = (e) => {
-  const setCartItems = cartItems.value; // 获取购物车列表
-  const index = e.currentTarget.dataset.index; // 获取当前点击事件的下标索引
-  let value = setCartItems[index].value; // 获取购物车里面的value值
-  if (value == 1) {
-    value--;
-    setCartItems[index].value = 1;
-  } else {
-    value--;
-    setCartItems[index].value = value;
+const onMinus = (index) => {
+  if (cartList.value[index].quantity == 1) {
+    return;
   }
-  cartItems.value = setCartItems;
+  cartList.value[index].quantity--;
   getSumTotal();
 };
-// 单选
-const selectedCart = (index) => {
-  const setCartItems = cartItems.value; // 获取购物车列表
-  const selected = setCartItems[index].selected; // 获取当前点击事件的下标索引是否选中
-  // 取反
-  setCartItems[index].selected = !selected;
-  cartItems.value = setCartItems;
-  // 计算总金额
+// 单个删除选中的商品
+const onDelete = (index) => {
+  cartList.value.splice(index, 1);
   getSumTotal();
-  // 计算商品数量
   getGoodsCount();
-  // 计算删除数量
-  delGoodsCount();
+  deleteGoodsCount();
 };
-
-// 删除
-const del = (e) => {
-  let delState = true;
-  let setCartItems = cartItems.value; // 获取购物车列表
-  console.log(setCartItems.length);
-  for (let i = 0; i < setCartItems.length; i++) {
-    if (setCartItems[i].selected == delState) {
-      setCartItems.splice(i, 1);
-      // 更新删除数量数据
-      delCount.value = i;
+// 批量删除选中的商品
+const onDeleteAll = (e) => {
+  for (let i = 0; i < cartList.value.length; i++) {
+    if (cartList.value[i].selected == true) {
+      cartList.value.splice(i, 1);
+      deleteCount.value = i;
       i = i - 1;
     }
   }
-  cartItems.value = setCartItems;
-  total.value = 0;
+  totalPrice.value = 0;
   goodsCount.value = 0;
+  deleteCount.value = 0;
   CheckAll.value = false;
 };
 // 删除数量方法
-const delGoodsCount = () => {
+const deleteGoodsCount = () => {
   let count = 0;
-  for (let i = 0; i < cartItems.value.length; i++) {
-    if (cartItems.value[i].selected) {
+  for (let i = 0; i < cartList.value.length; i++) {
+    if (cartList.value[i].selected) {
       count = count + 1;
     }
   }
-  // 更新删除数量数据
-  delCount.value = count;
-};
-// 结算
-const payOrder = () => {
-  // this.$router.push({ path: "/payOrder", params: { orderId: 1 } });
+  deleteCount.value = count;
 };
 // 合计
 const getSumTotal = () => {
   let sum = 0;
-  for (let i = 0; i < cartItems.value.length; i++) {
-    if (cartItems.value[i].selected) {
-      sum += cartItems.value[i].value * cartItems.value[i].price;
+  for (let i = 0; i < cartList.value.length; i++) {
+    if (cartList.value[i].selected) {
+      sum += cartList.value[i].quantity * cartList.value[i].price;
     }
   }
-  // 更新数据
-  total.value = sum;
+  totalPrice.value = sum;
 };
 // 商品总数量
 const getGoodsCount = () => {
   let count = 0;
-  for (let i = 0; i < cartItems.value.length; i++) {
-    if (cartItems.value[i].selected) {
+  for (let i = 0; i < cartList.value.length; i++) {
+    if (cartList.value[i].selected) {
       count = count + 1;
     }
   }
-  // 更新数据
   goodsCount.value = count;
 };
-//编辑
+// 编辑
 const onRightEdit = () => {
   showBottom.value = true;
 };
-//取消删除功能
-const cancel = () => {
+// 取消删除功能
+const onCancel = () => {
   showBottom.value = false;
+};
+// 结算
+const payOrder = () => {
+  // this.$router.push({ path: "/payOrder", params: { orderId: 1 } });
 };
 
 // 监听页面滚动(返回顶部)
@@ -248,6 +185,8 @@ onReachBottom(() => {
 // 下拉刷新
 onPullDownRefresh(() => {
   console.log("下拉刷新");
+  cartList.value = CART_GOODS_DATA;
+  console.log("商品列表", cartList.value);
   // 瀑布流数据清空
   if (waterfallRef.value) {
     waterfallRef.value.onClear();

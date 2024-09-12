@@ -62,7 +62,7 @@ onLoad(() => {
 // 监听页面滚动(tabs吸顶, 返回顶部)
 onPageScroll((e) => {
   backTop.value = e.scrollTop;
-  stickyBgColor.value = e.scrollTop > 280 ? "#ffffff" : "";
+  // stickyBgColor.value = e.scrollTop > 250 ? "#ffffff" : "";
   // 动态修改状态栏的颜色
   // #ifdef !APP-PLUS
   uni.setNavigationBarColor({

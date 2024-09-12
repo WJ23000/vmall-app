@@ -87,7 +87,7 @@ export const GOODS_DATA = [
     url: "http://cdn.wjaxx.xyz/goods/img.jpg",
     price: "1540.00",
     label: "自营",
-    shop: "andry旗舰店",
+    shop: "小黑店铺",
     sold: 500,
     status: 1
   },
@@ -96,8 +96,8 @@ export const GOODS_DATA = [
     title: "Whoo后天气丹礼盒花献光彩紧颜水乳礼盒7件",
     url: "http://cdn.wjaxx.xyz/goods/img2.jpg",
     price: "1590.00",
-    label: "自营",
-    shop: "andry旗舰店",
+    label: "旗舰店",
+    shop: "大黑店铺",
     sold: 320,
     status: 2
   },
@@ -106,8 +106,8 @@ export const GOODS_DATA = [
     title: "官方正品TOMFORD RosePrick 玫瑰花香调",
     url: "http://cdn.wjaxx.xyz/goods/img3.jpg",
     price: "169.00",
-    label: "",
-    shop: "andry旗舰店",
+    label: "自营",
+    shop: "小黑店铺",
     status: 3
   },
   {
@@ -115,8 +115,8 @@ export const GOODS_DATA = [
     title: "官方正品TOMFORD 鎏金花影限量口红 TF16 80",
     url: "http://cdn.wjaxx.xyz/goods/img4.jpg",
     price: "625.00",
-    label: "",
-    shop: "andry旗舰店",
+    label: "自营",
+    shop: "小黑店铺",
     status: 3
   },
   {
@@ -125,7 +125,7 @@ export const GOODS_DATA = [
     url: "http://cdn.wjaxx.xyz/goods/img5.jpg",
     price: "350.00",
     label: "自营",
-    shop: "andry旗舰店",
+    shop: "小黑店铺",
     status: 4
   },
   {
@@ -133,8 +133,8 @@ export const GOODS_DATA = [
     title: "海蓝之谜修护唇霜舒缓干燥润唇淡化唇纹",
     url: "http://cdn.wjaxx.xyz/goods/img6.jpg",
     price: "350.00",
-    label: "自营",
-    shop: "andry旗舰店",
+    label: "旗舰店",
+    shop: "大黑店铺",
     sold: 346,
     status: 4
   },
@@ -143,8 +143,8 @@ export const GOODS_DATA = [
     title: "珀莱雅水漾芯肌透润霜倍润补水锁水保湿滋润面霜学生护肤专柜正品",
     url: "http://cdn.wjaxx.xyz/goods/img7.jpg",
     price: "390.00",
-    label: "自营",
-    shop: "andry旗舰店",
+    label: "旗舰店",
+    shop: "大黑店铺",
     sold: 582,
     status: 4
   },
@@ -154,7 +154,7 @@ export const GOODS_DATA = [
     url: "http://cdn.wjaxx.xyz/goods/img8.jpg",
     price: "509.00",
     label: "自营",
-    shop: "andry旗舰店",
+    shop: "小黑店铺",
     sold: 963,
     status: 4
   }

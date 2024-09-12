@@ -10,7 +10,7 @@ view.waterfall
           text.price {{ decimal(item.price,0) }}
           text.decimal .{{ decimal(item.price,1) }}
         view.shop-tag
-          view.shop-tag-owner 自营
+          view.shop-tag-owner {{ item.label }}
           view.shop-tag-text 放心购
     template(v-slot:right="{rightList}")
       view.shop-warter(v-for="(item, index) in rightList" :key="index")
@@ -21,7 +21,7 @@ view.waterfall
           text.price {{ decimal(item.price,0) }}
           text.decimal .{{ decimal(item.price,1) }}
         view.shop-tag
-          view.shop-tag-owner 自营
+          view.shop-tag-owner {{ item.label }}
           view.shop-tag-text 放心购
   view.pb-10
     up-loadmore(:status="loadStatus" @loadmore="onAddRandomData")
@@ -128,7 +128,6 @@ defineExpose({ onClear });
   }
 
   .shop-price {
-    font-size: 30rpx;
     color: $uni-color-error;
     margin-top: 10rpx;
     .price {
