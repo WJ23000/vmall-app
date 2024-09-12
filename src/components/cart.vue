@@ -8,11 +8,15 @@
 -->
 <template lang="pug">
   view.cart-card
-    u-swipe-action(:autoClose="true")
-      view.mt-20(v-for="(item, index) in cartList" :key="index")
+    u-swipe-action
+      view.mt-20(
+        v-for="(item, index) in cartList" 
+        :key="index")
         u-swipe-action-item.flex.column(
+          :ref="el => { swipeRef[index] = el }"
           :options="operate"
           :index="index"
+          :autoClose="true"
           @click="onDelete(index)")
           //- view.cart-name.px-32
           //-   image.shop-img.mr-12(:src="Shop")
@@ -42,14 +46,7 @@ import Shop from "@/static/shop.png";
 const CheckXz = ref("http://cdn.wjaxx.xyz/cart/check-xz.png");
 const CheckWxz = ref("http://cdn.wjaxx.xyz/cart/check-wxz.png");
 
-const operate = ref([
-  {
-    text: "删除",
-    style: {
-      backgroundColor: "#E84026"
-    }
-  }
-]);
+const emit = defineEmits(["delete", "select", "minus", "add"]);
 const props = defineProps({
   cartList: {
     type: Array,
@@ -58,7 +55,16 @@ const props = defineProps({
     }
   }
 });
-const emit = defineEmits(["delete", "select", "minus", "add"]);
+
+const operate = ref([
+  {
+    text: "删除",
+    style: {
+      backgroundColor: "#E84026"
+    }
+  }
+]);
+const swipeRef = ref([]);
 
 const onDelete = (id) => {
   emit("delete", id);
@@ -71,9 +77,17 @@ const onSelect = (index) => {
 const onMinus = (index) => {
   emit("minus", index);
 };
+
 const onAdd = (index) => {
   emit("add", index);
 };
+
+// 处理u-swipe-action-item不复位的问题
+const resetSwipeAction = () => {
+  swipeRef.value[0].closeHandler();
+  console.log("是谁", swipeRef.value)
+};
+defineExpose({ resetSwipeAction });
 </script>
 
 <style lang="scss" scoped>

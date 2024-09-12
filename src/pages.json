@@ -1,78 +1,98 @@
 {
-	"pages": [{
-			"path": "pages/tabbar/home/index",
-			"style": {
-				"navigationBarTitleText": "首页",
-				"backgroundColor": "#ededed",
-				"titleNView": false,
-				"enablePullDownRefresh": true
-			}
-		},
-		{
-			"path": "pages/tabbar/classify/index",
-			"style": {
-				"navigationBarTitleText": "分类",
-				"backgroundColor": "#ededed",
-				"titleNView": false
-			}
-		},
-		{
-			"path": "pages/tabbar/cart/index",
-			"style": {
-				"navigationBarTitleText": "购物车",
-				"backgroundColor": "#ededed",
-				"titleNView": false,
-				"enablePullDownRefresh": true
-			}
-		},
-		{
-			"path": "pages/tabbar/mine/index",
-			"style": {
-				"navigationBarTitleText": "我的",
-				"backgroundColor": "#ededed",
-				"titleNView": false
-			}
-		}
-	],
-	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
-	},
-	"tabBar": {
-		"color": "#606266",
-		"selectedColor": "#fa3534",
-		"backgroundColor": "#ffffff",
-		"borderStyle": "black",
-		"list": [{
-				"pagePath": "pages/tabbar/home/index",
-				"text": "首页",
-				"iconPath": "./static/tabbar/index.png",
-				"selectedIconPath": "static/tabbar/index-active.png"
-			},
-			{
-				"pagePath": "pages/tabbar/classify/index",
-				"text": "分类",
-				"iconPath": "static/tabbar/classify.png",
-				"selectedIconPath": "static/tabbar/classify-active.png"
-			},
-			{
-				"pagePath": "pages/tabbar/cart/index",
-				"text": "购物车",
-				"iconPath": "./static/tabbar/cart.png",
-				"selectedIconPath": "./static/tabbar/cart-active.png"
-			},
-			{
-				"pagePath": "pages/tabbar/mine/index",
-				"text": "我的",
-				"iconPath": "./static/tabbar/mine.png",
-				"selectedIconPath": "./static/tabbar/mine-active.png"
-			}
-		]
-	},
-	"easycom": {
-		"autoscan": true,
+  "pages": [
+    {
+      "path": "pages/tabbar/home/index",
+      "style": {
+        "navigationBarTitleText": "首页",
+        "backgroundColor": "#ededed",
+        "titleNView": false,
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/tabbar/classify/index",
+      "style": {
+        "navigationBarTitleText": "分类",
+        "backgroundColor": "#ededed",
+        "titleNView": false
+      }
+    },
+    {
+      "path": "pages/tabbar/cart/index",
+      "style": {
+        "navigationBarTitleText": "购物车",
+        "backgroundColor": "#ededed",
+        "titleNView": false,
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/tabbar/my/index",
+      "style": {
+        "navigationBarTitleText": "我的",
+        "backgroundColor": "#ededed",
+        "titleNView": false
+      }
+    }
+  ],
+  "subPackages": [
+    {
+      "root": "pagesA",
+      "pages": []
+    },
+    {
+      "root": "pagesB",
+      "pages": [
+        {
+          "path": "setting/index",
+          "style": {
+            "navigationBarTitleText": "账户设置",
+            "backgroundColor": "#ffffff"
+          }
+        }
+      ]
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#606266",
+    "selectedColor": "#fa3534",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/tabbar/home/index",
+        "text": "首页",
+        "iconPath": "./static/tabbar/index.png",
+        "selectedIconPath": "static/tabbar/index-active.png"
+      },
+      {
+        "pagePath": "pages/tabbar/classify/index",
+        "text": "分类",
+        "iconPath": "static/tabbar/classify.png",
+        "selectedIconPath": "static/tabbar/classify-active.png"
+      },
+      {
+        "pagePath": "pages/tabbar/cart/index",
+        "text": "购物车",
+        "iconPath": "./static/tabbar/cart.png",
+        "selectedIconPath": "./static/tabbar/cart-active.png"
+      },
+      {
+        "pagePath": "pages/tabbar/my/index",
+        "text": "我的",
+        "iconPath": "./static/tabbar/my.png",
+        "selectedIconPath": "./static/tabbar/my-active.png"
+      }
+    ]
+  },
+  "easycom": {
+    "autoscan": true,
     "custom": {
       "^u--(.*)": "uview-plus/components/u-$1/u-$1.vue",
       "^up-(.*)": "uview-plus/components/u-$1/u-$1.vue",

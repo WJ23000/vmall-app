@@ -6,7 +6,7 @@ import { BANNER_DATA, GRID_DATA,TAB_DATA, GOODS_DATA } from "./home";
 import { CLASSIFY_DATA } from "./classify";
 import { CART_GOODS_DATA } from "./cart";
 import { GOODS_BANNER_DATA } from "./goods";
-import { ORDER_GRID_DATA, FEATURE_GRID_DATA, FEATURE_GRID_DATA2 } from "./mine";
+import { ORDER_GRID_DATA, FEATURE_GRID_DATA, FEATURE_GRID_DATA2 } from "./my";
 import { CITY_DATA } from "./area";
 
 export  {

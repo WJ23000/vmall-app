@@ -10,6 +10,7 @@ view.vmall-cart
   view.page-content
     view(v-if="cartList.length > 0 ? true : false")
       Cart(
+        ref="cartRef"
         :cartList="cartList" 
         @delete="onDelete" 
         @select="onSelect"
@@ -66,6 +67,7 @@ const goodsList = ref(GOODS_DATA);
 const waterfallRef = ref();
 // 返回顶部
 const backTop = ref(0);
+const cartRef = ref();
 
 onLoad(() => {
   cartList.value = JSON.parse(JSON.stringify(CART_GOODS_DATA));
@@ -106,6 +108,8 @@ const onMinus = (index) => {
 };
 // 单个删除选中的商品
 const onDelete = (index) => {
+  // 处理u-swipe-action-item不复位的问题(要放在删除操作的上方)
+  cartRef.value.resetSwipeAction();
   cartList.value.splice(index, 1);
   getSumTotal();
   getGoodsCount();
@@ -188,7 +192,7 @@ onPullDownRefresh(() => {
   console.log("下拉刷新");
   cartList.value = JSON.parse(JSON.stringify(CART_GOODS_DATA));
   showBottom.value = false;
-  console.log("商品列表", cartList.value);
+  CheckAll.value = false;
   // 瀑布流数据清空
   if (waterfallRef.value) {
     waterfallRef.value.onClear();
