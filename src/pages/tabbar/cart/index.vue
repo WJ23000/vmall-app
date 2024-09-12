@@ -51,7 +51,7 @@ import Waterfall from "@/components/waterfall.vue";
 import BackTop from "@/components/backTop.vue";
 import { GOODS_DATA, CART_GOODS_DATA } from "@/model";
 
-const cartList = ref([...CART_GOODS_DATA]);
+const cartList = ref([]);
 const totalPrice = ref(0);
 const CheckAll = ref(false);
 const goodsCount = ref(0);
@@ -68,6 +68,7 @@ const waterfallRef = ref();
 const backTop = ref(0);
 
 onLoad(() => {
+  cartList.value = JSON.parse(JSON.stringify(CART_GOODS_DATA));
   addRandomData();
 });
 
@@ -185,7 +186,8 @@ onReachBottom(() => {
 // 下拉刷新
 onPullDownRefresh(() => {
   console.log("下拉刷新");
-  cartList.value = CART_GOODS_DATA;
+  cartList.value = JSON.parse(JSON.stringify(CART_GOODS_DATA));
+  showBottom.value = false;
   console.log("商品列表", cartList.value);
   // 瀑布流数据清空
   if (waterfallRef.value) {
