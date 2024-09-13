@@ -1,4 +1,4 @@
-export const CITY_DATA = {
+export const AREA_DATA = {
 	provinceData: [
 		{ value: 110000, label: "北京市", pid: 0, level: 1 },
 		{ value: 120000, label: "天津市", pid: 0, level: 1 },

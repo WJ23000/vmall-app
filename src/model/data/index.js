@@ -7,7 +7,9 @@ import { CLASSIFY_DATA } from "./classify";
 import { CART_GOODS_DATA } from "./cart";
 import { GOODS_BANNER_DATA } from "./goods";
 import { ORDER_GRID_DATA, FEATURE_GRID_DATA, FEATURE_GRID_DATA2 } from "./my";
-import { CITY_DATA } from "./area";
+import { ADDRESS_DATA } from "./address";
+import { ORDER_GOODS_DATA } from "./order";
+import { AREA_DATA } from "./area";
 
 export  {
   STORAGE_CONFIG,
@@ -21,5 +23,7 @@ export  {
   ORDER_GRID_DATA,
   FEATURE_GRID_DATA,
   FEATURE_GRID_DATA2,
-  CITY_DATA
+  ADDRESS_DATA,
+  ORDER_GOODS_DATA,
+  AREA_DATA
 };

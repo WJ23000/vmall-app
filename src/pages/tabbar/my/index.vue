@@ -27,10 +27,10 @@ view.vmall-my
           view.login(@click="onLogin") 注册/登录
   view.wrap
     view.order-grid
-      u-cell.order-grid-other(title="订单" value="全部订单" :isLink="true" :clickable="true" @click="toOrder(0)")
+      u-cell.order-grid-other(title="订单" value="全部订单" :isLink="true" :clickable="true" @click="onOrder(0, 0)")
       view.grid-content
         u-grid(:col="5" :border="false")
-          u-grid-item(v-for="(item, index) in orderGridList" :index="index" :key="index" @click="toOrder(item.index)")
+          u-grid-item(v-for="(item, index) in orderGridList" :index="index" :key="index" @click="onOrder(item.current, item.type)")
             u-badge(max="99" :value="item.count" :offset="[0,8]" :absolute="true" bgColor="#fa3534")
             image.grid-image(:src="item.image")
             text.grid-text {{ item.name }}
@@ -39,7 +39,7 @@ view.vmall-my
         view.scroll-list__goods-item(
           v-for="(item, index) in otherGridList"
           :key="index"
-          @click="toNextPage(item.name)")
+          @click="toNextPage(item)")
           image.scroll-list__goods-item__image(:src="item.image")
           text.scroll-list__goods-item__text {{ item.name }}
     view.other-grid-two
@@ -47,7 +47,7 @@ view.vmall-my
         view.scroll-list__goods-item(
           v-for="(item, index) in otherGridListTwo"
           :key="index"
-          @click="toNextPage(item.name)")
+          @click="toNextPage(item)")
           image.scroll-list__goods-item__image(:src="item.image")
           text.scroll-list__goods-item__text {{ item.name }}
     u-divider(text="猜您喜欢")
@@ -197,6 +197,20 @@ const onSettingClick = () => {
   uni.navigateTo({
     url: "/pagesB/setting/index"
   });
+};
+
+// 我的订单
+const onOrder = (current, type) => {
+  uni.navigateTo({ url: "/pagesA/order/list?current=" + current + "&type=" + type });
+};
+
+// 去往其他模块
+const toNextPage = (item) => {
+  if (item.url) {
+    uni.navigateTo({
+      url: item.url
+    });
+  }
 };
 </script>
 

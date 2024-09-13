@@ -38,7 +38,58 @@
   "subPackages": [
     {
       "root": "pagesA",
-      "pages": []
+      "pages": [
+        {
+          "path": "address/index",
+          "style": {
+            "navigationBarTitleText": "收货地址",
+            "enablePullDownRefresh": true
+          }
+        },
+        {
+          "path": "address/add",
+          "style": {
+            "navigationBarTitleText": ""
+          }
+        },
+        {
+          "path": "order/confirm",
+          "style": {
+            "navigationBarTitleText": "确认订单"
+          }
+        },
+        {
+          "path": "order/success",
+          "style": {
+            "navigationBarTitleText": "支付成功"
+          }
+        },
+        {
+          "path": "order/list",
+          "style": {
+            "navigationBarTitleText": "订单列表"
+          }
+        },
+        {
+          "path": "order/detail",
+          "style": {
+            "navigationBarTitleText": "订单详情"
+          }
+        },
+        {
+          "path": "order/logistics",
+          "style": {
+            "navigationBarTitleText": "查看物流"
+          }
+        },
+        {
+          "path": "collection/index",
+          "style": {
+            "navigationBarTitleText": "",
+            "enablePullDownRefresh": true
+          }
+        }
+      ]
     },
     {
       "root": "pagesB",

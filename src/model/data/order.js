@@ -1,0 +1,72 @@
+export const ORDER_GOODS_DATA = [
+  {
+    id: 1,
+    order_no: "20240002356689",
+    title: "sk-ii sk2神仙水小灯泡精华大红瓶面霜套装",
+    goods_spec_name: "套装",
+    price: 1540.5,
+    total_price: 3081,
+    specif: "自营",
+    quantity: 2,
+    sell: 101,
+    url: "http://cdn.wjaxx.xyz/goods/img.jpg",
+    goods_spec_image: "http://cdn.wjaxx.xyz/goods/img.jpg",
+    status: 10
+  },
+  {
+    id: 2,
+    order_no: "20240002356610",
+    title: "Whoo后天气丹礼盒花献光彩紧颜水乳礼盒7件",
+    goods_spec_name: "秋款",
+    price: 1590.5,
+    total_price: 1590.5,
+    specif: "旗舰店",
+    quantity: 1,
+    sell: 102,
+    url: "http://cdn.wjaxx.xyz/goods/img2.jpg",
+    goods_spec_image: "http://cdn.wjaxx.xyz/goods/img.jpg",
+    status: 20
+  },
+  {
+    id: 3,
+    order_no: "20240002356689",
+    title: "sk-ii sk2神仙水小灯泡精华大红瓶面霜套装",
+    goods_spec_name: "套装",
+    price: 1540.5,
+    total_price: 3081,
+    specif: "自营",
+    quantity: 2,
+    sell: 101,
+    url: "http://cdn.wjaxx.xyz/goods/img.jpg",
+    goods_spec_image: "http://cdn.wjaxx.xyz/goods/img.jpg",
+    status: 30
+  },
+  {
+    id: 4,
+    order_no: "20240002356610",
+    title: "Whoo后天气丹礼盒花献光彩紧颜水乳礼盒7件",
+    goods_spec_name: "秋款",
+    price: 1590.5,
+    total_price: 1590.5,
+    specif: "旗舰店",
+    quantity: 1,
+    sell: 102,
+    url: "http://cdn.wjaxx.xyz/goods/img2.jpg",
+    goods_spec_image: "http://cdn.wjaxx.xyz/goods/img.jpg",
+    status: 50
+  },
+  {
+    id: 5,
+    order_no: "20240002356689",
+    title: "sk-ii sk2神仙水小灯泡精华大红瓶面霜套装",
+    goods_spec_name: "套装",
+    price: 1540.5,
+    total_price: 3081,
+    specif: "自营",
+    quantity: 2,
+    sell: 101,
+    url: "http://cdn.wjaxx.xyz/goods/img.jpg",
+    goods_spec_image: "http://cdn.wjaxx.xyz/goods/img.jpg",
+    status: 51
+  }
+];

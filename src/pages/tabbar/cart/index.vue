@@ -34,10 +34,7 @@ view.vmall-cart
           view.cart-pay
             text.cart_pay(@click="payOrder") 去结算({{ goodsCount }})
     //- 如果无数据，则显示数据
-    u-empty(
-      v-else
-      mode="car"
-      icon="http://cdn.uviewui.com/uview/empty/car.png")
+    Empty(v-else :emptyInfo="emptyInfo")
   //- 为您推荐
   view.wrap
     u-divider(text="为您推荐")
@@ -50,6 +47,7 @@ import { random, guid } from "uview-plus";
 import Cart from "@/components/cart.vue";
 import Waterfall from "@/components/waterfall.vue";
 import BackTop from "@/components/backTop.vue";
+import Empty from "@/components/empty.vue";
 import { GOODS_DATA, CART_GOODS_DATA } from "@/model";
 
 const cartList = ref([]);
@@ -60,6 +58,13 @@ const deleteCount = ref(0);
 const showBottom = ref(false);
 const iconXz = ref("http://cdn.wjaxx.xyz/cart/check-xz.png");
 const iconWxz = ref("http://cdn.wjaxx.xyz/cart/check-wxz.png");
+const EmptyImage = ref("http://cdn.wjaxx.xyz/empty/cart.png");
+const emptyInfo = ref({
+  image: EmptyImage,
+  width: 300,
+  height: 300,
+  tip: "小车大容量，喜欢的都加进来吧"
+});
 // 商品瀑布流列表
 const loadStatus = ref("loadmore");
 const flowList = ref([]);
