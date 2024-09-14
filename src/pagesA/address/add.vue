@@ -7,7 +7,7 @@
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <template lang="pug">
-view.address-add
+view.vmall-address-add
   view.my-24.mx-32
     view.container.pb-32.bg-white.f-28
       view.cell
@@ -33,7 +33,7 @@ view.address-add
           @click="onAreaShow")
       view.cell
         view.title.mr-12 详细地址
-        u--textarea(v-model="form.address" placeholder="请输入详细地址" autoHeight)
+        u--textarea(v-model="form.address" placeholder="请输入详细地址" height="35")
   view.btn-fixed.flex.column.justify-center.items-center.px-32.py-20
     view.mb-24(@click="onCheckDefault")
       image.icon-width.mr-20(v-if="form.is_default == 2" :src="AddressXz")
@@ -193,7 +193,7 @@ page {
 }
 </style>
 <style lang="stylus" scoped>
-.address-add
+.vmall-address-add
   .container
     border-radius: 24rpx;
   .cell

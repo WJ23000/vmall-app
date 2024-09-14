@@ -57,6 +57,11 @@ const decimal = (value, type) => {
 };
 </script>
 
+<style lang="scss">
+page {
+  background-color: #ffffff;
+}
+</style>
 <style lang="scss" scoped>
 .andry-collection-list {
   .card {

@@ -7,9 +7,9 @@
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <template lang="pug">
-view.address
+view.vmall-address
   view.container.pb-150(v-if="addressList.length > 0")
-    view.list.mt-24.mx-32.px-20.py-20(v-for="(item, index) in addressList" :key="index" @click.stop="onCheckAddress(item)")
+    view.list.mt-20.mx-20.px-20.py-20(v-for="(item, index) in addressList" :key="index" @click.stop="onCheckAddress(item)")
       view.cell.pb-20
         view.flex.justify-between.mb-16.f-28-B
           text {{ item.recipient }}
@@ -31,7 +31,7 @@ view.address
           up-icon.mr-10(name="trash" color="#fa3534" size="20")
           text 删除
   //- 暂无数据
-  view(v-else)
+  view.empty-container.flex.justify-center.items-center(v-else)
     Empty(:emptyInfo="emptyInfo")
   view.btn-fixed.flex.justify-center.px-32.py-20
     view.save-btn.flex.justify-center.f-32-B.white(@click.stop="onAddressAdd")
@@ -160,11 +160,11 @@ onPullDownRefresh(() => {
 
 <style lang="scss">
 page {
-  background-color: #f5f5f5;
+  background-color: #ededed;
 }
 </style>
 <style lang="scss" scoped>
-.address {
+.vmall-address {
   .list {
     background: #ffffff;
     border-radius: 12px;
@@ -179,6 +179,10 @@ page {
   }
   .w33 {
     width: 33%;
+  }
+  .empty-container {
+    background: #ffffff;
+    height: calc(100vh - 84rpx);
   }
   .btn-fixed {
     position: fixed;

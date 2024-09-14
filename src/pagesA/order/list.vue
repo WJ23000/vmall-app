@@ -1,13 +1,5 @@
-<!--
- * @Author: 汪军 624473119@qq.com
- * @Date: 2023-10-22 13:13:43
- * @LastEditors: 汪军 624473119@qq.com
- * @LastEditTime: 2023-11-27 10:26:33
- * @FilePath: \app-formwork\src\pages\login\index.vue
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 <template lang="pug">
-view.order-list.flex.column
+view.vmall-order-list.flex.column
   view.header.px-24.pt-16
     view.flex.justify-between.py-20
       u-search(placeholder="输入商品名称、订单编号搜索" v-model="keyword" :show-action="false" @clear="onClearSearch" clearabled)
@@ -26,7 +18,7 @@ view.order-list.flex.column
     view(v-for="(item, index) in orderList" :key="index")
       OrderCard(:item="item" :type="current" @delete="onDeleteOrder" @detail="onOrderDetail")
   //- 暂无数据
-  view(v-else)
+  view.empty-container.flex.justify-center.items-center(v-else)
     Empty(:emptyInfo="emptyInfo")
 </template>
 
@@ -98,8 +90,35 @@ onLoad((options) => {
 
 onShow(() => {
   // initList();
-  orderList.value = JSON.parse(JSON.stringify(ORDER_GOODS_DATA));
+  orderListMock(pageParam.value.status);
 });
+
+// 数据mock
+const orderListMock = (type) => {
+  orderList.value = JSON.parse(JSON.stringify(ORDER_GOODS_DATA));
+  switch (Number(type)) {
+    case 10:
+      orderList.value = orderList.value.filter((item) => item.status == 10);
+      console.log("触发了不", orderList.value);
+      break;
+    case 20:
+      orderList.value = orderList.value.filter((item) => item.status == 20);
+      console.log("触发了不", orderList.value);
+      break;
+    case 30:
+      orderList.value = orderList.value.filter((item) => item.status == 30);
+      break;
+    case 50:
+      orderList.value = orderList.value.filter((item) => item.status == 50);
+      break;
+    case 51:
+      orderList.value = orderList.value.filter((item) => item.status == 51);
+      break;
+    default:
+      orderList.value = JSON.parse(JSON.stringify(ORDER_GOODS_DATA));
+      break;
+  }
+};
 
 // 初始化请求数据
 const initList = () => {
@@ -148,6 +167,8 @@ const onTabChange = (e) => {
   // current.value = e.index;
   // pageParam.value.status = e.type;
   // initList();
+  console.log("e.type", e.type)
+  orderListMock(e.type);
 };
 
 // 删除订单
@@ -172,30 +193,46 @@ const onOrderDetail = (id) => {
 
 <style lang="scss">
 page {
-  background-color: #f5f5f5;
+  background-color: #ededed;
 }
 </style>
-<style lang="stylus" scoped>
-.order-list
+<style lang="scss" scoped>
+.vmall-order-list {
   height: 100vh;
-  .header
+  .header {
+    position: fixed;
+    width: 100%;
+    box-sizing: border-box;
     background: #ffffff;
     height: 208rpx;
-    .search-btn
+    .search-btn {
       width: 104rpx;
       height: 64rpx;
       line-height: 64rpx;
       background: #fa3534;
       color: #ffffff;
       border-radius: 16rpx;
-  .container
+    }
+  }
+  .container {
     overflow: auto;
-    .item
-      border-bottom: 2rpx solid #EEEEEE;
-      .avatar
+    margin-top: 208rpx;
+    .item {
+      border-bottom: 2rpx solid #eeeeee;
+      .avatar {
         width: 96rpx;
         height: 96rpx;
-  .divider
+      }
+    }
+  }
+  .empty-container {
+    margin-top: 208rpx;
+    background: #ffffff;
+    height: calc(100vh - 88rpx);
+  }
+  .divider {
     width: 440rpx;
     margin: 0 auto;
+  }
+}
 </style>

@@ -1,13 +1,5 @@
-<!--
- * @Author: 汪军 624473119@qq.com
- * @Date: 2023-10-22 13:13:43
- * @LastEditors: 汪军 624473119@qq.com
- * @LastEditTime: 2023-11-26 16:56:06
- * @FilePath: \app-formwork\src\pages\login\index.vue
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 <template lang="pug">
-view.order-detail
+view.vmall-order-detail
   view.container.pb-160
     //- 订单状态
     view.status.my-24.px-32.py-20.bg-white
@@ -216,27 +208,33 @@ const countDownFn = () => {
 
 <style lang="scss">
 page {
-  background-color: #f5f5f5;
+  background-color: #ededed;
 }
 </style>
-<style lang="stylus" scoped>
-.order-detail
-  .icon-right
+<style lang="scss" scoped>
+.vmall-order-detail {
+  .icon-right {
     width: 48rpx;
     height: 48rpx;
-  .tip-text
+  }
+  .tip-text {
     color: #909193;
     vertical-align: middle;
-  .price
-    color: #F53F3F;
-  .icon-img
+  }
+  .price {
+    color: #f53f3f;
+  }
+  .icon-img {
     width: 48rpx;
     height: 48rpx;
-  .inform-text
-    color: #0052D9;
-  .time-text
-    color: #909193
-  .submit
+  }
+  .inform-text {
+    color: #0052d9;
+  }
+  .time-text {
+    color: #909193;
+  }
+  .submit {
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -244,28 +242,33 @@ page {
     line-height: 120rpx;
     background: #ffffff;
     box-sizing: border-box;
-  .cancel-btn
+  }
+  .cancel-btn {
     width: 200rpx;
     height: 68rpx;
     line-height: 68rpx;
     background: #ffffff;
     color: #000000;
     border-radius: 52rpx;
-    border: 2rpx solid #E6E6E6;
-  .pay-btn
+    border: 2rpx solid #e6e6e6;
+  }
+  .pay-btn {
     width: 200rpx;
     height: 68rpx;
     line-height: 68rpx;
-    background: #E84026;
+    background: #e84026;
     color: #ffffff;
     border-radius: 52rpx;
-    border: 2rpx solid #E84026;
-  .confirm-btn
+    border: 2rpx solid #e84026;
+  }
+  .confirm-btn {
     width: 200rpx;
     height: 68rpx;
     line-height: 68rpx;
-    background: #0052D9;
+    background: #0052d9;
     color: #ffffff;
     border-radius: 52rpx;
-    border: 2rpx solid #0052D9;
+    border: 2rpx solid #0052d9;
+  }
+}
 </style>

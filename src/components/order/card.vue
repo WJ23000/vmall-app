@@ -1,21 +1,13 @@
-<!--
- * @Author: 汪军 624473119@qq.com
- * @Date: 2023-10-22 13:13:43
- * @LastEditors: 汪军 624473119@qq.com
- * @LastEditTime: 2023-11-23 17:21:58
- * @FilePath: \app-formwork\src\pages\login\index.vue
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 <template lang="pug">
 view.order-card.mx-20.mt-24
   view.item.px-20.pt-16.pb-32.bg-white
     view.flex.justify-between.my-20.f-24 
       view.f-28-B 订单编号：{{ item.order_no }}
       view.status-text.f-24 {{ statusText(item.status) }}
-    view.shop.flex.relative
+    view.shop.flex
       image.cover.mr-28(:src="item.url")
       view.flex.column.flex1
-        view.f-28 {{ item.title }}
+        view.title.f-28 {{ item.title }}
         //- view.specif.mt-36.f-28 {{ item.goods_spec_name }}
         view.flex.justify-between.mt-24
           view.price.f-32-B 
@@ -26,7 +18,7 @@ view.order-card.mx-20.mt-24
       view.btn.tc.f-24(v-if="item.status == 10 || item.status == 20 || item.status == 30") 取消订单
       view.btn.tc.f-24(v-if="item.status == 50") 评价晒单
       view.btn.ml-20.tc.f-24(v-if="item.status == 50") 退换/售后
-      //- view.btn.tc.f-24(v-if="item.status == 51" @click="onDeleteOrder(item)") 删除订单
+      view.btn.tc.f-24(v-if="item.status == 51" @click="onDeleteOrder(item)") 删除订单
       view.buy-btn.ml-20.tc.f-24(@click="onOrderDetail(item)") 再次购买
 </template>
 
@@ -97,6 +89,9 @@ const statusText = (status) => {
     width: 140rpx;
     height: 140rpx;
     border-radius: 16rpx;
+  }
+  .title {
+    height: 74rpx;
   }
   .type {
     padding: 0rpx 20rpx;

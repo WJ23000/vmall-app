@@ -34,7 +34,8 @@ view.vmall-cart
           view.cart-pay
             text.cart_pay(@click="payOrder") 去结算({{ goodsCount }})
     //- 如果无数据，则显示数据
-    Empty(v-else :emptyInfo="emptyInfo")
+    view.empty-container.py-40(v-else)
+      Empty(:emptyInfo="emptyInfo")
   //- 为您推荐
   view.wrap
     u-divider(text="为您推荐")
@@ -484,6 +485,10 @@ page {
         width: 40rpx !important;
         height: 40rpx !important;
       }
+    }
+
+    .empty-container {
+      background: #ffffff;
     }
 
     /* 底部 */

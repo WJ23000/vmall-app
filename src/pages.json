@@ -53,33 +53,9 @@
           }
         },
         {
-          "path": "order/confirm",
-          "style": {
-            "navigationBarTitleText": "确认订单"
-          }
-        },
-        {
-          "path": "order/success",
-          "style": {
-            "navigationBarTitleText": "支付成功"
-          }
-        },
-        {
           "path": "order/list",
           "style": {
             "navigationBarTitleText": "订单列表"
-          }
-        },
-        {
-          "path": "order/detail",
-          "style": {
-            "navigationBarTitleText": "订单详情"
-          }
-        },
-        {
-          "path": "order/logistics",
-          "style": {
-            "navigationBarTitleText": "查看物流"
           }
         },
         {

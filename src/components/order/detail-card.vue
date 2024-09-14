@@ -1,11 +1,3 @@
-<!--
- * @Author: 汪军 624473119@qq.com
- * @Date: 2023-10-22 13:13:43
- * @LastEditors: 汪军 624473119@qq.com
- * @LastEditTime: 2023-11-28 09:39:03
- * @FilePath: \app-formwork\src\pages\login\index.vue
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 <template lang="pug">
 view.detail-card.px-32.py-32.bg-white
   view.mb-24
@@ -42,34 +34,41 @@ const onCopyNumber = (number) => {
 };
 </script>
 
-<style lang="stylus" scoped>
-.detail-card
-  .img
+<style lang="scss" scoped>
+.detail-card {
+  .img {
     margin-right: 12rpx;
     width: 40rpx;
     height: 40rpx;
     vertical-align: text-bottom;
-  .cover
+  }
+  .cover {
     width: 200rpx;
     height: 200rpx;
     border-radius: 16rpx;
-  .type
-    padding: 0rpx 20rpx
+  }
+  .type {
+    padding: 0rpx 20rpx;
     height: 56rpx;
     line-height: 56rpx;
-    background: #6A1B99;
+    background: #6a1b99;
     color: #ffffff;
     border-radius: 16rpx 0rpx 16rpx 0rpx;
-  .price
-    color: #F53F3F;
-  .specif
+  }
+  .price {
+    color: #f53f3f;
+  }
+  .specif {
     color: #606266;
-  .copy-btn
+  }
+  .copy-btn {
     width: 88rpx;
     height: 48rpx;
     line-height: 48rpx;
-    background: rgba(0,82,217,0.12);
-    color: #0052D9;
+    background: rgba(0, 82, 217, 0.12);
+    color: #0052d9;
     border-radius: 8rpx;
-    border: 2rpx solid #0052D9;
+    border: 2rpx solid #0052d9;
+  }
+}
 </style>
