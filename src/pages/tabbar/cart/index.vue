@@ -1,6 +1,7 @@
 <template lang="pug">
 view.vmall-cart
-  up-navbar(
+  StatusBar
+  up-navbar.header(
     title=""
     :safeAreaInsetTop="false")
     template(#left)
@@ -45,6 +46,7 @@ view.vmall-cart
 
 <script setup>
 import { random, guid } from "uview-plus";
+import StatusBar from "@/components/statusBar.vue";
 import Cart from "@/components/cart.vue";
 import Waterfall from "@/components/waterfall.vue";
 import BackTop from "@/components/backTop.vue";
@@ -230,9 +232,7 @@ page {
 </style>
 <style lang="scss" scoped>
 .vmall-cart {
-  .cart-header {
-    height: 88rpx;
-    line-height: 88rpx;
+  .header {
     /* #ifdef APP-PLUS */
     ::v-deep .u-navbar--fixed {
       top: var(--status-bar-height);
@@ -242,11 +242,8 @@ page {
 
   .page-content {
     margin-top: 88rpx;
-    /* #ifdef MP */
-    margin-top: 88rpx;
-    /* #endif */
     /* #ifdef APP-PLUS */
-    margin-top: var(--status-bar-height);
+    margin-top: calc(var(--status-bar-height) + 88rpx);
     /* #endif */
     .cart-main {
       display: flex;

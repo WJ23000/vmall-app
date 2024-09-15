@@ -189,6 +189,10 @@ page {
   }
   
   .u-menu-wrap {
+    margin-top: 88rpx;
+    /* #ifdef APP-PLUS */
+    margin-top: calc(var(--status-bar-height) + 88rpx);
+    /* #endif */
     flex: 1;
     display: flex;
     overflow: hidden;

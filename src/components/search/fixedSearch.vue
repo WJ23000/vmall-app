@@ -1,15 +1,26 @@
 <template lang="pug">
-view.fixed-search.flex.items-center
+view.fixed-search.flex.items-center(:style="{background: bgColor}")
   up-search.flex.flex1(
     placeholder="护肤品"
     :showAction="false"
     :disabled="true"
     @click="onSearch")
   view.ml-12
-    u-icon(name="scan" color="#909193" size="28" @click="onScanCode")
+    u-icon(name="scan" :color="scanColor" size="28" @click="onScanCode")
 </template>
 
 <script setup>
+const props = defineProps({
+  bgColor: {
+    type: String,
+    default: ""
+  },
+  scanColor: {
+    type: String,
+    default: "#ffffff"
+  }
+});
+
 // 扫码触发
 const onScanCode = (e) => {
   // #ifdef H5
@@ -32,7 +43,7 @@ const onSearch = () => {
   uni.navigateTo({
     url: "/pages/packageA/search/search"
   });
-}
+};
 </script>
 
 <style lang="scss" scoped>

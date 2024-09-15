@@ -1,14 +1,19 @@
 <template lang="pug">
 view.vmall-my
-  view.header-top(v-if="backTop > 44")
+  view.header-top
+    StatusBar(:bgColor="barColor")
     view.search-sticky
       u-navbar(
-        title="我的"
         :safeAreaInsetTop="false"
+        :bgColor="navbarColor"
         :autoBack="false")
         template(#left)
-          u-avatar(v-if="isAccountInfo" :src="userInfo.userImage" size="24")
-          u-avatar(v-else, :src="userInfo.noUserImage" size="24")
+          view(v-if="isNavbarShow")
+            u-avatar(v-if="isAccountInfo" :src="userInfo.userImage" size="24")
+            u-avatar(v-else, :src="userInfo.noUserImage" size="24")
+          view(v-else)
+        template(#center)
+          text.f-28(v-if="isNavbarShow") 我的
         template.setting(#right)
           u-icon(name="setting" size="20" color="#333333" @click="onSettingClick")
   view.header-top
@@ -19,8 +24,8 @@ view.vmall-my
           view.account.ml2
             view.username {{ userInfo.username }}
             //- view.phone {{ userInfo.phone }}
-        view.setting
-          u-icon(name="setting" size="20" color="#333333" @click="onSettingClick")
+        //- view.setting
+        //-   u-icon(name="setting" size="20" color="#333333" @click="onSettingClick")
       view.user-login(v-else)
         u-avatar(:src="userInfo.noUserImage" size="50")
         view.account.ml2
@@ -57,10 +62,14 @@ view.vmall-my
 
 <script setup>
 import { random, guid } from "uview-plus";
+import StatusBar from "@/components/statusBar.vue";
 import Waterfall from "@/components/waterfall.vue";
 import BackTop from "@/components/backTop.vue";
 import { GOODS_DATA, ORDER_GRID_DATA, FEATURE_GRID_DATA, FEATURE_GRID_DATA2 } from "@/model";
 
+const barColor = ref("#fdce59");
+const navbarColor = ref("rgba(0, 0, 0, 0)");
+const isNavbarShow = ref(false);
 const userInfo = ref({
   userImage: "http://cdn.wjaxx.xyz/mine/user.png",
   noUserImage: "http://cdn.wjaxx.xyz/user-mr.png",
@@ -145,6 +154,9 @@ const onLogin = () => {
 
 // 监听页面滚动(返回顶部)
 onPageScroll((e) => {
+  barColor.value = e.scrollTop == 0 ? "#fdce59" : "#ffffff";
+  navbarColor.value = e.scrollTop == 0 ? "rgba(255,255,255,0)" : "rgba(255, 255, 255, " + (e.scrollTop + 50) / 100 + ")";
+  isNavbarShow.value = e.scrollTop > 0;
   backTop.value = e.scrollTop;
   // 动态修改状态栏的颜色
   // #ifdef !APP-PLUS

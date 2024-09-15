@@ -1,10 +1,9 @@
 <template lang="pug">
 view.vmall-home
-  FixedSearch(v-if="backTop > 44")
+  StatusBar(:bgColor="barColor")
+  FixedSearch(:bgColor="searchColor" :scanColor="scanColor")
   view.header
-    view.pt-20
-      Search
-    view.pt-20
+    view.pt-98
       Banner(:bannerList="bannerList")
     view.pt-20
       SlideGrid(:gridList="gridList")
@@ -18,6 +17,7 @@ view.vmall-home
 
 <script setup>
 import { random, guid } from "uview-plus";
+import StatusBar from "@/components/statusBar.vue";
 import FixedSearch from "@/components/search/fixedSearch.vue";
 import Search from "@/components/search/search.vue";
 import Banner from "@/components/banner.vue";
@@ -27,6 +27,9 @@ import Waterfall from "@/components/waterfall.vue";
 import BackTop from "@/components/backTop.vue";
 import { BANNER_DATA, GRID_DATA, TAB_DATA, GOODS_DATA } from "@/model";
 
+const barColor = ref("#fa3c3b");
+const searchColor = ref("rgba(0, 0, 0, 0)");
+const scanColor = ref("#ffffff");
 const bannerList = ref(BANNER_DATA);
 const gridList = ref(GRID_DATA);
 // tabs
@@ -61,8 +64,12 @@ onLoad(() => {
 
 // 监听页面滚动(tabs吸顶, 返回顶部)
 onPageScroll((e) => {
+  barColor.value = e.scrollTop == 0 ? "#fa3c3b" : "#ffffff";
+  searchColor.value =
+    e.scrollTop == 0 ? "rgba(255,255,255,0)" : "rgba(255, 255, 255, " + (e.scrollTop + 50) / 100 + ")";
+  scanColor.value = e.scrollTop > 0 ? "#909193" : "#ffffff";
   backTop.value = e.scrollTop;
-  stickyBgColor.value = e.scrollTop > 330 ? "#ffffff" : "";
+  stickyBgColor.value = e.scrollTop > 320 ? "#ffffff" : "";
   // 动态修改状态栏的颜色
   // #ifdef !APP-PLUS
   uni.setNavigationBarColor({
@@ -121,6 +128,9 @@ page {
   .header {
     background: linear-gradient(to top, #ededed, #ff6666, #fa3534);
     padding: 0rpx 20rpx;
+    /* #ifdef APP-PLUS */
+    padding: var(--status-bar-height) 20rpx 0rpx 20rpx;
+    /* #endif */
   }
   .content {
     background: #ededed;

@@ -22,6 +22,7 @@ declare module 'vue' {
     RouterView: typeof import('vue-router')['RouterView']
     Search: typeof import('./src/components/search/search.vue')['default']
     SlideGrid: typeof import('./src/components/slideGrid.vue')['default']
+    StatusBar: typeof import('./src/components/statusBar.vue')['default']
     StickyTabs: typeof import('./src/components/stickyTabs.vue')['default']
     Waterfall: typeof import('./src/components/waterfall.vue')['default']
     WriteIdcard: typeof import('./src/components/order/write-idcard.vue')['default']

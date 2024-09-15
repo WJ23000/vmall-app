@@ -61,7 +61,7 @@
         {
           "path": "collection/index",
           "style": {
-            "navigationBarTitleText": "",
+            "navigationBarTitleText": "我的收藏",
             "enablePullDownRefresh": true
           }
         }
@@ -83,8 +83,11 @@
   "globalStyle": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "uni-app",
-    "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8"
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "backgroundColor": "#F8F8F8",
+    "app-plus": {
+			"bounce": "none"
+		}
   },
   "tabBar": {
     "color": "#606266",

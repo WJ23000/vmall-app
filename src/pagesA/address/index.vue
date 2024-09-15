@@ -19,17 +19,18 @@ view.vmall-address
           text {{ item.city }}
           text {{ item.county }}
           text {{ item.address }}
-      view.flex.mt-20.f-28
-        view.w33.flex.items-center(@click.stop.stop="onAddressDefault(item)")
+      view.flex.justify-between.mt-20.f-28
+        view.flex.items-center(@click.stop.stop="onAddressDefault(item)")
           image.icon-width.mr-20(v-if="item.is_default == 2" :src="AddressXz")
           image.icon-width.mr-20(v-else :src="AddressWxz")
           text 默认地址
-        view.w33.flex.items-center.justify-center(@click.stop="onAddressEdit(item)")
-          up-icon.mr-10(name="edit-pen" color="#fa3534" size="21")
-          text 修改
-        view.w33.flex.items-center.justify-end(@click.stop="onAddressDelete(item, index)")
-          up-icon.mr-10(name="trash" color="#fa3534" size="20")
-          text 删除
+        view.flex.flex1.justify-end
+          view.flex.items-center.justify-center.mr-28(@click.stop="onAddressEdit(item)")
+            up-icon.mr-8(name="edit-pen" color="#fa3534" size="21")
+            text 修改
+          view.flex.items-center.justify-end(@click.stop="onAddressDelete(item, index)")
+            up-icon.mr-8(name="trash" color="#fa3534" size="20")
+            text 删除
   //- 暂无数据
   view.empty-container.flex.justify-center.items-center(v-else)
     Empty(:emptyInfo="emptyInfo")
@@ -45,7 +46,7 @@ import { ADDRESS_DATA } from "@/model";
 
 const AddressXz = ref("http://cdn.wjaxx.xyz/cart/check-xz.png");
 const AddressWxz = ref("http://cdn.wjaxx.xyz/cart/check-wxz.png");
-const EmptyImage = ref("http://cdn.wjaxx.xyz/empty/empty.png");
+const EmptyImage = ref("http://cdn.wjaxx.xyz/empty/normal.png");
 const addressList = ref([]);
 const pageParam = ref({
   page: 1,
@@ -176,9 +177,6 @@ page {
     width: 40rpx;
     height: 40rpx;
     vertical-align: text-top;
-  }
-  .w33 {
-    width: 33%;
   }
   .empty-container {
     background: #ffffff;
