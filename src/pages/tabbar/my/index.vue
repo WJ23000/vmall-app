@@ -21,18 +21,18 @@ view.vmall-my
       view.user-info(v-if="isAccountInfo")
         view.content
           image.avatar(:src="userInfo.userImage")
-          view.account.ml2
-            view.username {{ userInfo.username }}
-            //- view.phone {{ userInfo.phone }}
+          view.account.ml-10
+            view.username.bold {{ userInfo.username }}
+            view.phone {{ userInfo.phone }}
         //- view.setting
         //-   u-icon(name="setting" size="20" color="#333333" @click="onSettingClick")
       view.user-login(v-else)
         u-avatar(:src="userInfo.noUserImage" size="50")
-        view.account.ml2
+        view.account.ml-10
           view.login(@click="onLogin") 注册/登录
   view.wrap
     view.order-grid
-      u-cell.order-grid-other(title="订单" value="全部订单" :isLink="true" :clickable="true" @click="onOrder(0, 0)")
+      u-cell.order-grid-other(title="我的订单" value="全部" :isLink="true" :clickable="true" @click="onOrder(0, 0)")
       view.grid-content
         u-grid(:col="5" :border="false")
           u-grid-item(v-for="(item, index) in orderGridList" :index="index" :key="index" @click="onOrder(item.current, item.type)")
@@ -243,10 +243,11 @@ page {
   .header {
     // background-image: $andry-bg-image;
     // background-size: cover;
-    background: linear-gradient(to top, #ededed, #ffdd8f, #fcc53a);
+    // background: linear-gradient(to top, #ededed, #ffdd8f, #fcc53a);
+    background: #fcc53a;
     padding: 50rpx 26rpx 100rpx 26rpx;
     /* #ifdef APP-PLUS */
-    padding: 90rpx 26rpx 100rpx 26rpx;
+    padding: calc(var(--status-bar-height) + 50rpx) 26rpx 100rpx 26rpx;
     /* #endif */
     display: flex;
     .user-info {
@@ -296,12 +297,12 @@ page {
       margin: 16rpx 10rpx;
       border-radius: 8rpx;
       background: #ffffff;
-      color: #5d656b;
+      color: #666666;
     }
 
     .grid-image {
-      width: 100rpx;
-      height: 100rpx;
+      width: 64rpx;
+      height: 64rpx;
     }
 
     .grid-text {
@@ -319,7 +320,7 @@ page {
       padding: 24rpx 28rpx;
       border-radius: 8rpx;
       background: #ffffff;
-      color: #5d656b;
+      color: #666666;
 
       .scroll-list__goods-item__image {
         display: block;

@@ -25,16 +25,16 @@ export const ORDER_GRID_DATA = [
   },
   {
     id: 3,
-    name: "已完成",
+    name: "待评价",
     image: "http://cdn.wjaxx.xyz/mine/evaluate.png",
-    current: 4,
+    current: 5,
     type: 50
   },
   {
     id: 4,
-    name: "已取消",
+    name: "退款/售后",
     image: "http://cdn.wjaxx.xyz/mine/after-sale.png",
-    current: 5,
+    current: 4,
     type: 51
   }
 ];

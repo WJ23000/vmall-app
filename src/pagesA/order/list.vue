@@ -61,11 +61,11 @@ const tabList = ref([
     type: 30
   },
   {
-    name: "已完成",
+    name: "退款/售后",
     type: 50
   },
   {
-    name: "已取消",
+    name: "待评价",
     type: 51
   }
 ]);

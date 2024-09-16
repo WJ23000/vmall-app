@@ -3,7 +3,7 @@ view.order-card.mx-20.mt-24
   view.item.px-20.pt-16.pb-32.bg-white
     view.flex.justify-between.my-20.f-24 
       view.f-28-B 订单编号：{{ item.order_no }}
-      view.status-text.f-24 {{ statusText(item.status) }}
+      view.f-24(:class="item.status != 50 ? 'status-active' : 'status-text'") {{ statusText(item.status) }}
     view.shop.flex
       image.cover.mr-28(:src="item.url")
       view.flex.column.flex1
@@ -15,11 +15,13 @@ view.order-card.mx-20.mt-24
             text.f-32 {{ item.price }}
           text.f-28 共{{ item.quantity }}件
     view.submit.flex.justify-end.items-center.mt-24
+      //- view.other.f-24(v-if="item.status == 51") 更多
       view.btn.tc.f-24(v-if="item.status == 10 || item.status == 20 || item.status == 30") 取消订单
-      view.btn.tc.f-24(v-if="item.status == 50") 评价晒单
-      view.btn.ml-20.tc.f-24(v-if="item.status == 50") 退换/售后
-      view.btn.tc.f-24(v-if="item.status == 51" @click="onDeleteOrder(item)") 删除订单
-      view.buy-btn.ml-20.tc.f-24(@click="onOrderDetail(item)") 再次购买
+      view.btn.ml-20.tc.f-24(v-if="item.status == 20 || item.status == 30 || item.status == 51") 查看物流
+      view.btn.ml-20.tc.f-24(v-if="item.status == 51") 评价
+      view.btn.ml-20.tc.f-24(v-if="item.status == 50") 查看详情
+      view.buy-btn.ml-20.tc.f-24(v-if="item.status == 10" @click="onOrderDetail(item)") 立即支付
+      view.buy-btn.ml-20.tc.f-24(v-if="item.status == 51" @click="onOrderDetail(item)") 再次购买
 </template>
 
 <script setup>
@@ -51,14 +53,11 @@ const statusText = (status) => {
     case 30:
       text = "待收货";
       break;
-    case 40:
-      text = "待评价";
-      break;
     case 50:
-      text = "已完成";
+      text = "退货";
       break;
     case 51:
-      text = "已取消";
+      text = "交易成功";
       break;
     default:
       break;
@@ -111,6 +110,9 @@ const statusText = (status) => {
     width: 100%;
     background: #ffffff;
     box-sizing: border-box;
+    .other {
+      color: #666666;
+    }
   }
   .btn {
     width: 150rpx;
