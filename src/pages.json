@@ -99,13 +99,13 @@
         "pagePath": "pages/tabbar/home/index",
         "text": "首页",
         "iconPath": "./static/tabbar/index.png",
-        "selectedIconPath": "static/tabbar/index-active.png"
+        "selectedIconPath": "./static/tabbar/index-active.png"
       },
       {
         "pagePath": "pages/tabbar/classify/index",
         "text": "分类",
-        "iconPath": "static/tabbar/classify.png",
-        "selectedIconPath": "static/tabbar/classify-active.png"
+        "iconPath": "./static/tabbar/classify.png",
+        "selectedIconPath": "./static/tabbar/classify-active.png"
       },
       {
         "pagePath": "pages/tabbar/cart/index",

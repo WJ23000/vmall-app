@@ -7,7 +7,7 @@ view.vmall-cart
     template(#left)
       text 购物车
     template(#right)
-      text.f-24(@click="onRightEdit") 编辑
+      text.f-26(@click="onRightEdit") {{ showBottom ? "完成" : "管理"}}
   view.page-content
     view(v-if="cartList.length > 0 ? true : false")
       Cart(
@@ -169,7 +169,7 @@ const getGoodsCount = () => {
 };
 // 编辑
 const onRightEdit = () => {
-  showBottom.value = true;
+  showBottom.value = !showBottom.value;
 };
 // 取消删除功能
 const onCancel = () => {
@@ -241,7 +241,7 @@ page {
   }
 
   .page-content {
-    margin-top: 88rpx;
+    margin-top:  44px;
     /* #ifdef APP-PLUS */
     margin-top: calc(var(--status-bar-height) + 88rpx);
     /* #endif */

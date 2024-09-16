@@ -64,12 +64,11 @@ onLoad(() => {
 
 // 监听页面滚动(tabs吸顶, 返回顶部)
 onPageScroll((e) => {
-  barColor.value = e.scrollTop == 0 ? "#fa3c3b" : "#ffffff";
-  searchColor.value =
-    e.scrollTop == 0 ? "rgba(255,255,255,0)" : "rgba(255, 255, 255, " + (e.scrollTop + 50) / 100 + ")";
+  barColor.value = e.scrollTop > 0 ? "#ffffff" : "#fa3c3b";
+  searchColor.value = e.scrollTop == 0 ? "rgba(255,255,255,0)" : "rgba(255,255,255,1)";
   scanColor.value = e.scrollTop > 0 ? "#909193" : "#ffffff";
   backTop.value = e.scrollTop;
-  stickyBgColor.value = e.scrollTop > 320 ? "#ffffff" : "";
+  stickyBgColor.value = e.scrollTop > 325 ? "#ffffff" : "";
   // 动态修改状态栏的颜色
   // #ifdef !APP-PLUS
   uni.setNavigationBarColor({

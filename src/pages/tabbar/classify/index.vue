@@ -2,7 +2,7 @@
 view.vmall-classify
   view.u-wrap
     FixedSearch
-    view.u-menu-wrap.mt-88
+    view.u-menu-wrap
       scroll-view(
         class="u-tab-view menu-scroll-view"
         scroll-y 

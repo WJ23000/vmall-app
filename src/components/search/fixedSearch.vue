@@ -17,7 +17,7 @@ const props = defineProps({
   },
   scanColor: {
     type: String,
-    default: "#ffffff"
+    default: "#909193"
   }
 });
 
