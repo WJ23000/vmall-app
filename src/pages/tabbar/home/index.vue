@@ -1,6 +1,6 @@
 <template lang="pug">
 view.vmall-home
-  StatusBar(:bgColor="barColor")
+  StatusBar(v-show="isStatusBar")
   FixedSearch(:bgColor="searchColor" :scanColor="scanColor")
   view.header
     view.pt-98
@@ -27,7 +27,7 @@ import Waterfall from "@/components/waterfall.vue";
 import BackTop from "@/components/backTop.vue";
 import { BANNER_DATA, GRID_DATA, TAB_DATA, GOODS_DATA } from "@/model";
 
-const barColor = ref("#fa3c3b");
+const isStatusBar = ref(false);
 const searchColor = ref("rgba(0, 0, 0, 0)");
 const scanColor = ref("#ffffff");
 const bannerList = ref(BANNER_DATA);
@@ -64,7 +64,7 @@ onLoad(() => {
 
 // 监听页面滚动(tabs吸顶, 返回顶部)
 onPageScroll((e) => {
-  barColor.value = e.scrollTop > 0 ? "#ffffff" : "#fa3c3b";
+  isStatusBar.value = e.scrollTop > 0;
   searchColor.value = e.scrollTop == 0 ? "rgba(255,255,255,0)" : "rgba(255,255,255,1)";
   scanColor.value = e.scrollTop > 0 ? "#909193" : "#ffffff";
   backTop.value = e.scrollTop;

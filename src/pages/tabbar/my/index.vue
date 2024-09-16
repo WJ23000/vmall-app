@@ -1,7 +1,7 @@
 <template lang="pug">
 view.vmall-my
   view.header-top
-    StatusBar(:bgColor="barColor")
+    StatusBar(v-show="isStatusBar")
     view.search-sticky
       u-navbar(
         :safeAreaInsetTop="false"
@@ -67,7 +67,7 @@ import Waterfall from "@/components/waterfall.vue";
 import BackTop from "@/components/backTop.vue";
 import { GOODS_DATA, ORDER_GRID_DATA, FEATURE_GRID_DATA, FEATURE_GRID_DATA2 } from "@/model";
 
-const barColor = ref("#fdce59");
+const isStatusBar = ref(false);
 const navbarColor = ref("rgba(0, 0, 0, 0)");
 const isNavbarShow = ref(false);
 const userInfo = ref({
@@ -154,7 +154,7 @@ const onLogin = () => {
 
 // 监听页面滚动(返回顶部)
 onPageScroll((e) => {
-  barColor.value = e.scrollTop > 0 ? "#ffffff" : "#fdce59";
+  isStatusBar.value = e.scrollTop > 0;
   navbarColor.value = e.scrollTop == 0 ? "rgba(255,255,255,0)" : "rgba(255,255,255,1)";
   isNavbarShow.value = e.scrollTop > 0;
   backTop.value = e.scrollTop;
