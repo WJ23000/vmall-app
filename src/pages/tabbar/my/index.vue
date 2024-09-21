@@ -36,7 +36,7 @@ view.vmall-my
       view.grid-content
         u-grid(:col="5" :border="false")
           u-grid-item(v-for="(item, index) in orderGridList" :index="index" :key="index" @click="onOrder(item.current, item.type)")
-            u-badge(max="99" :value="item.count" :offset="[0,8]" :absolute="true" bgColor="#fa3534")
+            u-badge.badge(max="99" :value="item.count" :offset="[1,10]" :absolute="true" bgColor="#fa3534")
             image.grid-image(:src="item.image")
             text.grid-text {{ item.name }}
     view.other-grid
@@ -89,14 +89,11 @@ const waterfallRef = ref();
 const backTop = ref(0);
 
 onLoad(() => {
-  // 初始化动态修改状态栏的颜色
-  // #ifdef !APP-PLUS
+  // 初始化小程序和APP状态栏的颜色
   uni.setNavigationBarColor({
     frontColor: "#ffffff",
-    borderBottomColor: "#fcc53a",
     backgroundColor: "#fcc53a"
   });
-  // #endif
   // #ifdef H5 || APP-PLUS
   isAccountInfo.value = true;
   // #endif
@@ -154,18 +151,15 @@ const onLogin = () => {
 
 // 监听页面滚动(返回顶部)
 onPageScroll((e) => {
+  // 动态修改小程序和APP状态栏的颜色
+  uni.setNavigationBarColor({
+    frontColor: e.scrollTop > 0 ? "#000000" : "#ffffff",
+    backgroundColor: e.scrollTop > 0 ? "#ffffff" : "#fcc53a"
+  });
   isStatusBar.value = e.scrollTop > 0;
   navbarColor.value = e.scrollTop == 0 ? "rgba(255,255,255,0)" : "rgba(255,255,255,1)";
   isNavbarShow.value = e.scrollTop > 0;
   backTop.value = e.scrollTop;
-  // 动态修改状态栏的颜色
-  // #ifdef !APP-PLUS
-  uni.setNavigationBarColor({
-    frontColor: e.scrollTop >= 44 ? "#000000" : "#ffffff",
-    borderBottomColor: e.scrollTop >= 44 ? "#ffffff" : "#fcc53a",
-    backgroundColor: e.scrollTop >= 44 ? "#ffffff" : "#fcc53a"
-  });
-  // #endif
 });
 
 // 触底加载
@@ -243,8 +237,8 @@ page {
   .header {
     // background-image: $andry-bg-image;
     // background-size: cover;
-    // background: linear-gradient(to top, #ededed, #ffdd8f, #fcc53a);
-    background: #fcc53a;
+    background: linear-gradient(to top, #ededed, #ffdd8f, #fcc53a);
+    // background: #fcc53a;
     padding: 50rpx 26rpx 100rpx 26rpx;
     /* #ifdef APP-PLUS */
     padding: calc(var(--status-bar-height) + 50rpx) 26rpx 100rpx 26rpx;
@@ -301,8 +295,8 @@ page {
     }
 
     .grid-image {
-      width: 64rpx;
-      height: 64rpx;
+      width: 88rpx;
+      height: 88rpx;
     }
 
     .grid-text {
@@ -312,6 +306,9 @@ page {
 
     .grid-content {
       padding: 28rpx 28rpx 0rpx 28rpx;
+      .badge {
+        z-index: 100;
+      }
     }
 
     .other-grid,

@@ -45,14 +45,11 @@ const waterfallRef = ref();
 const backTop = ref(0);
 
 onLoad(() => {
-  // 初始化动态修改状态栏的颜色
-  // #ifdef !APP-PLUS
+  // 初始化小程序和APP状态栏的颜色
   uni.setNavigationBarColor({
     frontColor: "#ffffff",
-    borderBottomColor: "#fa3534",
     backgroundColor: "#fa3534"
   });
-  // #endif
   // #ifdef H5
   offsetTop.value = "0";
   // #endif
@@ -64,19 +61,16 @@ onLoad(() => {
 
 // 监听页面滚动(tabs吸顶, 返回顶部)
 onPageScroll((e) => {
+  // 动态修改小程序和APP状态栏的颜色
+  uni.setNavigationBarColor({
+    frontColor: e.scrollTop > 0 ? "#000000" : "#ffffff",
+    backgroundColor: e.scrollTop > 0 ? "#ffffff" : "#fa3534"
+  });
   isStatusBar.value = e.scrollTop > 0;
   searchColor.value = e.scrollTop == 0 ? "rgba(255,255,255,0)" : "rgba(255,255,255,1)";
   scanColor.value = e.scrollTop > 0 ? "#909193" : "#ffffff";
   backTop.value = e.scrollTop;
   stickyBgColor.value = e.scrollTop > 325 ? "#ffffff" : "";
-  // 动态修改状态栏的颜色
-  // #ifdef !APP-PLUS
-  uni.setNavigationBarColor({
-    frontColor: e.scrollTop >= 44 ? "#000000" : "#ffffff",
-    borderBottomColor: e.scrollTop >= 44 ? "#ffffff" : "#fa3534",
-    backgroundColor: e.scrollTop >= 44 ? "#ffffff" : "#fa3534"
-  });
-  // #endif
 });
 
 // 触底加载
