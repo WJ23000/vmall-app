@@ -247,10 +247,6 @@ page {
     top: 39rpx;
   }
   
-  .u-tab-view {
-    height: 100%;
-  }
-  
   .right-box {
     background-color: rgb(250, 250, 250);
   }
@@ -267,7 +263,9 @@ page {
   }
   
   .class-item:last-child {
-    min-height: 100vh;
+    margin-bottom: 0rpx;
+    // min-height: 100vh;
+    min-height: calc(100vh - var(--window-bottom) - 288rpx);
   }
   
   .item-title {

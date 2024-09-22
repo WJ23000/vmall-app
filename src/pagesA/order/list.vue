@@ -17,14 +17,25 @@ view.vmall-order-list.flex.column
   view.container.flex1(v-if="orderList.length > 0")
     swiper.h100
       swiper-item
-        view(
+        scroll-view.h100(
+          scroll-y
+          :enhanced="true"
+          :show-scrollbar="false"
           @touchstart="touchStart"
           @touchend="touchEnd($event)")
           view(v-for="(item, index) in orderList" :key="index")
             OrderCard(:item="item" :type="current" @delete="onDeleteOrder" @detail="onOrderDetail")
   //- 暂无数据
-  view.empty-container.flex.justify-center.items-center(v-else)
-    Empty(:emptyInfo="emptyInfo")
+  swiper.h100(v-else)
+    swiper-item
+      scroll-view.h100(
+        scroll-y
+        :enhanced="true"
+        :show-scrollbar="false"
+        @touchstart="touchStart"
+        @touchend="touchEnd($event)")
+        view.empty-container.flex.justify-center.items-center
+          Empty(:emptyInfo="emptyInfo")
 </template>
 
 <script setup>
@@ -204,12 +215,12 @@ const touchEnd = (e, index) => {
   // 手指离开屏幕时触发，获取滑动距离
   const moveX = e.changedTouches[0].pageX - startX.value;
   // 判断滑动方向
-  if (moveX < -80) {
+  if (moveX < -60) {
     if (current.value == 5) return;
     current.value++;
     orderListMock(tabList.value[current.value].type);
     console.log("下一题");
-  } else if (moveX > 80) {
+  } else if (moveX > 60) {
     if (current.value == 0) return;
     current.value--;
     orderListMock(tabList.value[current.value].type);
