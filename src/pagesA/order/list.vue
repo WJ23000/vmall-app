@@ -15,8 +15,13 @@ view.vmall-order-list.flex.column
       :keyName="name"
       @click="onTabChange")
   view.container.flex1(v-if="orderList.length > 0")
-    view(v-for="(item, index) in orderList" :key="index")
-      OrderCard(:item="item" :type="current" @delete="onDeleteOrder" @detail="onOrderDetail")
+    swiper.h100
+      swiper-item
+        view(
+          @touchstart="touchStart"
+          @touchend="touchEnd($event)")
+          view(v-for="(item, index) in orderList" :key="index")
+            OrderCard(:item="item" :type="current" @delete="onDeleteOrder" @detail="onOrderDetail")
   //- 暂无数据
   view.empty-container.flex.justify-center.items-center(v-else)
     Empty(:emptyInfo="emptyInfo")
@@ -82,6 +87,7 @@ const emptyInfo = ref({
   height: 300,
   tip: "暂无数据"
 });
+const startX = ref();
 
 onLoad((options) => {
   current.value = Number(options.current);
@@ -167,7 +173,7 @@ const onTabChange = (e) => {
   // current.value = e.index;
   // pageParam.value.status = e.type;
   // initList();
-  console.log("e.type", e.type)
+  console.log("e.type", e.type);
   orderListMock(e.type);
 };
 
@@ -189,6 +195,27 @@ const onDeleteOrder = (id) => {
 const onOrderDetail = (id) => {
   uni.navigateTo({ url: "/pagesA/order/detail?id=" + id });
 };
+
+const touchStart = (e) => {
+  startX.value = e.changedTouches[0].pageX; // 触摸目标在页面中的X坐标
+  console.log("开始触摸", startX.value);
+};
+const touchEnd = (e, index) => {
+  // 手指离开屏幕时触发，获取滑动距离
+  const moveX = e.changedTouches[0].pageX - startX.value;
+  // 判断滑动方向
+  if (moveX < -80) {
+    if (current.value == 5) return;
+    current.value++;
+    orderListMock(tabList.value[current.value].type);
+    console.log("下一题");
+  } else if (moveX > 80) {
+    if (current.value == 0) return;
+    current.value--;
+    orderListMock(tabList.value[current.value].type);
+    console.log("上一题");
+  }
+};
 </script>
 
 <style lang="scss">
@@ -205,6 +232,7 @@ page {
     box-sizing: border-box;
     background: #ffffff;
     height: 208rpx;
+    z-index: 1000;
     .search-btn {
       width: 104rpx;
       height: 64rpx;
@@ -225,10 +253,13 @@ page {
       }
     }
   }
+  .touch {
+    height: 100vh;
+  }
   .empty-container {
     margin-top: 208rpx;
     background: #ffffff;
-    height: calc(100vh - 88rpx);
+    height: calc(100vh - 208rpx);
   }
   .divider {
     width: 440rpx;

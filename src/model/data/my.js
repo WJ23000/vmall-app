@@ -28,14 +28,14 @@ export const ORDER_GRID_DATA = [
     name: "待评价",
     image: "http://cdn.wjaxx.xyz/mine/evaluate.png",
     current: 5,
-    type: 50
+    type: 51
   },
   {
     id: 4,
     name: "退款/售后",
     image: "http://cdn.wjaxx.xyz/mine/after-sale.png",
     current: 4,
-    type: 51
+    type: 50
   }
 ];
 
