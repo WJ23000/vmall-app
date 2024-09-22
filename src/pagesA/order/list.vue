@@ -181,7 +181,7 @@ onReachBottom(() => {
 
 // 切换tab
 const onTabChange = (e) => {
-  // current.value = e.index;
+  current.value = e.index;
   // pageParam.value.status = e.type;
   // initList();
   console.log("e.type", e.type);
