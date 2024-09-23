@@ -2,7 +2,7 @@
 view.vmall-order-detail
   view.container.pb-160
     //- 订单状态
-    view.status.my-24.px-32.py-20.bg-white
+    view.status.my-24.px-32.py-28.bg-white
       view.flex.justify-between.items-center(v-if="orderInfo.status === 10")
         view.flex1.f-28-B 待付款
         view.price.flex.f-32 剩余：{{ countDownText }}
