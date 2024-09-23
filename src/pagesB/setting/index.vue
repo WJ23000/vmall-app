@@ -27,7 +27,7 @@ const otherCellList = ref([
     title: "地址管理",
     value: "",
     isLink: true,
-    url: ""
+    url: "/pagesA/address/index"
   },
   {
     title: "账户与安全",
@@ -72,7 +72,7 @@ const otherCellListTwo = ref([
     title: "功能反馈",
     value: "",
     isLink: true,
-    url: "/pages/packageB/feedBack/feedBack"
+    url: "/pagesB/feedback/index"
   },
   {
     title: "关于APP",

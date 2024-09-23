@@ -28,7 +28,7 @@ view.vmall-order-list.flex.column
               :item="item" 
               :type="current" 
               @delete="onDeleteOrder" 
-              @logistics="onOrderlogistics"
+              @logistics="onOrderLogistics"
               @detail="onOrderDetail")
   //- 暂无数据
   swiper.h100(v-else)

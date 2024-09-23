@@ -39,7 +39,7 @@ view.vmall-address-add
       image.icon-width.mr-20(v-if="form.is_default == 2" :src="AddressXz")
       image.icon-width.mr-20(v-else :src="AddressWxz")
       text.default-tip.f-28 设为默认地址
-    view.save-btn.f-32-B.white(@click="addEditAddress")
+    view.save-btn.f-32-B.white(@click="onAddEditAddress")
       text 立即保存
   cc-selectDity(
     :province="province"
@@ -121,7 +121,7 @@ const onCheckDefault = () => {
 };
 
 // 添加&&编辑收货地址
-const addEditAddress = () => {
+const onAddEditAddress = () => {
   if (form.value.recipient.trim() == "") {
     uni.showToast({
       title: "请输入联系人",

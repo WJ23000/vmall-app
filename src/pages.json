@@ -88,6 +88,13 @@
             "navigationBarTitleText": "账户设置",
             "backgroundColor": "#ffffff"
           }
+        },
+        {
+          "path": "feedback/index",
+          "style": {
+            "navigationBarTitleText": "意见反馈",
+            "backgroundColor": "#ffffff"
+          }
         }
       ]
     }
