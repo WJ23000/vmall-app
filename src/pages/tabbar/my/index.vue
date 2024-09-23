@@ -207,7 +207,7 @@ const onSettingClick = () => {
 
 // 我的订单
 const onOrder = (current, type) => {
-  uni.navigateTo({ url: "/pagesA/order/list?current=" + current + "&type=" + type });
+  uni.navigateTo({ url: "/pagesA/order/index?current=" + current + "&type=" + type });
 };
 
 // 去往其他模块

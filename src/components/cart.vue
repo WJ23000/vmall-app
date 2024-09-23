@@ -134,7 +134,7 @@ defineExpose({ resetSwipeAction });
         }
         .cart-count {
           .unit-price {
-            color: #f53f3f;
+            color: #fa3534;
           }
           .input {
             display: block;

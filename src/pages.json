@@ -53,9 +53,21 @@
           }
         },
         {
-          "path": "order/list",
+          "path": "order/index",
           "style": {
             "navigationBarTitleText": "订单列表"
+          }
+        },
+        {
+          "path": "order/detail",
+          "style": {
+            "navigationBarTitleText": "订单详情"
+          }
+        },
+        {
+          "path": "order/logistics",
+          "style": {
+            "navigationBarTitleText": "物流详情"
           }
         },
         {

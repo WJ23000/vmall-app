@@ -10,14 +10,14 @@ view.vmall-order-detail
         view.flex1.f-28-B 待发货
       view.flex.justify-between.items-center(v-if="orderInfo.status === 30")
         view.flex1.f-28-B 待收货
-        view.flex(@click="onSpecif")
-          view.inform-text.f-32 查看物流
-          image.icon-right(:src="IconRightBlue")
+        view.flex(@click="onOrderlogistics")
+          view.inform-text.f-28 查看物流
+          u-icon(name="arrow-right" size="16" color="#0052d9")
       view.flex.justify-between.items-center(v-if="orderInfo.status === 50")
         view.flex1.f-28-B 已完成
-        view.flex(@click="onSpecif")
-          view.inform-text.f-32 查看物流
-          image.icon-right(:src="IconRightBlue")
+        view.flex(@click="onOrderlogistics")
+          view.inform-text.f-28 查看物流
+          u-icon(name="arrow-right" size="16" color="#0052d9")
       view.flex.justify-between.items-center(v-if="orderInfo.status === 51")
         view.flex1.f-28-B 已取消
     view.address.flex.column.justify-start.my-24.px-32.py-36.bg-white
@@ -55,22 +55,18 @@ view.vmall-order-detail
         text {{ orderInfo.confirm_time }}
   view.submit.px-32.flex.justify-end.items-center(v-if="orderInfo.status === 10 || orderInfo.status === 30")
     view.flex(v-if="orderInfo.status === 10")
-      view.cancel-btn.tc.f-32(@click.stop="onCancelPay") 取消支付
-      view.pay-btn.ml-20.tc.f-32(@click.stop="onPay") 去付款
+      view.cancel-btn.tc.f-28(@click.stop="onCancelPay") 取消支付
+      view.pay-btn.ml-20.tc.f-28(@click.stop="onPay") 去付款
     view(v-if="orderInfo.status === 30")
-      view.confirm-btn.ml-20.tc.f-32(@click.stop="onConfirmGoods") 确认收货
+      view.confirm-btn.ml-20.tc.f-28(@click.stop="onConfirmGoods") 确认收货
 </template>
 
 <script setup>
 import { IMG_URL } from "@/config";
 import DetailCard from "@/components/order/detail-card.vue";
-import { orderApi } from "@/api";
 // 服务器图片
-const UserAvatar = ref(IMG_URL + "/images/user-avatar.png");
 const IconRightBlue = ref(IMG_URL + "/images/icon-right-blue.png");
-const Wechat = ref(IMG_URL + "/images/wechat.png");
-const CheckXz = ref(IMG_URL + "/images/check-xz.png");
-const CheckWxz = ref(IMG_URL + "/images/check-wxz.png");
+
 const orderId = ref();
 const orderInfo = ref();
 // 倒计时
@@ -80,7 +76,37 @@ const countDownText = ref();
 
 onLoad((options) => {
   orderId.value = options.id;
-  getOrderDetail(options.id);
+  // getOrderDetail(options.id);
+  orderInfo.value = {
+    status: 50,
+    address: {
+      recipient: "大黑",
+      mobile: "18056557800",
+      province: "浙江省",
+      city: "杭州市",
+      county: "西湖区",
+      address: "断桥残雪"
+    },
+    real_info: {
+      realname: "大黑",
+      identity: "240625202409205568"
+    },
+    goods: {
+      price: 1540.5,
+      quantity: 2,
+      total_price: 1590.5,
+      goods_name: "sk-ii sk2神仙水小灯泡精华大红瓶面霜套装",
+      goods_spec_image: "http://cdn.wjaxx.xyz/goods/img.jpg"
+    },
+    createtime: "2024-09-20 09:35:21",
+    pay_time: "2024-09-20 09:35:21",
+    confirm_time: "2024-09-22 15:21:45",
+    order_no: "20240002356689"
+  };
+  totalTime.value = 360;
+  if (totalTime.value > 0) {
+    countDown();
+  }
 });
 
 onUnload(() => {
@@ -99,28 +125,30 @@ const getOrderDetail = (id) => {
 };
 
 // 查看物流
-const onSpecif = () => {
+const onOrderLogistics = () => {
+  console.log("触发")
   uni.navigateTo({ url: "/pagesA/order/logistics?id=" + orderInfo.value.id });
 };
 
 // 取消支付(取消订单)
 const onCancelPay = () => {
-  orderApi
-    .cancelOrder({
-      id: orderInfo.value.id
-    })
-    .then((res) => {
-      if (res.code == 1) {
-        uni.showToast({
-          title: "订单已取消",
-          icon: "success",
-          mask: true
-        });
-        setTimeout(() => {
-          uni.navigateBack();
-        }, 1000);
-      }
-    });
+  // orderApi
+  //   .cancelOrder({
+  //     id: orderInfo.value.id
+  //   })
+  //   .then((res) => {
+  //     if (res.code == 1) {
+  //       uni.showToast({
+  //         title: "订单已取消",
+  //         icon: "success",
+  //         mask: true
+  //       });
+  //       setTimeout(() => {
+  //         uni.navigateBack();
+  //       }, 1000);
+  //     }
+  //   });
+  uni.navigateBack();
 };
 
 // 去付款
@@ -222,7 +250,7 @@ page {
     vertical-align: middle;
   }
   .price {
-    color: #f53f3f;
+    color: #fa3534;
   }
   .icon-img {
     width: 48rpx;
@@ -256,10 +284,10 @@ page {
     width: 200rpx;
     height: 68rpx;
     line-height: 68rpx;
-    background: #e84026;
+    background: #fa3534;
     color: #ffffff;
     border-radius: 52rpx;
-    border: 2rpx solid #e84026;
+    border: 2rpx solid #fa3534;
   }
   .confirm-btn {
     width: 200rpx;

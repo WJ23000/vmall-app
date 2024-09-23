@@ -1,38 +1,46 @@
 <template lang="pug">
 view.order-card.mx-20.mt-24
   view.item.px-20.pt-16.pb-32.bg-white
-    view.flex.justify-between.my-20.f-24 
-      view.f-28-B 订单编号：{{ item.order_no }}
-      view.f-24(:class="item.status != 50 ? 'status-active' : 'status-text'") {{ statusText(item.status) }}
-    view.shop.flex
-      image.cover.mr-28(:src="item.url")
-      view.flex.column.flex1
-        view.title.f-28 {{ item.title }}
-        //- view.specif.mt-36.f-28 {{ item.goods_spec_name }}
-        view.flex.justify-between.mt-24
-          view.price.f-32-B 
-            text.f-24 ￥
-            text.f-32 {{ item.price }}
-          text.f-28 共{{ item.quantity }}件
+    view(@click="onOrderDetail(item)")
+      view.flex.justify-between.my-20.f-24 
+        view.f-28-B 订单编号：{{ item.order_no }}
+        view.f-24(:class="item.status != 50 ? 'status-active' : 'status-text'") {{ statusText(item.status) }}
+      view.shop.flex
+        image.cover.mr-28(:src="item.url")
+        view.flex.column.flex1
+          view.title.f-28 {{ item.title }}
+          //- view.specif.mt-36.f-28 {{ item.goods_spec_name }}
+          view.flex.justify-between.mt-24
+            view.price.f-32-B 
+              text.f-24 ￥
+              text.f-32 {{ item.price }}
+            text.f-28 共{{ item.quantity }}件
     view.submit.flex.justify-end.items-center.mt-24
       //- view.other.f-24(v-if="item.status == 51") 更多
       view.btn.tc.f-24(v-if="item.status == 10 || item.status == 20 || item.status == 30") 取消订单
-      view.btn.ml-20.tc.f-24(v-if="item.status == 20 || item.status == 30 || item.status == 51") 查看物流
+      view.btn.ml-20.tc.f-24(
+        v-if="item.status == 20 || item.status == 30 || item.status == 51" 
+        @click="onOrderLogistics(item)") 查看物流
       view.btn.ml-20.tc.f-24(v-if="item.status == 51") 评价
-      view.btn.ml-20.tc.f-24(v-if="item.status == 50") 查看详情
+      view.btn.ml-20.tc.f-24(v-if="item.status == 50" @click="onOrderDetail(item)") 查看详情
       view.buy-btn.ml-20.tc.f-24(v-if="item.status == 10" @click="onOrderDetail(item)") 立即支付
-      view.buy-btn.ml-20.tc.f-24(v-if="item.status == 51" @click="onOrderDetail(item)") 再次购买
+      view.buy-btn.ml-20.tc.f-24(v-if="item.status == 51") 再次购买
 </template>
 
 <script setup>
 const props = defineProps({
   item: {}
 });
-const emit = defineEmits(["delete", "detail"]);
+const emit = defineEmits(["delete", "logistics", "detail"]);
 
 // 删除订单
 const onDeleteOrder = (item) => {
   emit("delete", item.id);
+};
+
+// 查看物流
+const onOrderLogistics= (item) => {
+  emit("logistics", item.id);
 };
 
 // 订单详情
@@ -101,7 +109,7 @@ const statusText = (status) => {
     border-radius: 16rpx 0rpx 16rpx 0rpx;
   }
   .price {
-    color: #f53f3f;
+    color: #fa3534;
   }
   .specif {
     color: #606266;

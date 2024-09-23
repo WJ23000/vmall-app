@@ -24,7 +24,12 @@ view.vmall-order-list.flex.column
           @touchstart="touchStart"
           @touchend="touchEnd($event)")
           view(v-for="(item, index) in orderList" :key="index")
-            OrderCard(:item="item" :type="current" @delete="onDeleteOrder" @detail="onOrderDetail")
+            OrderCard(
+              :item="item" 
+              :type="current" 
+              @delete="onDeleteOrder" 
+              @logistics="onOrderlogistics"
+              @detail="onOrderDetail")
   //- 暂无数据
   swiper.h100(v-else)
     swiper-item
@@ -200,6 +205,11 @@ const onDeleteOrder = (id) => {
       initList();
     }
   });
+};
+
+// 查看物流
+const onOrderLogistics = (id) => {
+  uni.navigateTo({ url: "/pagesA/order/logistics?id=" + id });
 };
 
 // 订单详情
