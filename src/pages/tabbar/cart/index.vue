@@ -26,14 +26,14 @@ view.vmall-cart
       view(v-else)
         view.cart-bottom
           view.cart-bottom-icon
-            image(:src="iconXz" v-if="CheckAll" @click="onSelectAll")
-            image(:src="iconWxz" v-else @click="onSelectAll")
+            image(:src="IconXz" v-if="CheckAll" @click="onSelectAll")
+            image(:src="IconWxz" v-else @click="onSelectAll")
           view.checkAll 全选
           view.cart-sum
             text.sum_text 合计：
             text.sum_color ￥{{ totalPrice }}元
           view.cart-pay
-            text.cart_pay(@click="payOrder") 去结算({{ goodsCount }})
+            text.cart_pay(@click="onPayOrder") 去结算({{ goodsCount }})
     //- 如果无数据，则显示数据
     view.empty-container.py-40(v-else)
       Empty(:emptyInfo="emptyInfo")
@@ -59,8 +59,8 @@ const CheckAll = ref(false);
 const goodsCount = ref(0);
 const deleteCount = ref(0);
 const showBottom = ref(false);
-const iconXz = ref("http://cdn.wjaxx.xyz/cart/check-xz.png");
-const iconWxz = ref("http://cdn.wjaxx.xyz/cart/check-wxz.png");
+const IconXz = ref("http://cdn.wjaxx.xyz/cart/check-xz.png");
+const IconWxz = ref("http://cdn.wjaxx.xyz/cart/check-wxz.png");
 const EmptyImage = ref("http://cdn.wjaxx.xyz/empty/cart.png");
 const emptyInfo = ref({
   image: EmptyImage,
@@ -176,8 +176,16 @@ const onCancel = () => {
   showBottom.value = false;
 };
 // 结算
-const payOrder = () => {
-  // this.$router.push({ path: "/payOrder", params: { orderId: 1 } });
+const onPayOrder = () => {
+  if (goodsCount.value > 0) {
+    uni.navigateTo({ url: "/pagesA/order/confirm" });
+  }else{
+    uni.showToast({
+      title: "您还没有选择商品哦",
+      icon: "none",
+      mask: true
+    });
+  }
 };
 
 // 监听页面滚动(返回顶部)
@@ -241,7 +249,7 @@ page {
   }
 
   .page-content {
-    margin-top:  44px;
+    margin-top: 44px;
     /* #ifdef APP-PLUS */
     margin-top: calc(var(--status-bar-height) + 88rpx);
     /* #endif */

@@ -319,12 +319,12 @@ page {
       color: #C0C4CC;
   .phone
     color: #C0C4CC;
-  :deep(.u-input)
+  ::v-deep(.u-input)
     padding: 0rpx !important;
     background: #ffffff;
-  :deep(.u-input__content)
+  ::v-deep(.u-input__content)
     height: 100rpx;
     line-height: 100rpx;
-  :deep(.uni-input-wrapper)
+  ::v-deep(.uni-input-wrapper)
     font-size: 32rpx;
 </style>

@@ -23,7 +23,7 @@ view.order-card.mx-20.mt-24
         @click="onOrderLogistics(item)") 查看物流
       view.btn.ml-20.tc.f-24(v-if="item.status == 51") 评价
       view.btn.ml-20.tc.f-24(v-if="item.status == 50" @click="onOrderDetail(item)") 查看详情
-      view.buy-btn.ml-20.tc.f-24(v-if="item.status == 10" @click="onOrderDetail(item)") 立即支付
+      view.buy-btn.ml-20.tc.f-24(v-if="item.status == 10" @click="onOrderPay(item)") 立即支付
       view.buy-btn.ml-20.tc.f-24(v-if="item.status == 51") 再次购买
 </template>
 
@@ -31,7 +31,7 @@ view.order-card.mx-20.mt-24
 const props = defineProps({
   item: {}
 });
-const emit = defineEmits(["delete", "logistics", "detail"]);
+const emit = defineEmits(["delete", "logistics", "detail", "pay"]);
 
 // 删除订单
 const onDeleteOrder = (item) => {
@@ -46,6 +46,11 @@ const onOrderLogistics= (item) => {
 // 订单详情
 const onOrderDetail = (item) => {
   emit("detail", item.id);
+};
+
+// 订单支付
+const onOrderPay = (item) => {
+  emit("pay", item.id);
 };
 
 // 订单状态

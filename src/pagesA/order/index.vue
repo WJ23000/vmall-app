@@ -29,7 +29,8 @@ view.vmall-order-list.flex.column
               :type="current" 
               @delete="onDeleteOrder" 
               @logistics="onOrderLogistics"
-              @detail="onOrderDetail")
+              @detail="onOrderDetail"
+              @pay="onOrderPay")
   //- 暂无数据
   swiper.h100(v-else)
     swiper-item
@@ -215,6 +216,11 @@ const onOrderLogistics = (id) => {
 // 订单详情
 const onOrderDetail = (id) => {
   uni.navigateTo({ url: "/pagesA/order/detail?id=" + id });
+};
+
+// 订单支付
+const onOrderPay = (id) => {
+  uni.navigateTo({ url: "/pagesA/order/confirm" });
 };
 
 const touchStart = (e) => {

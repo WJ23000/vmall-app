@@ -71,6 +71,18 @@
           }
         },
         {
+          "path": "order/confirm",
+          "style": {
+            "navigationBarTitleText": "确认订单"
+          }
+        },
+        {
+          "path": "order/success",
+          "style": {
+            "navigationBarTitleText": "支付成功"
+          }
+        },
+        {
           "path": "collection/index",
           "style": {
             "navigationBarTitleText": "我的收藏",

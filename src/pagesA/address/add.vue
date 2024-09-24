@@ -225,13 +225,13 @@ page {
     color: #ffffff;
     text-align: center;
     border-radius: 30px 30px 30px 30px;
-  :deep(.u-input)
+  ::v-deep(.u-input)
     border: 0;
     background: #ffffff !important;
-  :deep(.uni-input-wrapper)
+  ::v-deep(.uni-input-wrapper)
     font-size: 28rpx;
-  :deep(.u-textarea)
+  ::v-deep(.u-textarea)
     border: 0;
-  :deep(.uni-textarea-wrapper)
+  ::v-deep(.uni-textarea-wrapper)
     font-size: 28rpx;
 </style>
