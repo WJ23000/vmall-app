@@ -219,14 +219,14 @@ const onAgreement = (type) => {
     .close-img
       width: 64rpx;
       height: 64rpx;
-  ::v-deep(.u-input)
+  :deep(.u-input)
     padding: 0rpx 18rpx !important;
     background: #ffffff;
     border: 2rpx solid #E6E6E6;
     border-radius: 24rpx;
-  ::v-deep(.u-input__content)
+  :deep(.u-input__content)
     height: 100rpx;
     line-height: 100rpx;
-  ::v-deep(.uni-input-wrapper)
+  :deep(.uni-input-wrapper)
     font-size: 32rpx;
 </style>

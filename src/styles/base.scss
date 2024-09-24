@@ -1,5 +1,6 @@
 page {
   box-sizing: border-box;
+  overflow: hidden; /* ‌解决内容未超过页面高度却出现滚动条 */
 }
 
 .flex {

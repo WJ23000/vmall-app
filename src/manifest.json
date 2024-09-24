@@ -47,6 +47,9 @@
             /* SDK配置 */
             "sdkConfigs" : {
                 "ad" : {}
+            },
+            "splashscreen" : {
+                "useOriginalMsgbox" : true
             }
         }
     },

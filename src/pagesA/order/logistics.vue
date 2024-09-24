@@ -69,51 +69,51 @@ page {
   .no-title {
     color: #909193;
   }
-  ::v-deep(.u-icon__icon) {
+  :deep(.u-icon__icon) {
     color: #0052d9 !important;
   }
-  ::v-deep(.u-steps-item__content) {
+  :deep(.u-steps-item__content) {
     margin-top: 0rpx !important;
     margin-bottom: 20rpx !important;
   }
   .u-steps-item:nth-child(1) {
-    ::v-deep(.u-text__value--content) {
+    :deep(.u-text__value--content) {
       color: #0052d9 !important;
       font-size: 30rpx !important;
     }
-    ::v-deep(.u-text__value--tips) {
+    :deep(.u-text__value--tips) {
       margin-top: 20rpx;
       color: #0052d9 !important;
       font-size: 24rpx !important;
     }
   }
   .u-steps-item:nth-child(2) {
-    ::v-deep(.u-text__value--content) {
+    :deep(.u-text__value--content) {
       color: #0052d9 !important;
       font-size: 30rpx !important;
     }
-    ::v-deep(.u-text__value--tips) {
+    :deep(.u-text__value--tips) {
       margin-top: 20rpx;
       color: #0052d9 !important;
       font-size: 24rpx !important;
     }
   }
   .u-steps-item {
-    ::v-deep(.u-text__value--content) {
+    :deep(.u-text__value--content) {
       color: #000000 !important;
       font-size: 30rpx !important;
     }
-    ::v-deep(.u-text__value--tips) {
+    :deep(.u-text__value--tips) {
       margin-top: 20rpx;
       color: #909193 !important;
       font-size: 24rpx !important;
     }
   }
-  ::v-deep(.u-text__value--main) {
+  :deep(.u-text__value--main) {
     color: #0052d9 !important;
     font-size: 30rpx !important;
   }
-  ::v-deep(.u-text__value--tips) {
+  :deep(.u-text__value--tips) {
     margin-top: 20rpx;
     color: #909193 !important;
     font-size: 24rpx !important;

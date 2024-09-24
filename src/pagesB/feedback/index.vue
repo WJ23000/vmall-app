@@ -126,13 +126,13 @@ page {
     color: #ffffff;
     text-align: center;
     border-radius: 30px 30px 30px 30px;
-  ::v-deep(.u-input)
+  :deep(.u-input)
     border: 0;
     background: #ffffff !important;
-  ::v-deep(.uni-input-wrapper)
+  :deep(.uni-input-wrapper)
     font-size: 28rpx;
-  ::v-deep(.u-textarea)
+  :deep(.u-textarea)
     border: 0;
-  ::v-deep(.uni-textarea-wrapper)
+  :deep(.uni-textarea-wrapper)
     font-size: 28rpx;
 </style>

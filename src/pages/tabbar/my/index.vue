@@ -229,7 +229,7 @@ page {
 .vmall-my {
   .search-sticky {
     /* #ifdef APP-PLUS */
-    ::v-deep .u-navbar--fixed {
+    :deep .u-navbar--fixed {
       top: var(--status-bar-height);
     }
     /* #endif */
@@ -369,12 +369,12 @@ page {
   margin-right: 8rpx;
 }
 
-::v-deep .u-divider {
+:deep .u-divider {
   margin: 0rpx !important;
   height: 100rpx;
 }
 
-::v-deep .u-status-bar {
+:deep .u-status-bar {
   display: none !important;
 }
 </style>

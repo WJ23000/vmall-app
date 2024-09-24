@@ -242,7 +242,7 @@ page {
 .vmall-cart {
   .header {
     /* #ifdef APP-PLUS */
-    ::v-deep .u-navbar--fixed {
+    :deep .u-navbar--fixed {
       top: var(--status-bar-height);
     }
     /* #endif */
@@ -541,7 +541,7 @@ page {
     padding: 0rpx 10rpx 100rpx 10rpx;
   }
 
-  ::v-deep .u-empty {
+  :deep .u-empty {
     background: #ffffff;
     margin-bottom: 40rpx;
     padding-bottom: 40rpx;
@@ -552,7 +552,7 @@ page {
   font-size: 26rpx;
 }
 
-::v-deep .u-status-bar {
+:deep .u-status-bar {
   display: none !important;
 }
 </style>
