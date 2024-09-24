@@ -11,6 +11,9 @@ node_modules
 .DS_Store
 dist
 *.local
+components.d.ts
+auto-imports.d.ts
+package-lock.json
 
 # Editor directories and files
 .idea
