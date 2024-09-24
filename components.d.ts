@@ -7,7 +7,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    BackTop: typeof import('./src/components/backTop.vue')['default']
+    BackTop: typeof import('./src/components/back-top.vue')['default']
     Banner: typeof import('./src/components/banner.vue')['default']
     Card: typeof import('./src/components/order/card.vue')['default']
     Cart: typeof import('./src/components/cart.vue')['default']
@@ -16,16 +16,16 @@ declare module 'vue' {
     Declare: typeof import('./src/components/shop/declare.vue')['default']
     DetailCard: typeof import('./src/components/order/detail-card.vue')['default']
     Empty: typeof import('./src/components/empty.vue')['default']
-    FixedSearch: typeof import('./src/components/search/fixedSearch.vue')['default']
+    FixedSearch: typeof import('./src/components/search/fixed-search.vue')['default']
     Idcard: typeof import('./src/components/order/idcard.vue')['default']
     Logistics: typeof import('./src/components/order/logistics.vue')['default']
     Notify: typeof import('./src/components/order/notify.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Search: typeof import('./src/components/search/search.vue')['default']
-    SlideGrid: typeof import('./src/components/slideGrid.vue')['default']
-    StatusBar: typeof import('./src/components/statusBar.vue')['default']
-    StickyTabs: typeof import('./src/components/stickyTabs.vue')['default']
+    SlideGrid: typeof import('./src/components/slide-grid.vue')['default']
+    StatusBar: typeof import('./src/components/status-bar.vue')['default']
+    StickyTabs: typeof import('./src/components/sticky-tabs.vue')['default']
     Waterfall: typeof import('./src/components/waterfall.vue')['default']
     WriteIdcard: typeof import('./src/components/order/write-idcard.vue')['default']
   }

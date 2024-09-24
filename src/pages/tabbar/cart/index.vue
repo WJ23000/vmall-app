@@ -46,10 +46,10 @@ view.vmall-cart
 
 <script setup>
 import { random, guid } from "uview-plus";
-import StatusBar from "@/components/statusBar.vue";
+import StatusBar from "@/components/status-bar.vue";
 import Cart from "@/components/cart.vue";
 import Waterfall from "@/components/waterfall.vue";
-import BackTop from "@/components/backTop.vue";
+import BackTop from "@/components/back-top.vue";
 import Empty from "@/components/empty.vue";
 import { GOODS_DATA, CART_GOODS_DATA } from "@/model";
 

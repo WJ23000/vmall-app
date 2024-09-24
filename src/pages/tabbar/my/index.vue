@@ -62,9 +62,9 @@ view.vmall-my
 
 <script setup>
 import { random, guid } from "uview-plus";
-import StatusBar from "@/components/statusBar.vue";
+import StatusBar from "@/components/status-bar.vue";
 import Waterfall from "@/components/waterfall.vue";
-import BackTop from "@/components/backTop.vue";
+import BackTop from "@/components/back-top.vue";
 import { GOODS_DATA, ORDER_GRID_DATA, FEATURE_GRID_DATA, FEATURE_GRID_DATA2 } from "@/model";
 
 const isStatusBar = ref(false);

@@ -29,7 +29,7 @@ view.vmall-classify
 
 <script setup>
 import { getCurrentInstance } from "vue";
-import FixedSearch from "@/components/search/fixedSearch.vue";
+import FixedSearch from "@/components/search/fixed-search.vue";
 import { CLASSIFY_DATA } from "@/model";
 
 const instance = getCurrentInstance();

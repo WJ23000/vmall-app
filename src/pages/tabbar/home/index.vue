@@ -17,14 +17,14 @@ view.vmall-home
 
 <script setup>
 import { random, guid } from "uview-plus";
-import StatusBar from "@/components/statusBar.vue";
-import FixedSearch from "@/components/search/fixedSearch.vue";
+import StatusBar from "@/components/status-bar.vue";
+import FixedSearch from "@/components/search/fixed-search.vue";
 import Search from "@/components/search/search.vue";
 import Banner from "@/components/banner.vue";
-import SlideGrid from "@/components/slideGrid.vue";
-import StickyTabs from "@/components/stickyTabs.vue";
+import SlideGrid from "@/components/slide-grid.vue";
+import StickyTabs from "@/components/sticky-tabs.vue";
 import Waterfall from "@/components/waterfall.vue";
-import BackTop from "@/components/backTop.vue";
+import BackTop from "@/components/back-top.vue";
 import { BANNER_DATA, GRID_DATA, TAB_DATA, GOODS_DATA } from "@/model";
 
 const isStatusBar = ref(false);
