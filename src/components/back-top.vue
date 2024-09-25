@@ -5,7 +5,7 @@ view.back-top
     :customStyle="customStyle"
     :iconStyle="iconStyle"
 		right="12", 
-    bottom="100"
+    bottom="80"
 		z-index="1000")
 </template>
 

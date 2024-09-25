@@ -40,6 +40,14 @@
       "root": "pagesA",
       "pages": [
         {
+          "path": "goods-detail/index",
+          "style": {
+            "navigationBarTitleText": "商品详情",
+            "titleNView": false,
+            "enablePullDownRefresh": true
+          }
+        },
+        {
           "path": "address/index",
           "style": {
             "navigationBarTitleText": "收货地址",

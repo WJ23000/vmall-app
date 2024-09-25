@@ -2,26 +2,26 @@
 view.waterfall
   up-waterfall(v-model="shopList" ref="uWaterfallRef")
     template(v-slot:left="{leftList}")
-      view.shop-warter(v-for="(item, index) in leftList" :key="index")
-        up-lazy-load(threshold="-450" border-radius="10" :image="item.url" :index="index")
-        view.shop-title {{ item.title }}
+      view.shop-warter(v-for="(litem, index) in leftList" :key="index" @click="onGoodsDetail(litem)")
+        up-lazy-load(threshold="-450" border-radius="10" :image="litem.url" :index="index")
+        view.shop-title {{ litem.title }}
         view.shop-price
           text.unit ￥
-          text.price {{ decimal(item.price,0) }}
-          text.decimal .{{ decimal(item.price,1) }}
+          text.price {{ decimal(litem.price,0) }}
+          text.decimal .{{ decimal(litem.price,1) }}
         view.shop-tag
-          view.shop-tag-owner {{ item.label }}
+          view.shop-tag-owner {{ litem.label }}
           view.shop-tag-text 放心购
     template(v-slot:right="{rightList}")
-      view.shop-warter(v-for="(item, index) in rightList" :key="index")
-        up-lazy-load(threshold="-450" border-radius="10" :image="item.url" :index="index")
-        view.shop-title {{ item.title }}
+      view.shop-warter(v-for="(ritem, index) in rightList" :key="index" @click="onGoodsDetail(ritem)")
+        up-lazy-load(threshold="-450" border-radius="10" :image="ritem.url" :index="index")
+        view.shop-title {{ ritem.title }}
         view.shop-price 
           text.unit ￥
-          text.price {{ decimal(item.price,0) }}
-          text.decimal .{{ decimal(item.price,1) }}
+          text.price {{ decimal(ritem.price,0) }}
+          text.decimal .{{ decimal(ritem.price,1) }}
         view.shop-tag
-          view.shop-tag-owner {{ item.label }}
+          view.shop-tag-owner {{ ritem.label }}
           view.shop-tag-text 放心购
   view.pb-10
     up-loadmore(:status="loadStatus" @loadmore="onAddRandomData")
@@ -59,6 +59,13 @@ watch(
 // 加载更多数据
 const onAddRandomData = () => {
   emit("addRandomData");
+};
+
+// 商品详情
+const onGoodsDetail = (item) => {
+  uni.navigateTo({
+    url: "/pagesA/goods-detail/index?id=" + item.id
+  });
 };
 
 const decimal = (value, type) => {
