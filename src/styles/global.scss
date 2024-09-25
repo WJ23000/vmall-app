@@ -1,6 +1,18 @@
-/* 全局样式控制状态栏的CSS样式 */
-.uni-status-bar {
-  display: none !important;
+/* 此文件使用:deep()进行css样式穿透会全局替换整个app样式 */
+
+/* 解决H5端页面高度未超100%，出现滚动条问题 */
+#app, uni-app, uni-page, uni-page-wrapper {
+  height: auto;
 }
 
-/* 此文件使用:deep()进行css样式穿透会全局替换整个app样式 */
+/* 解决APP端页面高度未超100%，出现滚动条问题 */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: calc(100vh - var(--status-bar-height));
+}
+
+:deep(.u-divider) {
+  margin: 0rpx !important;
+  height: 70rpx;
+}

@@ -7,12 +7,12 @@
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <template lang="pug">
-  view.cart-card
+  view.cart-card.px-20
     u-swipe-action
-      view.mt-20(
+      view.pt-20(
         v-for="(item, index) in cartList" 
         :key="index")
-        u-swipe-action-item.flex.column(
+        u-swipe-action-item.action-item.flex.column(
           :ref="el => { swipeRef[index] = el }"
           :options="operate"
           :index="index"
@@ -85,13 +85,16 @@ const onAdd = (index) => {
 // 处理u-swipe-action-item不复位的问题
 const resetSwipeAction = () => {
   swipeRef.value[0].closeHandler();
-  console.log("是谁", swipeRef.value)
+  console.log("是谁", swipeRef.value);
 };
 defineExpose({ resetSwipeAction });
 </script>
 
 <style lang="scss" scoped>
 .cart-card {
+  .action-item {
+    border-radius: 16rpx;
+  }
   .cart-name {
     height: 96rpx;
     line-height: 96rpx;

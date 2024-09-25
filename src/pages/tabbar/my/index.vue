@@ -369,12 +369,7 @@ page {
   margin-right: 8rpx;
 }
 
-:deep .u-divider {
-  margin: 0rpx !important;
-  height: 100rpx;
-}
-
-:deep .u-status-bar {
+:deep(.u-status-bar) {
   display: none !important;
 }
 </style>
