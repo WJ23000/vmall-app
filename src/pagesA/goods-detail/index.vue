@@ -1,7 +1,7 @@
 <template lang="pug">
 view.andry-goods-detail
-  StatusBar
-  view.header(:style="{background: bgColor}" :class="{show: backTop > 44}")
+  StatusBar(v-show="isStatusBar")
+  view.header(:style="{background: bgColor}")
     view.left-option
       <!-- #ifdef H5 || APP-PLUS -->
       view.left-image(:class="{resetImage: backTop < 44}")
@@ -154,9 +154,10 @@ const starImageWhite = ref("http://cdn.wjaxx.xyz/star-white.png");
 const shareImage = ref("http://cdn.wjaxx.xyz/share.png");
 const shareImageWhite = ref("http://cdn.wjaxx.xyz/share-white.png");
 const instance = getCurrentInstance();
+const isStatusBar = ref(false);
 const bannerList = ref(GOODS_BANNER_DATA);
 const recommendList = ref(GOODS_DATA);
-const bgColor = ref("");
+const bgColor = ref("rgba(0, 0, 0, 0)");
 const tabList = ref([
   {
     id: "goods",
@@ -213,7 +214,7 @@ const introduceList = ref([
   },
   {
     type: "image",
-    url: "http://cdn.wjaxx.xyz/goods/detail2.jpg"
+    url: '<img src="http://cdn.wjaxx.xyz/goods/detail2.jpg"/>'
   }
 ]);
 const isCollect = ref(false);
@@ -249,6 +250,11 @@ const backTop = ref(0);
 
 onLoad((option) => {
   console.log("url参数", option);
+  // 初始化小程序和APP状态栏的颜色
+  uni.setNavigationBarColor({
+    frontColor: "#ffffff",
+    backgroundColor: "#fa3534"
+  });
 });
 
 onMounted(() => {
@@ -259,9 +265,14 @@ onMounted(() => {
 // 监听页面滚动(一键置顶，tabs吸顶)
 onPageScroll((e) => {
   console.log("距离", e.scrollTop);
+  // 动态修改小程序和APP状态栏的颜色
+  uni.setNavigationBarColor({
+    frontColor: e.scrollTop > 0 ? "#000000" : "#ffffff",
+    backgroundColor: e.scrollTop > 0 ? "#ffffff" : "#fa3534"
+  });
   backTop.value = e.scrollTop;
-  bgColor.value = backTop.value > 44 ? "#ffffff" : "";
-
+  isStatusBar.value = e.scrollTop > 0;
+  bgColor.value = e.scrollTop == 0 ? "rgba(255,255,255,0)" : "rgba(255,255,255,1)";
   if (e.scrollTop >= 0 && e.scrollTop < scrollHeight.value.evaluateHeight) {
     if (current.value != 0) current.value = 0;
   } else if (e.scrollTop >= scrollHeight.value.evaluateHeight && e.scrollTop < scrollHeight.value.recommendHeight) {
@@ -439,9 +450,6 @@ page {
   .dark_anchor {
     height: 44px;
     margin-top: -44px;
-  }
-  .show {
-    animation: 1s fadeIn ease-out;
   }
   .tabs {
     display: flex;
