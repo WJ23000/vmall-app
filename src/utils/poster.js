@@ -2,57 +2,55 @@
  * @Author: 汪军 624473119@qq.com
  * @Date: 2023-11-19 19:08:16
  * @LastEditors: 汪军 624473119@qq.com
- * @LastEditTime: 2024-03-21 10:29:00
- * @FilePath: \vmall-app\src\utils\createPoster.js
+ * @LastEditTime: 2023-11-29 14:22:36
+ * @FilePath: \aesthetic-medicine\src\utils\createPoster.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import { setPosterFilePath } from "@/service";
 // 绘制海报
 const createPoster = (data) => {
-  uni.showLoading({
-    title: "海报绘制中…",
-    mask: true
-  });
   // 获取 Canvas 组件的上下文对象
   const ctx = uni.createCanvasContext("myCanvas");
 
   // 非圆角矩形
-  // rect(ctx, 0, 0, 343, 557);
+  // rect(ctx, 0, 0, 304, 412);
   // 圆角矩形
-  roundedRect(ctx, 0, 0, 343, 557, 12, "#ffffff");
+  roundedRect(ctx, 0, 0, 304, 412, 12, "#ffffff");
+
+  ctx.drawImage(data.cover, 12, 12, 280, 280);
+
+  // 店铺logo
+  ctx.drawImage(data.storeLogo, 12, 310, 22, 22);
 
   // 店铺名称
   // ctx.setFontSize(16);
-  ctx.font = "normal bold 15px arial,sans-serif";
+  ctx.font = "normal bold 16px arial,sans-serif";
   ctx.setFillStyle("#000000");
-  ctx.fillText(data.storeName, 16, 463);
+  ctx.fillText(data.storeName, 40, 326);
   ctx.setFillStyle("black");
 
   // 商品名称
   // ctx.setFontSize(18);
-  ctx.font = "normal 11px arial,sans-serif";
-  ctx.setFillStyle("#888888");
-  ctx.fillText(data.shopName, 16, 480);
+  ctx.font = "normal bold 18px arial,sans-serif";
+  ctx.fillText(data.shopName, 12, 362);
 
   // 商品价格
   // ctx.setFontSize(18);
-  ctx.font = "normal 11px arial,sans-serif";
+  ctx.font = "normal bold 18px arial,sans-serif";
   ctx.setFontSize;
-  ctx.setFillStyle("#888888");
-  ctx.fillText(data.price, 16, 498);
+  ctx.setFillStyle("#E84026");
+  ctx.fillText(data.price, 12, 394);
 
+  // 小程序二维码
+  ctx.drawImage(data.qrCode, 231, 338, 60, 60);
   // 必须延迟执行 不然H5和APP不显示
   setTimeout(() => {
-    // 封面图
-    ctx.drawImage(data.cover, 0, 0, 331, 404);
-    // 小程序二维码
-    ctx.drawImage(data.qrCode, 258, 446, 56, 56);
     ctx.draw(false, () => {
       uni.canvasToTempFilePath({
         x: 0,
         y: 0,
-        width: 343,
-        height: 557,
+        width: 304,
+        height: 412,
         canvasId: "myCanvas",
         success: function (res) {
           uni.hideLoading();
@@ -82,7 +80,7 @@ const clearPoster = () => {
   // 获取 Canvas 组件的上下文对象
   const ctx = uni.createCanvasContext("myCanvas");
 
-  ctx.clearRect(0, 0, 343, 557);
+  ctx.clearRect(0, 0, 304, 412);
   ctx.draw(true);
 };
 

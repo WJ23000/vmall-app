@@ -1,4 +1,6 @@
 <template lang="pug">
+//- 控制页面滑动
+page-meta(:page-style="'overflow:' + (scrollShow ? 'hidden' : 'visible')")
 view.andry-goods-detail
   StatusBar(v-show="isStatusBar")
   view.header(:style="{background: bgColor}")
@@ -22,7 +24,7 @@ view.andry-goods-detail
       view.right-image(:class="{resetImage: backTop < 44}" @click="onCollect")
         image(v-if="!isCollect" :src="backTop > 44 ? starImage : starImageWhite")
         u-icon(v-else name="star-fill" size="22" color="#fa3534")
-      view.right-image(:class="{resetImage: backTop < 44}")
+      view.right-image(:class="{resetImage: backTop < 44}" @click="onCreatePoster")
         image(:src="backTop > 44 ? shareImage : shareImageWhite")
   Banner(id="goods" :bannerList="bannerList")
   view.money-cell
@@ -43,7 +45,7 @@ view.andry-goods-detail
         view 精华热卖榜 · 第5名
         u-icon(name="arrow-right" size="14" color="#fa3534" :bold="true")
     view.info
-      view.item
+      view.item(@click="onCreatePoster")
         u-icon(name="share-square" size="22")
         text.item-title 分享
       view.item(@click="onCollect")
@@ -134,6 +136,12 @@ view.andry-goods-detail
     @close="shopCheckShow=false"
     @cart="onCartGoods"
     @pay="onPayGoods")
+  //- 海报
+  u-overlay(:show="overlayShow" @click="onOverlayShow")
+    view.poster-container.flex.column.justify-center.items-center.px-72
+      canvas(canvas-id="myCanvas" :style="{ width: '304px', height: '412px' }")
+      view.flex.column.justify-center.items-center.mt-28
+        view.save-btn.tc.f-32-B(@click="savePoster") 保存海报至相册
   BackTop(:backTop="backTop")
 </template>
 
@@ -146,6 +154,13 @@ import Introduce from "./components/introduce.vue";
 import Check from "./components/check.vue";
 import BackTop from "@/components/back-top.vue";
 import { GOODS_BANNER_DATA, GOODS_DATA } from "@/model";
+import { getPosterFilePath, removePosterFilePath } from "@/service";
+import downloadPicture from "@/utils/downloadPicture";
+import { base64ToPath } from "@/utils/base64srcLocal";
+import { createPoster, clearPoster } from "@/utils/poster";
+import Shop from "@/static/shop.png";
+import Cover from "@/static/img.jpg";
+import QrCode from "@/static/qrcode.jpg";
 
 const returnImage = ref("http://cdn.wjaxx.xyz/return.png");
 const returnImageWhite = ref("http://cdn.wjaxx.xyz/return-white.png");
@@ -245,6 +260,17 @@ const specifList = ref([
 ]);
 const shopCheckShow = ref(false);
 const specType = ref(1);
+// 海报
+const overlayShow = ref(false);
+const posterInfo = ref({
+  cover: Cover,
+  storeLogo: Shop,
+  storeName: "大黑店铺",
+  shopName: "SK-II神仙水160ml精华液双支装sk2护肤品skii化妆品礼盒520情人节礼物",
+  price: "2580.00",
+  qrCode: QrCode
+});
+const scrollShow = ref(false);
 // 返回顶部
 const backTop = ref(0);
 
@@ -269,7 +295,7 @@ onPageScroll((e) => {
   backTop.value = e.scrollTop;
   isStatusBar.value = e.scrollTop > 0;
   bgColor.value = e.scrollTop == 0 ? "rgba(255,255,255,0)" : "rgba(255,255,255,1)";
-  let top = Math.floor(e.scrollTop)
+  let top = Math.floor(e.scrollTop);
   if (top >= 0 && top < scrollHeight.value.evaluateHeight) {
     if (current.value != 0) current.value = 0;
   } else if (top >= scrollHeight.value.evaluateHeight && top < scrollHeight.value.recommendHeight) {
@@ -390,6 +416,85 @@ const onTab = (item, index) => {
       }
     })
     .exec();
+};
+
+// 生成海报
+const onCreatePoster = async () => {
+  posterInfo.value.shopName = posterInfo.value.shopName.substring(0, 10) + "…";
+  // 清空海报本地图片和canvas画布
+  removePosterFilePath();
+  clearPoster();
+  uni.showLoading({
+    title: "海报绘制中…",
+    mask: true
+  });
+  overlayShow.value = true;
+  scrollShow.value = true;
+  // await goodsImageLocal(posterInfo.value.cover);
+  // await createGoodsShare(posterInfo.value.qrCode);
+  createPoster(posterInfo.value);
+};
+
+// 商品图片转本地图片
+const goodsImageLocal = (goods_image) => {
+  // 图片的路径，可以是相对路径，临时文件路径，存储文件路径，网络图片路径
+  uni.getImageInfo({
+    src: goods_image,
+    success: function (image) {
+      posterInfo.value.cover = image.path;
+    }
+  });
+};
+
+// 小程序码
+const createGoodsShare = (qrCode_image) => {
+  // 图片的路径，可以是相对路径，临时文件路径，存储文件路径，网络图片路径
+  uni.getImageInfo({
+    src: qrCode_image,
+    success: function (image) {
+      posterInfo.value.qrCode = image.path;
+    }
+  });
+};
+
+// 小程序码
+// const createGoodsShare = (id, promotion) => {
+//   shopApi
+//     .createGoodsShare({
+//       id,
+//       promotion
+//     })
+//     .then((res) => {
+//       const scene = "&id=" + res.data.share_id + "&code=" + userInfo.value.invitation_code;
+//       shopApi
+//         .createGoodsQrcode({
+//           scene
+//         })
+//         .then((res) => {
+//           base64ToPath(res.data)
+//             .then((path) => {
+//               posterInfo.value.qrCode = path; // 二维码
+//               if (posterInfo.value.cover && posterInfo.value.qrCode) {
+//                 createPoster(posterInfo.value);
+//               }
+//             })
+//             .catch((error) => {
+//               console.error(error);
+//             });
+//         });
+//     });
+// };
+
+// 保存海报图片
+const savePoster = () => {
+  let filePath = getPosterFilePath();
+  downloadPicture(filePath);
+};
+
+// 关闭海报遮罩层
+const onOverlayShow = () => {
+  overlayShow.value = false;
+  scrollShow.value = false;
 };
 
 const decimal = (value, type) => {
@@ -726,6 +831,18 @@ page {
         font-size: 28rpx;
         border-radius: 50rpx;
       }
+    }
+  }
+
+  .poster-container {
+    height: 100vh;
+    .save-btn {
+      width: 608rpx;
+      height: 80rpx;
+      line-height: 80rpx;
+      background: #0052d9;
+      border-radius: 80rpx;
+      color: #ffffff;
     }
   }
 
