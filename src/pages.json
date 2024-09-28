@@ -43,8 +43,7 @@
           "path": "goods-detail/index",
           "style": {
             "navigationBarTitleText": "商品详情",
-            "titleNView": false,
-            "enablePullDownRefresh": true
+            "titleNView": false
           }
         },
         {

@@ -3,23 +3,27 @@
  * @Date: 2023-11-19 15:57:21
  * @LastEditors: 汪军 624473119@qq.com
  * @LastEditTime: 2023-11-19 16:55:45
- * @FilePath: \vmall-app\src\utils\downloadPicture.js
+ * @FilePath: \aesthetic-medicine\src\utils\downloadPicture.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
+import { downloadFileUrl } from "./download";
+
 // 图片地址域名必须配置过小程序白名单
-// 微信：scope.writePhotosAlbum
-// 抖音：scope.album
 const downloadPicture = (url) => {
+  // #ifdef H5
+  downloadFileUrl(url, "poster.png");
+  return;
+  // #endif
+  // #ifdef APP-PLUS
+  savePictureAlbum(url);
+  return;
+  // #endif
   // 相册权限校验
   uni.getSetting({
     success(res) {
-      if (!res.authSetting["scope.album"]) {
-        // 抖音平台触发该方法用于激活相册权限
-        // #ifdef MP-TOUTIAO
-        savePictureAlbum(url);
-        // #endif
+      if (!res.authSetting["scope.writePhotosAlbum"]) {
         uni.authorize({
-          scope: "scope.album",
+          scope: "scope.writePhotosAlbum",
           success(res) {
             console.log(res, "同意授权");
             savePictureAlbum(url);
@@ -51,18 +55,16 @@ const openSetting = () => {
   uni.openSetting({
     success: (res) => {
       console.log("调用成功", res);
-      if (res.authSetting["scope.album"]) {
-        console.log("授权成功", res);
+      if (res.authSetting["scope.writePhotosAlbum"]) {
         uni.showToast({
           title: "授权成功",
           icon: "success",
           mask: true
         });
       } else {
-        console.log("授权失败", res);
         uni.showToast({
           title: "授权失败",
-          icon: "fail",
+          icon: "error",
           mask: true
         });
       }
@@ -97,7 +99,7 @@ const savePictureAlbum = (url) => {
           uni.hideLoading();
           uni.showToast({
             title: "保存失败，请稍后重试！",
-            icon: "fail",
+            icon: "error",
             mask: true
           });
           console.log(err);

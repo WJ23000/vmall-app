@@ -420,7 +420,7 @@ const onTab = (item, index) => {
 
 // 生成海报
 const onCreatePoster = async () => {
-  posterInfo.value.shopName = posterInfo.value.shopName.substring(0, 10) + "…";
+  posterInfo.value.shopName = posterInfo.value.shopName.substring(0, 15) + "…";
   // 清空海报本地图片和canvas画布
   removePosterFilePath();
   clearPoster();

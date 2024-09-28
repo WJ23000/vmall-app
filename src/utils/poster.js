@@ -17,11 +17,6 @@ const createPoster = (data) => {
   // 圆角矩形
   roundedRect(ctx, 0, 0, 304, 412, 12, "#ffffff");
 
-  ctx.drawImage(data.cover, 12, 12, 280, 280);
-
-  // 店铺logo
-  ctx.drawImage(data.storeLogo, 12, 310, 22, 22);
-
   // 店铺名称
   // ctx.setFontSize(16);
   ctx.font = "normal bold 16px arial,sans-serif";
@@ -41,36 +36,42 @@ const createPoster = (data) => {
   ctx.setFillStyle("#E84026");
   ctx.fillText(data.price, 12, 394);
 
-  // 小程序二维码
-  ctx.drawImage(data.qrCode, 231, 338, 60, 60);
   // 必须延迟执行 不然H5和APP不显示
   setTimeout(() => {
+    // 商品封面
+    ctx.drawImage(data.cover, 12, 12, 280, 280);
+    // 店铺logo
+    ctx.drawImage(data.storeLogo, 12, 310, 22, 22);
+    // 小程序二维码
+    ctx.drawImage(data.qrCode, 231, 338, 60, 60);
     ctx.draw(false, () => {
-      uni.canvasToTempFilePath({
-        x: 0,
-        y: 0,
-        width: 304,
-        height: 412,
-        canvasId: "myCanvas",
-        success: function (res) {
-          uni.hideLoading();
-          uni.showToast({
-            icon: "success",
-            mask: true,
-            title: "绘制完成"
-          });
-          const tempFilePath = res.tempFilePath;
-          // 海报本地图片地址存储到缓存
-          setPosterFilePath(tempFilePath);
-        },
-        fail: function (res) {
-          console.log(res);
-          uni.showToast({
-            icon: "error",
-            title: "海报生成失败！"
-          });
-        }
-      });
+      setTimeout(() => {
+        uni.canvasToTempFilePath({
+          x: 0,
+          y: 0,
+          width: 304,
+          height: 412,
+          canvasId: "myCanvas",
+          success: function (res) {
+            uni.hideLoading();
+            uni.showToast({
+              icon: "success",
+              mask: true,
+              title: "绘制完成"
+            });
+            const tempFilePath = res.tempFilePath;
+            // 海报本地图片地址存储到缓存
+            setPosterFilePath(tempFilePath);
+          },
+          fail: function (res) {
+            console.log(res);
+            uni.showToast({
+              icon: "error",
+              title: "海报生成失败！"
+            });
+          }
+        });
+      }, 200);
     });
   }, 0);
 };
