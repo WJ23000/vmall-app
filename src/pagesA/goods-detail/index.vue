@@ -8,8 +8,8 @@ view.andry-goods-detail
         image(:src="backTop > 44 ? returnImage : returnImageWhite" @click="onGoBack")
       <!-- #endif -->
       up-tabs(
-        v-if="backTop > 44" 
-        :list="tabList" 
+        v-if="backTop > 44"
+        :list="tabList"
         :current="current"
         lineWidth="20"
         lineHeight="7"
@@ -34,16 +34,16 @@ view.andry-goods-detail
   view.cell(:style="{marginTop: '-25px'}")
     view.title
       text.type 自营
-      text.sub-title SK-II神仙水160ml精华液双支装sk2护肤品skii化妆品礼盒520情人节礼物	
+      text.sub-title SK-II神仙水160ml精华液双支装sk2护肤品skii化妆品礼盒520情人节礼物
     view.tag 美白 · 提亮肤色 · 白到自发光
     view.rank
       text.type
         text 排行榜
-      view.sub-title 
+      view.sub-title
         view 精华热卖榜 · 第5名
         u-icon(name="arrow-right" size="14" color="#fa3534" :bold="true")
     view.info
-      view.item 
+      view.item
         u-icon(name="share-square" size="22")
         text.item-title 分享
       view.item(@click="onCollect")
@@ -55,7 +55,7 @@ view.andry-goods-detail
         text.item-title 降价通知
   view.cell
     view.cell-option(@click="onCartShow")
-      view.checked 
+      view.checked
         text.option-title 选择
         view.detail
           text.txt 神仙水精华230ml，1.3kg，1件
@@ -90,12 +90,12 @@ view.andry-goods-detail
             u-rate(count="5" size="14" v-model="item.rate")
         view.comment {{ item.evaluate }}
       view.right
-        image(v-for="(record, index) in item.imgList" :src="record" :key="index") 
+        image(v-for="(record, index) in item.imgList" :src="record" :key="index")
   <!-- 暗锚点 -->
   view.dark_anchor(id="recommend")
   view.cell
     view.cell-header
-      view.cell-header-sub-title 
+      view.cell-header-sub-title
         view.cell-header-line
         view 为你推荐
       view.cell-header-other
@@ -107,9 +107,9 @@ view.andry-goods-detail
   view.dark_anchor(id="detail")
   view.detail-cell
     view.cell-header
-      view.cell-header-sub-title 
+      view.cell-header-sub-title
         view.cell-header-line
-        view 详情		
+        view 详情
     Introduce(:introduceList="introduceList")
   view.bottom
     view.bottom-option(@click="onGoBack")
@@ -124,7 +124,7 @@ view.andry-goods-detail
       view.item
         image(src="http://cdn.wjaxx.xyz/tabbar/cart-black.png")
         text 购物车
-    view.button 
+    view.button
       view.left(@click="onCartShow") 加入购物车
       view.right(@click="onPayShow") 立即购买
   Check(
@@ -210,7 +210,7 @@ const evaluateList = ref([
 const introduceList = ref([
   {
     type: "video",
-    url: "http://cdn.wjaxx.xyz/goods/detail.mp4"
+    url: '<video src="http://cdn.wjaxx.xyz/goods/detail.mp4"/>'
   },
   {
     type: "image",
@@ -249,11 +249,12 @@ const specType = ref(1);
 const backTop = ref(0);
 
 onLoad((option) => {
-  console.log("url参数", option);
+  // 富文本内容格式化
+  introduceList.value[0].url = matchRichHtml(introduceList.value[0].url);
   // 初始化小程序和APP状态栏的颜色
   uni.setNavigationBarColor({
-    frontColor: "#ffffff",
-    backgroundColor: "#fa3534"
+    frontColor: "#000000",
+    backgroundColor: "#ffffff"
   });
 });
 
@@ -265,19 +266,15 @@ onMounted(() => {
 // 监听页面滚动(一键置顶，tabs吸顶)
 onPageScroll((e) => {
   console.log("距离", e.scrollTop);
-  // 动态修改小程序和APP状态栏的颜色
-  uni.setNavigationBarColor({
-    frontColor: e.scrollTop > 0 ? "#000000" : "#ffffff",
-    backgroundColor: e.scrollTop > 0 ? "#ffffff" : "#fa3534"
-  });
   backTop.value = e.scrollTop;
   isStatusBar.value = e.scrollTop > 0;
   bgColor.value = e.scrollTop == 0 ? "rgba(255,255,255,0)" : "rgba(255,255,255,1)";
-  if (e.scrollTop >= 0 && e.scrollTop < scrollHeight.value.evaluateHeight) {
+  let top = Math.floor(e.scrollTop)
+  if (top >= 0 && top < scrollHeight.value.evaluateHeight) {
     if (current.value != 0) current.value = 0;
-  } else if (e.scrollTop >= scrollHeight.value.evaluateHeight && e.scrollTop < scrollHeight.value.recommendHeight) {
+  } else if (top >= scrollHeight.value.evaluateHeight && top < scrollHeight.value.recommendHeight) {
     if (current.value != 1) current.value = 1;
-  } else if (e.scrollTop >= scrollHeight.value.recommendHeight && e.scrollTop + 1 < scrollHeight.value.detailHeight) {
+  } else if (top >= scrollHeight.value.recommendHeight && top < scrollHeight.value.detailHeight) {
     if (current.value != 2) current.value = 2;
   } else {
     if (current.value != 3) current.value = 3;
@@ -286,13 +283,13 @@ onPageScroll((e) => {
 
 const initScrollHeight = () => {
   getElementInfoById("evaluate").then((res) => {
-    scrollHeight.value.evaluateHeight = res.top + (backTop.value || 0);
+    scrollHeight.value.evaluateHeight = Math.floor(res.top);
   });
   getElementInfoById("recommend").then((res) => {
-    scrollHeight.value.recommendHeight = res.top + (backTop.value || 0);
+    scrollHeight.value.recommendHeight = Math.floor(res.top);
   });
   getElementInfoById("detail").then((res) => {
-    scrollHeight.value.detailHeight = res.top + (backTop.value || 0);
+    scrollHeight.value.detailHeight = Math.floor(res.top);
   });
 };
 
@@ -397,6 +394,12 @@ const onTab = (item, index) => {
 
 const decimal = (value, type) => {
   return value.split(".")[type];
+};
+
+// 富文本内容格式化
+const matchRichHtml = (data) => {
+  var htmlContent = data.replace(/<video/g, '<video style="width: 100%"');
+  return htmlContent;
 };
 </script>
 
