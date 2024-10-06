@@ -40,8 +40,9 @@ const onScanCode = (e) => {
 
 // 搜索
 const onSearch = () => {
+  console.log("触发了不")
   uni.navigateTo({
-    url: "/pages/packageA/search/search"
+    url: "/pagesA/search/index"
   });
 };
 </script>

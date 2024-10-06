@@ -40,6 +40,7 @@ import { IMG_URL } from "@/config";
 // 服务器图片
 const DetailImg2 = ref(IMG_URL + "/images/detail-img2.png");
 
+const emit = defineEmits(["close", "cart", "pay"]);
 const props = defineProps({
   specifList: [],
   specType: {
@@ -48,7 +49,6 @@ const props = defineProps({
   }
 });
 const current = ref(0);
-const emit = defineEmits(["close", "cart", "pay"]);
 const show = ref(true);
 
 const onCheckSpecif = (item, index) => {

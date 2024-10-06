@@ -47,6 +47,13 @@
           }
         },
         {
+          "path": "search/index",
+          "style": {
+            "navigationBarTitleText": "搜索",
+            "titleNView": false
+          }
+        },
+        {
           "path": "address/index",
           "style": {
             "navigationBarTitleText": "收货地址",
