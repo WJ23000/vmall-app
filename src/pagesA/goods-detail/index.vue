@@ -225,7 +225,7 @@ const evaluateList = ref([
 const introduceList = ref([
   {
     type: "video",
-    url: '<video src="http://cdn.wjaxx.xyz/goods/detail.mp4"/>'
+    url: '<video src="http://cdn.wjaxx.xyz/goods/detail.mp4" controlslist="nodownload"/>'
   },
   {
     type: "image",

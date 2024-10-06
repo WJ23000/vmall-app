@@ -44,7 +44,8 @@
                     "<uses-feature android:name=\"android.hardware.camera\"/>",
                     "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
                 ],
-                "minSdkVersion" : 23
+                "minSdkVersion" : 23,
+                "schemes" : "vmallshopapp"
             },
             /* ios打包配置 */
             "ios" : {
@@ -87,7 +88,8 @@
         "usingComponents" : true
     },
     "mp-alipay" : {
-        "usingComponents" : true
+        "usingComponents" : true,
+        "appid" : "2021003199656458"
     },
     "mp-baidu" : {
         "usingComponents" : true
