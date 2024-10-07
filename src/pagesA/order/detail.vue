@@ -63,7 +63,7 @@ view.vmall-order-detail
 
 <script setup>
 import { IMG_URL } from "@/config";
-import DetailCard from "@/components/order/detail-card.vue";
+import DetailCard from "../components/order/detail-card.vue";
 // 服务器图片
 const IconRightBlue = ref(IMG_URL + "/images/icon-right-blue.png");
 

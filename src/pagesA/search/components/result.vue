@@ -3,7 +3,7 @@ view.vmall-search-result
   view.card(
     v-for="(item,index) in searchList", 
     :key="index",
-		@click="onGoodsClick")
+		@click="onGoodsClick(item)")
     image(:src="item.url")
     view.content
       view.title {{ item.title }}
@@ -28,9 +28,9 @@ onReachBottom(() => {
 });
 
 // 组件点击事件
-const onGoodsClick = () => {
+const onGoodsClick = (item) => {
   uni.navigateTo({
-    url: "/pages/packageA/goodsDetail/goodsDetail?id=1"
+    url: "/pagesA/goods-detail/index?id=" + item.id
   });
 };
 

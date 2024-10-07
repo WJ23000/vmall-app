@@ -15,7 +15,7 @@ view.vmall-order-logistics
 </template>
 
 <script setup>
-import OrderLogistics from "@/components/order/logistics.vue";
+import OrderLogistics from "../components/order/logistics.vue";
 
 const logisticsInfo = ref();
 

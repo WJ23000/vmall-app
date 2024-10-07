@@ -45,7 +45,7 @@ view.vmall-order-list.flex.column
 </template>
 
 <script setup>
-import OrderCard from "@/components/order/card.vue";
+import OrderCard from "../components/order/card.vue";
 import Empty from "@/components/empty.vue";
 import { ORDER_GOODS_DATA } from "@/model";
 const EmptyImage = ref("http://cdn.wjaxx.xyz/empty/normal.png");

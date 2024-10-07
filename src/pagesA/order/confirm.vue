@@ -66,10 +66,10 @@ view.vmall-order-confirm
 <script setup>
 import { IMG_URL } from "@/config";
 import ShopCard from "@/components/shop/card.vue";
-import IdCard from "@/components/order/idcard.vue";
-import Notify from "@/components/order/notify.vue";
-import Contract from "@/components/order/contract.vue";
-import WriteIdCard from "@/components/order/write-idcard.vue";
+import IdCard from "../components/order/idcard.vue";
+import Notify from "../components/order/notify.vue";
+import Contract from "../components/order/contract.vue";
+import WriteIdCard from "../components/order/write-idcard.vue";
 
 // 服务器图片
 const IconRight = ref(IMG_URL + "/images/icon-right.png");

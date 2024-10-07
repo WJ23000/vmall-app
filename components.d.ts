@@ -9,17 +9,12 @@ declare module 'vue' {
   export interface GlobalComponents {
     BackTop: typeof import('./src/components/back-top.vue')['default']
     Banner: typeof import('./src/components/banner.vue')['default']
-    Card: typeof import('./src/components/order/card.vue')['default']
+    Card: typeof import('./src/components/shop/card.vue')['default']
     Cart: typeof import('./src/components/cart.vue')['default']
     Check: typeof import('./src/components/shop/check.vue')['default']
-    Contract: typeof import('./src/components/order/contract.vue')['default']
     Declare: typeof import('./src/components/shop/declare.vue')['default']
-    DetailCard: typeof import('./src/components/order/detail-card.vue')['default']
     Empty: typeof import('./src/components/empty.vue')['default']
     FixedSearch: typeof import('./src/components/search/fixed-search.vue')['default']
-    Idcard: typeof import('./src/components/order/idcard.vue')['default']
-    Logistics: typeof import('./src/components/order/logistics.vue')['default']
-    Notify: typeof import('./src/components/order/notify.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Search: typeof import('./src/components/search/search.vue')['default']
@@ -27,6 +22,5 @@ declare module 'vue' {
     StatusBar: typeof import('./src/components/status-bar.vue')['default']
     StickyTabs: typeof import('./src/components/sticky-tabs.vue')['default']
     Waterfall: typeof import('./src/components/waterfall.vue')['default']
-    WriteIdcard: typeof import('./src/components/order/write-idcard.vue')['default']
   }
 }
