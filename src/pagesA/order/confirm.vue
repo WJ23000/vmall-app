@@ -1,6 +1,6 @@
 <template lang="pug">
 view.vmall-order-confirm
-  view.container.pb-150
+  view.container
     view.address.flex.justify-start.items-center.my-24.px-32.py-60.bg-white(v-if="address.id" @click="onCheckAddress")
       view.flex1
         view.flex.f-32-B
@@ -344,6 +344,9 @@ page {
 </style>
 <style lang="scss" scoped>
 .vmall-order-confirm {
+  .container {
+    padding-bottom: 150rpx;
+  }
   .tip-text {
     color: #909193;
     vertical-align: middle;

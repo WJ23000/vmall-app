@@ -1,6 +1,6 @@
 <template lang="pug">
 view.vmall-order-detail
-  view.container.pb-160
+  view.container
     //- 订单状态
     view.status.my-24.px-32.py-28.bg-white
       view.flex.justify-between.items-center(v-if="orderInfo.status === 10")
@@ -241,6 +241,9 @@ page {
 </style>
 <style lang="scss" scoped>
 .vmall-order-detail {
+  .container {
+    padding-bottom: 160rpx;
+  }
   .icon-right {
     width: 48rpx;
     height: 48rpx;

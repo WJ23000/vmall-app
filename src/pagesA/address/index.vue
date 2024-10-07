@@ -8,7 +8,7 @@
 -->
 <template lang="pug">
 view.vmall-address
-  view.container.pb-150(v-if="addressList.length > 0")
+  view.container(v-if="addressList.length > 0")
     view.list.mt-20.mx-20.px-20.py-20(v-for="(item, index) in addressList" :key="index" @click.stop="onCheckAddress(item)")
       view.cell.pb-20
         view.flex.justify-between.mb-16.f-28-B
@@ -166,6 +166,9 @@ page {
 </style>
 <style lang="scss" scoped>
 .vmall-address {
+  .container {
+    padding-bottom: 150rpx;
+  }
   .list {
     background: #ffffff;
     border-radius: 12px;
