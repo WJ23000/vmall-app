@@ -46,6 +46,7 @@ view.vmall-cart
 
 <script setup>
 import { random, guid } from "uview-plus";
+import { IMG_URL } from "@/config";
 import StatusBar from "@/components/status-bar.vue";
 import Cart from "@/components/cart.vue";
 import Waterfall from "@/components/waterfall.vue";
@@ -59,9 +60,9 @@ const CheckAll = ref(false);
 const goodsCount = ref(0);
 const deleteCount = ref(0);
 const showBottom = ref(false);
-const IconXz = ref("http://cdn.wjaxx.xyz/cart/check-xz.png");
-const IconWxz = ref("http://cdn.wjaxx.xyz/cart/check-wxz.png");
-const EmptyImage = ref("http://cdn.wjaxx.xyz/empty/cart.png");
+const IconXz = ref(IMG_URL + "/cart/check-xz.png");
+const IconWxz = ref(IMG_URL + "/cart/check-wxz.png");
+const EmptyImage = ref(IMG_URL + "/empty/cart.png");
 const emptyInfo = ref({
   image: EmptyImage,
   width: 300,
@@ -179,7 +180,7 @@ const onCancel = () => {
 const onPayOrder = () => {
   if (goodsCount.value > 0) {
     uni.navigateTo({ url: "/pagesA/order/confirm" });
-  }else{
+  } else {
     uni.showToast({
       title: "您还没有选择商品哦",
       icon: "none",

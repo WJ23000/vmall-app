@@ -1,11 +1,3 @@
-<!--
- * @Author: 汪军 624473119@qq.com
- * @Date: 2023-10-22 13:13:43
- * @LastEditors: 汪军 624473119@qq.com
- * @LastEditTime: 2023-12-13 10:39:44
- * @FilePath: \app-formwork\src\pages\login\index.vue
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 <template lang="pug">
   view.cart-card.px-20
     up-swipe-action
@@ -42,9 +34,10 @@
   </template>
 
 <script setup>
-import Shop from "@/static/shop.png";
-const CheckXz = ref("http://cdn.wjaxx.xyz/cart/check-xz.png");
-const CheckWxz = ref("http://cdn.wjaxx.xyz/cart/check-wxz.png");
+import { IMG_URL } from "@/config";
+
+const CheckXz = ref(IMG_URL + "/cart/check-xz.png");
+const CheckWxz = ref(IMG_URL + "/cart/check-wxz.png");
 
 const emit = defineEmits(["delete", "select", "minus", "add"]);
 const props = defineProps({

@@ -2,38 +2,38 @@
 view.vmall-search-tab
 	view.tab
 		view.item(
-			v-for="(item, index) in tabList",
-			:key="index",
-			:class="tabActive == item ? 'active' : ''",
+			v-for="(item, index) in tabList"
+			:key="index"
+			:class="tabActive == item ? 'active' : ''"
 			@click="onTabItem(item)") 
 			view 
 				text {{ item }}
 				text(
-					v-if="item == '综合推荐' || item == '好评'", 
+					v-if="item == '综合推荐' || item == '好评'"
 					:class="recommendSort ? 'arrow-up' : 'arrow-down'")
 				text(
-					v-if="item == '价格'", 
+					v-if="item == '价格'"
 					:class="priceSort ? 'arrow-up' : 'arrow-down'")
 	//- 综合推荐遮罩层
-	up-overlay(:show="maskShow", :z-index="10050", @click="maskShow = false")
+	up-overlay(:show="maskShow" :z-index="10050" @click="maskShow = false")
 	//- 综合推荐面板
-	view.recommend-content(v-if="maskShow && (tabActive == '综合推荐' || tabActive == '好评')", @tap.stop)
+	view.recommend-content(v-if="maskShow && (tabActive == '综合推荐' || tabActive == '好评')" @tap.stop)
 		view.recommend.flex(
-			v-for="(item,index) in panelDataList", 
-			:key="index",
-			:class="recommendActive == item.name ? 'recommend-active' : ''",
+			v-for="(item, index) in panelDataList"
+			:key="index"
+			:class="recommendActive == item.name ? 'recommend-active' : ''"
 			@click="onPanelItem(item.name)")
 			text.recommend-check(v-if="recommendActive == item.name") √
 			text {{ item.name }}
 	//- 筛选遮罩层
 	up-popup(
-		:show="popupShow", 
-		mode="right",
-		zIndex="10090",
-		:overlay="true",
-		:closeOnClickOverlay="true",
+		:show="popupShow"
+		mode="right"
+		zIndex="10090"
+		:overlay="true"
+		:closeOnClickOverlay="true"
     :safeAreaInsetTop="true"
-		@close="closePopup",
+		@close="closePopup"
 		@open="openPopup")
 		//- 筛选面板
 		view.retrieval-content
@@ -42,73 +42,73 @@ view.vmall-search-tab
 				view.retrieval-title 服务/折扣
 				view.retrieval-list
 					view.item(
-						v-for="(item, index) in serviceList",
-						:key="index",
-						:class="item.checked ? 'retrieval-active' : ''",
+						v-for="(item, index) in serviceList"
+						:key="index"
+						:class="item.checked ? 'retrieval-active' : ''"
 						@click="onServiceCheck(index, item.checked)") {{ item.name }}
 			up-gap.retrieval-gap(height="10" bgColor="#ededed")
 			view.retrieval-price-range
 				view.retrieval-title 价格区间
 				view.content
 					up-input.input(
-						placeholder="最低价",
-						border="surround",
-						shape="circle",
-						fontSize="12px",
-						type="number",
+						placeholder="最低价"
+						border="surround"
+						shape="circle"
+						fontSize="12px"
+						type="number"
 						v-model="lowestPrice")
 					text.interval —
 					up-input.input(
-						placeholder="最高价",
-						border="surround",
-						shape="circle",
-						fontSize="12px",
-						type="number",
+						placeholder="最高价"
+						border="surround"
+						shape="circle"
+						fontSize="12px"
+						type="number"
 						v-model="highestPrice")
 			up-gap.retrieval-gap(height="10" bgColor="#ededed")
 			view.retrieval-content-item
 				view.retrieval-title 品牌
 				view.retrieval-list
 					view.item(
-						v-for="(item, index) in brandList",
-						:key="index",
-						:class="item.checked ? 'retrieval-active' : ''",
+						v-for="(item, index) in brandList"
+						:key="index"
+						:class="item.checked ? 'retrieval-active' : ''"
 						@click="onBrandCheck(index, item.checked)") {{ item.name }}
 			up-gap.retrieval-gap(height="10" bgColor="#ededed")
 			view.retrieval-content-item
 				view.retrieval-title 发货地
 				view.retrieval-list
 					view.item(
-						v-for="(item, index) in addressList",
-						:key="index",
-						:class="item.checked ? 'retrieval-active' : ''",
+						v-for="(item, index) in addressList"
+						:key="index"
+						:class="item.checked ? 'retrieval-active' : ''"
 						@click="onAddressCheck(index, item.checked)") {{ item.name }}
 			up-gap.retrieval-gap(height="10" bgColor="#ededed")
 			view.retrieval-content-item
 				view.retrieval-title 适合肤质
 				view.retrieval-list
 					view.item(
-						v-for="(item, index) in skinList",
-						:key="index",
-						:class="item.checked ? 'retrieval-active' : ''",
+						v-for="(item, index) in skinList"
+						:key="index"
+						:class="item.checked ? 'retrieval-active' : ''"
 						@click="onSkinCheck(index, item.checked)") {{ item.name }}
 			up-gap.retrieval-gap(height="10" bgColor="#ededed")
 			view.retrieval-content-item
 				view.retrieval-title 适用人群
 				view.retrieval-list
 					view.item(
-						v-for="(item, index) in crowdList",
-						:key="index",
-						:class="item.checked ? 'retrieval-active' : ''",
+						v-for="(item, index) in crowdList"
+						:key="index"
+						:class="item.checked ? 'retrieval-active' : ''"
 						@click="onCrowdCheck(index, item.checked)") {{ item.name }}
 			up-gap.retrieval-gap(height="10" bgColor="#ededed")
 			view.retrieval-content-item
 				view.retrieval-title 类别
 				view.retrieval-list
 					view.item(
-						v-for="(item, index) in categoryList",
-						:key="index",
-						:class="item.checked ? 'retrieval-active' : ''",
+						v-for="(item, index) in categoryList"
+						:key="index"
+						:class="item.checked ? 'retrieval-active' : ''"
 						@click="onCategoryCheck(index, item.checked)") {{ item.name }}
 		//- 筛选确认
 		view.retrieval-btn

@@ -125,7 +125,7 @@ onLoad((options) => {
     type: options.type,
     spec: {
       store_name: "大黑店铺",
-      image: "http://cdn.wjaxx.xyz/goods/img.jpg",
+      image: IMG_URL + "/goods/img.jpg",
       shop_name: "sk-ii sk2神仙水小灯泡精华大红瓶面霜套装",
       name: "蓝色",
       price: "1540.5"
@@ -142,9 +142,9 @@ onLoad((options) => {
     // };
     orderInfo.value.spec = {
       store_name: "大黑店铺",
-      image: "http://cdn.wjaxx.xyz/goods/img.jpg",
+      image: IMG_URL + "/goods/img.jpg",
       shop_name: "sk-ii sk2神仙水小灯泡精华大红瓶面霜套装",
-      name: "http://cdn.wjaxx.xyz/goods/img.jpg",
+      name: IMG_URL + "/goods/img.jpg",
       price: "1540.5"
     };
   }

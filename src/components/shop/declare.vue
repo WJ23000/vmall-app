@@ -24,7 +24,6 @@ view.shop-declare
 const emit = defineEmits(["close", "confirm"]);
 const show = ref(true);
 
-
 const onClose = () => {
   emit("close");
 };

@@ -28,10 +28,10 @@ view.order-card.mx-20.mt-24
 </template>
 
 <script setup>
+const emit = defineEmits(["delete", "logistics", "detail", "pay"]);
 const props = defineProps({
   item: {}
 });
-const emit = defineEmits(["delete", "logistics", "detail", "pay"]);
 
 // 删除订单
 const onDeleteOrder = (item) => {
@@ -39,7 +39,7 @@ const onDeleteOrder = (item) => {
 };
 
 // 查看物流
-const onOrderLogistics= (item) => {
+const onOrderLogistics = (item) => {
   emit("logistics", item.id);
 };
 

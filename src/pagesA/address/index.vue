@@ -41,12 +41,13 @@ view.vmall-address
 </template>
 
 <script setup>
+import { IMG_URL } from "@/config";
 import Empty from "@/components/empty.vue";
 import { ADDRESS_DATA } from "@/model";
 
-const AddressXz = ref("http://cdn.wjaxx.xyz/cart/check-xz.png");
-const AddressWxz = ref("http://cdn.wjaxx.xyz/cart/check-wxz.png");
-const EmptyImage = ref("http://cdn.wjaxx.xyz/empty/normal.png");
+const AddressXz = ref(IMG_URL + "/cart/check-xz.png");
+const AddressWxz = ref(IMG_URL + "/cart/check-wxz.png");
+const EmptyImage = ref(IMG_URL + "/empty/normal.png");
 const addressList = ref([]);
 const pageParam = ref({
   page: 1,

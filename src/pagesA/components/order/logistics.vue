@@ -15,8 +15,6 @@ view.order-logistics.px-32.py-32.bg-white
 </template>
 
 <script setup>
-import { IMG_URL } from "@/config";
-
 const props = defineProps({
   item: {}
 });

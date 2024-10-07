@@ -1,3 +1,5 @@
+import { IMG_URL } from "@/config";
+
 export const ORDER_GOODS_DATA = [
   {
     id: 1,
@@ -9,8 +11,8 @@ export const ORDER_GOODS_DATA = [
     specif: "自营",
     quantity: 2,
     sell: 101,
-    url: "http://cdn.wjaxx.xyz/goods/img.jpg",
-    goods_spec_image: "http://cdn.wjaxx.xyz/goods/img.jpg",
+    url: IMG_URL + "/goods/img.jpg",
+    goods_spec_image: IMG_URL + "/goods/img.jpg",
     status: 10
   },
   {
@@ -23,8 +25,8 @@ export const ORDER_GOODS_DATA = [
     specif: "旗舰店",
     quantity: 1,
     sell: 102,
-    url: "http://cdn.wjaxx.xyz/goods/img2.jpg",
-    goods_spec_image: "http://cdn.wjaxx.xyz/goods/img.jpg",
+    url: IMG_URL + "/goods/img2.jpg",
+    goods_spec_image: IMG_URL + "/goods/img.jpg",
     status: 20
   },
   {
@@ -32,13 +34,13 @@ export const ORDER_GOODS_DATA = [
     order_no: "20240002458289",
     title: "官方正品TOMFORD RosePrick 玫瑰花香调",
     goods_spec_name: "套装",
-    price: 169.00,
-    total_price: 169.00,
+    price: 169.0,
+    total_price: 169.0,
     specif: "自营",
     quantity: 2,
     sell: 101,
-    url: "http://cdn.wjaxx.xyz/goods/img3.jpg",
-    goods_spec_image: "http://cdn.wjaxx.xyz/goods/img3.jpg",
+    url: IMG_URL + "/goods/img3.jpg",
+    goods_spec_image: IMG_URL + "/goods/img3.jpg",
     status: 30
   },
   {
@@ -46,13 +48,13 @@ export const ORDER_GOODS_DATA = [
     order_no: "20241102375610",
     title: "海蓝之谜鎏光焕变粉底液保湿遮瑕防晒",
     goods_spec_name: "秋款",
-    price: 350.00,
-    total_price: 350.00,
+    price: 350.0,
+    total_price: 350.0,
     specif: "旗舰店",
     quantity: 1,
     sell: 102,
-    url: "http://cdn.wjaxx.xyz/goods/img5.jpg",
-    goods_spec_image: "http://cdn.wjaxx.xyz/goods/img5.jpg",
+    url: IMG_URL + "/goods/img5.jpg",
+    goods_spec_image: IMG_URL + "/goods/img5.jpg",
     status: 50
   },
   {
@@ -60,14 +62,13 @@ export const ORDER_GOODS_DATA = [
     order_no: "20242030355671",
     title: "雅诗兰黛 缪斯淡香氛香水女士持久淡茉莉香",
     goods_spec_name: "套装",
-    price: 509.00,
-    total_price: 509.00,
+    price: 509.0,
+    total_price: 509.0,
     specif: "自营",
     quantity: 2,
     sell: 101,
-    url: "http://cdn.wjaxx.xyz/goods/img8.jpg",
-    goods_spec_image: "http://cdn.wjaxx.xyz/goods/img8.jpg",
+    url: IMG_URL + "/goods/img8.jpg",
+    goods_spec_image: IMG_URL + "/goods/img8.jpg",
     status: 51
   }
 ];
-

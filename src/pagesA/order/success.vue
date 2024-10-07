@@ -12,7 +12,7 @@ view.vmall-order-success.flex.column.justify-center.items-center
 <script setup>
 import { IMG_URL } from "@/config";
 
-const PaySuccess = ref("http://cdn.wjaxx.xyz/pay-success.png");
+const PaySuccess = ref(IMG_URL + "/pay-success.png");
 
 // 查看订单
 const onQueryOrder = () => {

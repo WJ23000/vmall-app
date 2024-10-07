@@ -96,7 +96,7 @@ onLoad((options) => {
       quantity: 2,
       total_price: 1590.5,
       goods_name: "sk-ii sk2神仙水小灯泡精华大红瓶面霜套装",
-      goods_spec_image: "http://cdn.wjaxx.xyz/goods/img.jpg"
+      goods_spec_image: IMG_URL + "/goods/img.jpg"
     },
     createtime: "2024-09-20 09:35:21",
     pay_time: "2024-09-20 09:35:21",
@@ -126,7 +126,7 @@ const getOrderDetail = (id) => {
 
 // 查看物流
 const onOrderLogistics = () => {
-  console.log("触发")
+  console.log("触发");
   uni.navigateTo({ url: "/pagesA/order/logistics?id=" + orderInfo.value.id });
 };
 

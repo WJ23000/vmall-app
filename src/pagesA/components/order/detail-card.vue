@@ -19,10 +19,7 @@ view.detail-card.px-32.py-32.bg-white
 </template>
 
 <script setup>
-import { IMG_URL } from "@/config";
 import copyContent from "@/utils/copy";
-// 服务器图片
-// import Shop from "@/static/images/shop.png";
 
 const props = defineProps({
   item: {}

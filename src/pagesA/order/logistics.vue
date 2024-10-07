@@ -15,6 +15,7 @@ view.vmall-order-logistics
 </template>
 
 <script setup>
+import { IMG_URL } from "@/config";
 import OrderLogistics from "../components/order/logistics.vue";
 
 const logisticsInfo = ref();
@@ -22,7 +23,7 @@ const logisticsInfo = ref();
 onLoad((options) => {
   // getOrderLogistics(options.id);
   logisticsInfo.value = {
-    goods_spec_image: "http://cdn.wjaxx.xyz/goods/img.jpg",
+    goods_spec_image: IMG_URL + "/goods/img.jpg",
     order_no: "20240002356689",
     express_company: "顺丰快递",
     express_no: "2324552378569",

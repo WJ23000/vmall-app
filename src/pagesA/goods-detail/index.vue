@@ -147,6 +147,7 @@ view.andry-goods-detail
 
 <script setup>
 import { getCurrentInstance } from "vue";
+import { IMG_URL } from "@/config";
 import StatusBar from "@/components/status-bar.vue";
 import Banner from "./components/banner.vue";
 import Recommend from "./components/recommend.vue";
@@ -162,12 +163,12 @@ import Shop from "@/static/shop.png";
 import Cover from "@/static/img.jpg";
 import QrCode from "@/static/qrcode.jpg";
 
-const returnImage = ref("http://cdn.wjaxx.xyz/return.png");
-const returnImageWhite = ref("http://cdn.wjaxx.xyz/return-white.png");
-const starImage = ref("http://cdn.wjaxx.xyz/star.png");
-const starImageWhite = ref("http://cdn.wjaxx.xyz/star-white.png");
-const shareImage = ref("http://cdn.wjaxx.xyz/share.png");
-const shareImageWhite = ref("http://cdn.wjaxx.xyz/share-white.png");
+const returnImage = ref(IMG_URL + "/return.png");
+const returnImageWhite = ref(IMG_URL + "/return-white.png");
+const starImage = ref(IMG_URL + "/star.png");
+const starImageWhite = ref(IMG_URL + "/star-white.png");
+const shareImage = ref(IMG_URL + "/share.png");
+const shareImageWhite = ref(IMG_URL + "/share-white.png");
 const instance = getCurrentInstance();
 const isStatusBar = ref(false);
 const bannerList = ref(GOODS_BANNER_DATA);
@@ -216,10 +217,10 @@ const current = ref(0);
 const evaluateList = ref([
   {
     userName: "wj23000",
-    userImage: "http://cdn.wjaxx.xyz/mine/user.png",
+    userImage: IMG_URL + "/mine/user.png",
     evaluate: "皮肤吸收特别快，不会出现粘腻的感觉，给人非常舒适的感觉，这一年皮肤越来越好，自然健康越来越自信",
     rate: 4,
-    imgList: ["http://cdn.wjaxx.xyz/goods/img.jpg"]
+    imgList: [IMG_URL + "/goods/img.jpg"]
   }
 ]);
 const introduceList = ref([
@@ -242,7 +243,7 @@ const specifList = ref([
     specif: "自营",
     quantity: 1,
     sell: 101,
-    image: "http://cdn.wjaxx.xyz/goods/img.jpg",
+    image: IMG_URL + "/goods/img.jpg",
     stock: 80,
     checked: false
   },
@@ -253,7 +254,7 @@ const specifList = ref([
     specif: "旗舰店",
     quantity: 2,
     sell: 102,
-    image: "http://cdn.wjaxx.xyz/goods/img2.jpg",
+    image: IMG_URL + "/goods/img2.jpg",
     stock: 100,
     checked: false
   }

@@ -1,3 +1,5 @@
+import { IMG_URL } from "@/config";
+
 export const CART_GOODS_DATA = [
   {
     id: 1,
@@ -6,7 +8,7 @@ export const CART_GOODS_DATA = [
     specif: "自营",
     quantity: 1,
     sell: 101,
-    url: "http://cdn.wjaxx.xyz/goods/img.jpg",
+    url: IMG_URL + "/goods/img.jpg",
     selected: false
   },
   {
@@ -16,7 +18,7 @@ export const CART_GOODS_DATA = [
     specif: "旗舰店",
     quantity: 2,
     sell: 102,
-    url: "http://cdn.wjaxx.xyz/goods/img2.jpg",
+    url: IMG_URL + "/goods/img2.jpg",
     selected: false
   }
 ];

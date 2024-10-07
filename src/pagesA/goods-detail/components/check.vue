@@ -1,11 +1,3 @@
-<!--
- * @Author: 汪军 624473119@qq.com
- * @Date: 2023-10-22 13:13:43
- * @LastEditors: 汪军 624473119@qq.com
- * @LastEditTime: 2023-11-28 10:02:33
- * @FilePath: \app-formwork\src\pages\login\index.vue
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 <template lang="pug">
 view.shop-check
   up-popup(:show="show" :closeable="true" @close="onClose")
@@ -36,10 +28,6 @@ view.shop-check
 </template>
 
 <script setup>
-import { IMG_URL } from "@/config";
-// 服务器图片
-const DetailImg2 = ref(IMG_URL + "/images/detail-img2.png");
-
 const emit = defineEmits(["close", "cart", "pay"]);
 const props = defineProps({
   specifList: [],

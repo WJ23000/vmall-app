@@ -62,6 +62,7 @@ view.vmall-my
 
 <script setup>
 import { random, guid } from "uview-plus";
+import { IMG_URL } from "@/config";
 import StatusBar from "@/components/status-bar.vue";
 import Waterfall from "@/components/waterfall.vue";
 import BackTop from "@/components/back-top.vue";
@@ -71,8 +72,8 @@ const isStatusBar = ref(false);
 const navbarColor = ref("rgba(0, 0, 0, 0)");
 const isNavbarShow = ref(false);
 const userInfo = ref({
-  userImage: "http://cdn.wjaxx.xyz/mine/user.png",
-  noUserImage: "http://cdn.wjaxx.xyz/user-mr.png",
+  userImage: IMG_URL + "/mine/user.png",
+  noUserImage: IMG_URL + "/user-mr.png",
   username: "Baymax",
   phone: "180XXXX9388"
 });

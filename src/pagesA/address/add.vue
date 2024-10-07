@@ -52,8 +52,10 @@ view.vmall-address-add
 </template>
 
 <script setup>
-const AddressXz = ref("http://cdn.wjaxx.xyz/cart/check-xz.png");
-const AddressWxz = ref("http://cdn.wjaxx.xyz/cart/check-wxz.png");
+import { IMG_URL } from "@/config";
+
+const AddressXz = ref(IMG_URL + "/cart/check-xz.png");
+const AddressWxz = ref(IMG_URL + "/cart/check-wxz.png");
 const province = ref("北京市");
 const city = ref("北京市");
 const area = ref("东城区");

@@ -45,10 +45,11 @@ view.vmall-order-list.flex.column
 </template>
 
 <script setup>
+import { IMG_URL } from "@/config";
 import OrderCard from "../components/order/card.vue";
 import Empty from "@/components/empty.vue";
 import { ORDER_GOODS_DATA } from "@/model";
-const EmptyImage = ref("http://cdn.wjaxx.xyz/empty/normal.png");
+const EmptyImage = ref(IMG_URL + "/empty/normal.png");
 
 const keyword = ref("");
 const current = ref(0);
