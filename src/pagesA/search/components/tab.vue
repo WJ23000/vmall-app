@@ -32,6 +32,7 @@ view.vmall-search-tab
 		zIndex="10090",
 		:overlay="true",
 		:closeOnClickOverlay="true",
+    :safeAreaInsetTop="true"
 		@close="closePopup",
 		@open="openPopup")
 		//- 筛选面板
@@ -492,7 +493,7 @@ const onConfirm = () => {
     display: flex;
     flex-direction: column;
     width: 80vw;
-    height: 92vh;
+    height: calc(92vh - var(--status-bar-height));
     overflow-y: scroll;
   }
 
