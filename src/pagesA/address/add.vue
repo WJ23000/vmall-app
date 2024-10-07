@@ -33,7 +33,7 @@ view.vmall-address-add
           @click="onAreaShow")
       view.cell
         view.title.mr-12 详细地址
-        u--textarea(v-model="form.address" placeholder="请输入详细地址" height="35")
+        up-textarea(v-model="form.address" placeholder="请输入详细地址" height="35")
   view.btn-fixed.flex.column.justify-center.items-center.px-32.py-20
     view.mb-24(@click="onCheckDefault")
       image.icon-width.mr-20(v-if="form.is_default == 2" :src="AddressXz")

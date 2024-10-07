@@ -23,7 +23,7 @@ view.andry-goods-detail
     view.right-option
       view.right-image(:class="{resetImage: backTop < 44}" @click="onCollect")
         image(v-if="!isCollect" :src="backTop > 44 ? starImage : starImageWhite")
-        u-icon(v-else name="star-fill" size="22" color="#fa3534")
+        up-icon(v-else name="star-fill" size="22" color="#fa3534")
       view.right-image(:class="{resetImage: backTop < 44}" @click="onCreatePoster")
         image(:src="backTop > 44 ? shareImage : shareImageWhite")
   Banner(id="goods" :bannerList="bannerList")
@@ -43,17 +43,17 @@ view.andry-goods-detail
         text 排行榜
       view.sub-title
         view 精华热卖榜 · 第5名
-        u-icon(name="arrow-right" size="14" color="#fa3534" :bold="true")
+        up-icon(name="arrow-right" size="14" color="#fa3534" :bold="true")
     view.info
       view.item(@click="onCreatePoster")
-        u-icon(name="share-square" size="22")
+        up-icon(name="share-square" size="22")
         text.item-title 分享
       view.item(@click="onCollect")
-        u-icon(v-if="!isCollect" name="star" size="22")
-        u-icon(v-else name="star-fill" size="22" color="#fa3534")
+        up-icon(v-if="!isCollect" name="star" size="22")
+        up-icon(v-else name="star-fill" size="22" color="#fa3534")
         text.item-title 收藏
       view.item
-        u-icon(name="rmb-circle" size="22")
+        up-icon(name="rmb-circle" size="22")
         text.item-title 降价通知
   view.cell
     view.cell-option(@click="onCartShow")
@@ -61,20 +61,20 @@ view.andry-goods-detail
         text.option-title 选择
         view.detail
           text.txt 神仙水精华230ml，1.3kg，1件
-          u-icon(name="arrow-right" size="14" :bold="true")
+          up-icon(name="arrow-right" size="14" :bold="true")
     view.cell-option
       view.address
         text.option-title 送至
         view.detail
-          u-icon(name="map" size="14" color="#fa3534" :bold="true")
+          up-icon(name="map" size="14" color="#fa3534" :bold="true")
           text.txt 浙江省杭州市西湖区留下街道石马社区91号楼
-          u-icon(name="arrow-right" size="14" :bold="true")
+          up-icon(name="arrow-right" size="14" :bold="true")
     view.cell-option
       view.service
         text.option-title 服务
         view.service-detail
           view 破损包退 · 极速退款 · 7天无理由退换
-          u-icon(name="arrow-right" size="14" color="#fa3534" :bold="true")
+          up-icon(name="arrow-right" size="14" color="#fa3534" :bold="true")
   <!-- 暗锚点 -->
   view.dark_anchor(id="evaluate")
   view.cell
@@ -82,14 +82,14 @@ view.andry-goods-detail
       view.cell-header-title 评价(8万+)
       view.cell-header-other
         text 好评率 90%
-        u-icon(name="arrow-right" size="14" :bold="true")
+        up-icon(name="arrow-right" size="14" :bold="true")
     view.evaluate-cell(v-for="(item, index) in evaluateList" :key="index")
       view.left.mr-20
         view.user
           image(:src="item.userImage")
           view
             text {{ item.userName }}
-            u-rate(count="5" size="14" v-model="item.rate")
+            up-rate(count="5" size="14" v-model="item.rate")
         view.comment {{ item.evaluate }}
       view.right
         image(v-for="(record, index) in item.imgList" :src="record" :key="index")
@@ -102,7 +102,7 @@ view.andry-goods-detail
         view 为你推荐
       view.cell-header-other
         text 查看全部
-        u-icon(name="arrow-right" size="14" :bold="true")
+        up-icon(name="arrow-right" size="14" :bold="true")
     view.recommend-cell
       Recommend(:recommendList="recommendList")
   <!-- 暗锚点 -->
@@ -137,7 +137,7 @@ view.andry-goods-detail
     @cart="onCartGoods"
     @pay="onPayGoods")
   //- 海报
-  u-overlay(:show="overlayShow" @click="onOverlayShow")
+  up-overlay(:show="overlayShow" @click="onOverlayShow")
     view.poster-container.flex.column.justify-center.items-center.px-72
       canvas(canvas-id="myCanvas" :style="{ width: '304px', height: '412px' }")
       view.flex.column.justify-center.items-center.mt-28

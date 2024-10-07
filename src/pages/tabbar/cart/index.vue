@@ -39,7 +39,7 @@ view.vmall-cart
       Empty(:emptyInfo="emptyInfo")
   //- 为您推荐
   view.wrap
-    u-divider(text="为您推荐")
+    up-divider(text="为您推荐")
     Waterfall(ref="waterfallRef" :loadStatus="loadStatus" :flowList.sync="flowList" @addRandomData="addRandomData")
     BackTop(:backTop="backTop")
 </template>

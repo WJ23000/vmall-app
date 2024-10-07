@@ -24,7 +24,7 @@ view.register
       border="surround"
       v-model="form.captcha")
       template(#suffix)
-        u-code(
+        up-code(
           ref="uCodeRef"
           :seconds="seconds"
           startText="发送验证码"

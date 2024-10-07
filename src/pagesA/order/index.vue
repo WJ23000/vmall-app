@@ -2,9 +2,9 @@
 view.vmall-order-list.flex.column
   view.header.px-24.pt-16
     view.flex.justify-between.py-20
-      u-search(placeholder="输入商品名称、订单编号搜索" v-model="keyword" :show-action="false" @clear="onClearSearch" clearabled)
+      up-search(placeholder="输入商品名称、订单编号搜索" v-model="keyword" :show-action="false" @clear="onClearSearch" clearabled)
       view.search-btn.tc.ml-16.f-28(@click="onSearch") 搜索
-    u-tabs(
+    up-tabs(
       :list="tabList"
       :current="current"
       lineColor="#fa3534"

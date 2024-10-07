@@ -8,7 +8,7 @@
 -->
 <template lang="pug">
 view.idcard-explain
-  u-modal.custom-modal(:show="show" :showConfirmButton="false" width="692rpx")
+  up-modal.custom-modal(:show="show" :showConfirmButton="false" width="692rpx")
     view.slot-content.px-40
       view.flex.justify-center.f-36-B 为什么要上传身份信息
       view.mt-32.f-28 请你务必正确填写身份信息，以确保你购物的商品顺利通过海关检查。

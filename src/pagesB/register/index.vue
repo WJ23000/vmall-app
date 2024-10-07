@@ -30,7 +30,7 @@ view.register
       border="surround"
       v-model="form.captcha")
       template(#suffix)
-        u-code(
+        up-code(
           ref="uCodeRef"
           :seconds="seconds"
           startText="发送验证码"
@@ -45,7 +45,7 @@ view.register
       text.tip-text(@click.stop="onAgreement(1)") 《用户协议》
       text.tip-text(@click.stop="onAgreement(2)") 《隐私政策》
   //- 注册提示
-  u-overlay(:show="overlayShow" @click="overlayShow = false")
+  up-overlay(:show="overlayShow" @click="overlayShow = false")
     view.overlay-container.flex.column.justify-center.items-center.px-72
       view.overlay-main.flex.column.px-40.py-48.bg-white.f-28
         text {{ tipInfo.title }}

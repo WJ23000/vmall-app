@@ -8,7 +8,7 @@
 -->
 <template lang="pug">
 view.shop-check
-  u-popup(:show="show" :closeable="true" @close="onClose")
+  up-popup(:show="show" :closeable="true" @close="onClose")
     view.px-32
       view.flex.justify-start.mt-108
         image.shop-img.mr-28(:src="specifList[current].image")

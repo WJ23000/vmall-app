@@ -1,6 +1,6 @@
 <template lang="pug">
 view.banner
-	u-swiper(
+	up-swiper(
 		:list="bannerList",
 		keyName="image",
 		height="375",

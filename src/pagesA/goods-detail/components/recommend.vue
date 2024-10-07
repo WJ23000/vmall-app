@@ -5,8 +5,8 @@ view.recommend
 		indicator-active-color="#fa3534",
 		:circular="true")
 		swiper-item
-			u-grid(col="3")
-				u-grid-item(
+			up-grid(col="3")
+				up-grid-item(
 					:customStyle="{padding:12+'rpx'}"
 					v-for="(item, index) in oneList",
 					:index="index",
@@ -15,8 +15,8 @@ view.recommend
 						text.grid-text {{ item.title }}
 						text.grid-money ￥{{ item.price }}
 		swiper-item
-			u-grid(col="3")
-				u-grid-item(
+			up-grid(col="3")
+				up-grid-item(
 					:customStyle="{padding:12+'rpx'}"
 					v-for="(record, index) in twoList",
 					:index="index",

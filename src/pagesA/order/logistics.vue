@@ -4,10 +4,10 @@ view.vmall-order-logistics
     OrderLogistics(:item="logisticsInfo")
   view.px-32.py-32.bg-white
     view.mb-40 物流详情
-    u-line(color="#EEEEEE")
+    up-line(color="#EEEEEE")
     view.info.mt-30(v-if="logisticsInfo.express_list.length > 0")
-      u-steps(current="1" direction="column" activeColor="#0052D9")
-        u-steps-item(
+      up-steps(current="1" direction="column" activeColor="#0052D9")
+        up-steps-item(
           v-for="(item, index) in logisticsInfo.express_list"
           :title="`【${item.status}】${item.content}`"
           :desc="item.time")

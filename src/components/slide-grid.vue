@@ -1,6 +1,6 @@
 <template lang="pug">
 view.slide-grid
-	u-scroll-list(indicatorColor="#fff0f0", indicatorActiveColor="#fa3534")
+	up-scroll-list(indicatorColor="#fff0f0", indicatorActiveColor="#fa3534")
 		view.scroll-list
 			view.scroll-list__line(
 				v-for="(item, index) in gridList"

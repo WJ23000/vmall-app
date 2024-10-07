@@ -3,9 +3,9 @@ view.vmall-search(:class="{'popup-show': popupShow}")
 	status-bar
 	view.header
 		<!-- #ifdef H5 || APP-PLUS -->
-		u-icon.arrow-left(name="arrow-left", @click="onGoBack", size="22")
+		up-icon.arrow-left(name="arrow-left", @click="onGoBack", size="22")
 		<!-- #endif -->
-		u-search(
+		up-search(
 			placeholder="护肤品",
 			v-model="keyword",
 			@custom="onSearch",
@@ -14,14 +14,14 @@ view.vmall-search(:class="{'popup-show': popupShow}")
 	view.search-result(
 		:class="{'search-sesult-index': popupShow}"
 		v-if="isSearchResult")
-		u-sticky(
+		up-sticky(
 			:offsetTop="offsetTop",
 			:bgColor="stickyBgColor")
 			SearchTab(ref="searchTabRef", @searchResultChange="searchResultChange")
 		SearchResult
 	view.history(v-else)
-		u-cell(title="搜索历史", :border="false")
-			u-icon(slot="right-icon", name="trash", @click="clearHistory")
+		up-cell(title="搜索历史", :border="false")
+			up-icon(slot="right-icon", name="trash", @click="clearHistory")
 		view.content
 			view.item(
 				v-for="(item,index) in historyList",

@@ -1,12 +1,13 @@
 <template lang="pug">
 view.fixed-search.flex.items-center(:style="{background: bgColor}")
-  up-search.flex.flex1(
-    placeholder="护肤品"
-    :showAction="false"
-    :disabled="true"
-    @click="onSearch")
+  view.flex.flex1(@click="onSearch")
+    up-search(
+      placeholder="护肤品"
+      :showAction="false"
+      disabled
+      style="pointer-events: none;")
   view.ml-12
-    u-icon(name="scan" :color="scanColor" size="28" @click="onScanCode")
+    up-icon(name="scan" :color="scanColor" size="28" @click="onScanCode")
 </template>
 
 <script setup>

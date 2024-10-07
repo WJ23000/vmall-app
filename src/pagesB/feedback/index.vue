@@ -10,7 +10,7 @@ view.vmall-feedback
           v-model="form.reason")
       view.cell
         view.title.mr-12 问题描述
-        u--textarea(v-model="form.describe" placeholder="您填写的越详细，问题越容易解决哦~" height="35")
+        up-textarea(v-model="form.describe" placeholder="您填写的越详细，问题越容易解决哦~" height="35")
       view.cell
         view.title.mr-12 手机号
         up-input(

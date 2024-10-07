@@ -8,7 +8,7 @@
 -->
 <template lang="pug">
 view.shop-declare
-  u-popup(:show="show" :closeable="true" @close="onClose")
+  up-popup(:show="show" :closeable="true" @close="onClose")
     view.px-32
       view.flex.justify-center.mt-20.mb-32.f-32 服务申明
       view.mb-40.f-32-B 商品含税

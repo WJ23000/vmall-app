@@ -8,7 +8,7 @@
 -->
 <template lang="pug">
 view.write-idcard
-  u-popup.custom-popup(:show="show" :closeable="true" @close="onClose")
+  up-popup.custom-popup(:show="show" :closeable="true" @close="onClose")
     view.px-32
       view.flex.justify-center.mt-20.mb-40
         text.mr-16.f-32 填写身份信息

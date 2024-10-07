@@ -29,7 +29,7 @@ view.login.flex.column.justify-center.items-center
         border="bottom"
         v-model="form.captcha")
         template(#suffix)
-          u-code(
+          up-code(
             ref="uCodeRef"
             :seconds="seconds"
             startText="获取验证码"

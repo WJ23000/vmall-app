@@ -7,10 +7,10 @@ view.vmall-order-confirm
           text.mr-28 {{ address.recipient}}
           text {{ address.mobile}}
         view.mt-12.f-28.ellipsis-2 {{ address.provinceCityArea }}
-      u-icon.ml-20(name="arrow-right" size="16" color="#333333")
+      up-icon.ml-20(name="arrow-right" size="16" color="#333333")
     view.address.flex.justify-start.items-center.my-24.px-32.py-60.bg-white(v-else @click="onCheckAddress")
       view.flex1 请选择地址
-      u-icon.ml-20(name="arrow-right" size="16" color="#333333")
+      up-icon.ml-20(name="arrow-right" size="16" color="#333333")
     view.info.px-32.py-28.bg-white.mb-20
       view.flex.justify-between
         text.f-32-B 配送方式
@@ -22,7 +22,7 @@ view.vmall-order-confirm
             text.mr-8 {{ idcard.realname }}
             text {{ idcard.identity }}
           view.tip-text.f-28(v-else) 请填写身份信息
-          u-icon.ml-8(name="arrow-right" size="16" color="#333333")
+          up-icon.ml-8(name="arrow-right" size="16" color="#333333")
     ShopCard(:item="orderInfo.spec")
     view.flex.justify-between.mt-20.px-32.py-32.bg-white
       text.f-28 商品总价

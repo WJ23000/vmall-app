@@ -1,23 +1,23 @@
 <template lang="pug">
 view.vmall-setting
-	u-cell-group
-		u-cell(
+	up-cell-group
+		up-cell(
 			v-for="(item,index) in otherCellList"
 			:key="index"
 			:title="item.title"
 			:value="item.value"
 			:isLink="item.isLink"
 			@click="toNextPage(item.url)")
-	u-gap(height="10", bgColor="#ededed")
-	u-cell-group
-		u-cell(
+	up-gap(height="10", bgColor="#ededed")
+	up-cell-group
+		up-cell(
 			v-for="(item,index) in otherCellListTwo"
 			:key="index"
 			:title="item.title"
 			:value="item.value"
 			:isLink="item.isLink"
 			@click="toNextPage(item.url)")
-	u-gap(height="10", bgColor="#ededed")
+	up-gap(height="10", bgColor="#ededed")
 	view.exit-login(@click="onExitLogin") 退出登录
 </template>
 

@@ -3,19 +3,19 @@ view.vmall-my
   view.header-top
     StatusBar(v-show="isStatusBar")
     view.search-sticky
-      u-navbar(
+      up-navbar(
         :safeAreaInsetTop="false"
         :bgColor="navbarColor"
         :autoBack="false")
         template(#left)
           view(v-if="isNavbarShow")
-            u-avatar(v-if="isAccountInfo" :src="userInfo.userImage" size="24")
-            u-avatar(v-else, :src="userInfo.noUserImage" size="24")
+            up-avatar(v-if="isAccountInfo" :src="userInfo.userImage" size="24")
+            up-avatar(v-else, :src="userInfo.noUserImage" size="24")
           view(v-else)
         template(#center)
           text.f-28(v-if="isNavbarShow") 我的
         template.setting(#right)
-          u-icon(name="setting" size="20" color="#333333" @click="onSettingClick")
+          up-icon(name="setting" size="20" color="#333333" @click="onSettingClick")
   view.header-top
     view.header
       view.user-info(v-if="isAccountInfo")
@@ -27,20 +27,20 @@ view.vmall-my
         //- view.setting
         //-   u-icon(name="setting" size="20" color="#333333" @click="onSettingClick")
       view.user-login(v-else)
-        u-avatar(:src="userInfo.noUserImage" size="50")
+        up-avatar(:src="userInfo.noUserImage" size="50")
         view.account.ml-10
           view.login(@click="onLogin") 注册/登录
   view.wrap
     view.order-grid
-      u-cell.order-grid-other(title="我的订单" value="全部" :isLink="true" :clickable="true" @click="onOrder(0, 0)")
+      up-cell.order-grid-other(title="我的订单" value="全部" :isLink="true" :clickable="true" @click="onOrder(0, 0)")
       view.grid-content
-        u-grid(:col="5" :border="false")
-          u-grid-item(v-for="(item, index) in orderGridList" :index="index" :key="index" @click="onOrder(item.current, item.type)")
-            u-badge.badge(max="99" :value="item.count" :offset="[1,10]" :absolute="true" bgColor="#fa3534")
+        up-grid(:col="5" :border="false")
+          up-grid-item(v-for="(item, index) in orderGridList" :index="index" :key="index" @click="onOrder(item.current, item.type)")
+            up-badge.badge(max="99" :value="item.count" :offset="[1,10]" :absolute="true" bgColor="#fa3534")
             image.grid-image(:src="item.image")
             text.grid-text {{ item.name }}
     view.other-grid
-      u-scroll-list(indicatorColor="#fff0f0" indicatorActiveColor="#f56c6c")
+      up-scroll-list(indicatorColor="#fff0f0" indicatorActiveColor="#f56c6c")
         view.scroll-list__goods-item(
           v-for="(item, index) in otherGridList"
           :key="index"
@@ -48,14 +48,14 @@ view.vmall-my
           image.scroll-list__goods-item__image(:src="item.image")
           text.scroll-list__goods-item__text {{ item.name }}
     view.other-grid-two
-      u-scroll-list(indicatorColor="#fff0f0" indicatorActiveColor="#f56c6c")
+      up-scroll-list(indicatorColor="#fff0f0" indicatorActiveColor="#f56c6c")
         view.scroll-list__goods-item(
           v-for="(item, index) in otherGridListTwo"
           :key="index"
           @click="toNextPage(item)")
           image.scroll-list__goods-item__image(:src="item.image")
           text.scroll-list__goods-item__text {{ item.name }}
-    u-divider(text="猜您喜欢")
+    up-divider(text="猜您喜欢")
     Waterfall(ref="waterfallRef" :loadStatus="loadStatus" :flowList.sync="flowList" @addRandomData="addRandomData")
     BackTop(:backTop="backTop")
 </template>

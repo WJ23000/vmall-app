@@ -8,7 +8,7 @@
 -->
 <template lang="pug">
 view.contract-explain
-  u-modal(:show="show" :showConfirmButton="false" width="692rpx")
+  up-modal(:show="show" :showConfirmButton="false" width="692rpx")
     view.slot-content.px-40
       view.flex.justify-center.f-36-B 《进口个人委托申报委托函》
       view.container.mt-32.px-12.py-12

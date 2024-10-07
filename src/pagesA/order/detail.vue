@@ -12,12 +12,12 @@ view.vmall-order-detail
         view.flex1.f-28-B 待收货
         view.flex(@click="onOrderLogistics")
           view.inform-text.f-28 查看物流
-          u-icon(name="arrow-right" size="16" color="#0052d9")
+          up-icon(name="arrow-right" size="16" color="#0052d9")
       view.flex.justify-between.items-center(v-if="orderInfo.status === 50")
         view.flex1.f-28-B 已完成
         view.flex(@click="onOrderLogistics")
           view.inform-text.f-28 查看物流
-          u-icon(name="arrow-right" size="16" color="#0052d9")
+          up-icon(name="arrow-right" size="16" color="#0052d9")
       view.flex.justify-between.items-center(v-if="orderInfo.status === 51")
         view.flex1.f-28-B 已取消
     view.address.flex.column.justify-start.my-24.px-32.py-36.bg-white

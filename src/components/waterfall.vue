@@ -111,7 +111,7 @@ defineExpose({ onClear });
   }
 
   .shop-tag-owner {
-    background-color: $uni-color-error;
+    background-color: #fa3534;
     color: #ffffff;
     display: flex;
     align-items: center;
@@ -122,8 +122,8 @@ defineExpose({ onClear });
   }
 
   .shop-tag-text {
-    border: 1px solid $uni-color-primary;
-    color: $uni-color-primary;
+    border: 1px solid #007aff;
+    color: #007aff;
     margin-left: 10px;
     border-radius: 50rpx;
     line-height: 1;
@@ -135,7 +135,7 @@ defineExpose({ onClear });
   }
 
   .shop-price {
-    color: $uni-color-error;
+    color: #fa3534;
     margin-top: 10rpx;
     .price {
       font-size: 32rpx;

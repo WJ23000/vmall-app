@@ -8,11 +8,11 @@
 -->
 <template lang="pug">
   view.cart-card.px-20
-    u-swipe-action
+    up-swipe-action
       view.pt-20(
         v-for="(item, index) in cartList" 
         :key="index")
-        u-swipe-action-item.action-item.flex.column(
+        up-swipe-action-item.action-item.flex.column(
           :ref="el => { swipeRef[index] = el }"
           :options="operate"
           :index="index"

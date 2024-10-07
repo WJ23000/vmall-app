@@ -13,11 +13,12 @@ export default {
 </script>
 
 <style lang="scss">
-/*公共css */
+/* 公共css */
 @import "uview-plus/index.scss";
 @import url("./styles/index.scss");
 
-@for $i from 1 through 2000 {
+/* 这种写法会影响主包大小需注意 */
+@for $i from 1 through 100 {
   .f-#{$i} {
     font-size: #{$i}rpx;
   }
@@ -32,27 +33,6 @@ export default {
     font-size: #{$i}rpx;
   }
 
-  .w-#{$i} {
-    width: #{$i}rpx;
-  }
-
-  .h-#{$i} {
-    height: #{$i}rpx;
-  }
-
-  .line-#{$i} {
-    line-height: #{$i}rpx;
-  }
-
-  .br-#{$i} {
-    border-radius: #{$i}rpx;
-  }
-
-  .z-#{$i} {
-    z-index: #{$i};
-  }
-}
-@for $i from 1 through 2000 {
   .px-#{$i} {
     padding-left: #{$i}rpx;
     padding-right: #{$i}rpx;
@@ -103,6 +83,26 @@ export default {
 
   .mb-#{$i} {
     margin-bottom: #{$i}rpx;
+  }
+
+  .w-#{$i} {
+    width: #{$i}rpx;
+  }
+
+  .h-#{$i} {
+    height: #{$i}rpx;
+  }
+
+  .line-#{$i} {
+    line-height: #{$i}rpx;
+  }
+
+  .br-#{$i} {
+    border-radius: #{$i}rpx;
+  }
+
+  .z-#{$i} {
+    z-index: #{$i};
   }
 }
 </style>

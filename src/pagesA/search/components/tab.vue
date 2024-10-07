@@ -15,7 +15,7 @@ view.vmall-search-tab
 					v-if="item == '价格'", 
 					:class="priceSort ? 'arrow-up' : 'arrow-down'")
 	//- 综合推荐遮罩层
-	u-overlay(:show="maskShow", :z-index="10050", @click="maskShow = false")
+	up-overlay(:show="maskShow", :z-index="10050", @click="maskShow = false")
 	//- 综合推荐面板
 	view.recommend-content(v-if="maskShow && (tabActive == '综合推荐' || tabActive == '好评')", @tap.stop)
 		view.recommend.flex(
@@ -26,7 +26,7 @@ view.vmall-search-tab
 			text.recommend-check(v-if="recommendActive == item.name") √
 			text {{ item.name }}
 	//- 筛选遮罩层
-	u-popup(
+	up-popup(
 		:show="popupShow", 
 		mode="right",
 		zIndex="10090",
@@ -36,7 +36,7 @@ view.vmall-search-tab
 		@open="openPopup")
 		//- 筛选面板
 		view.retrieval-content
-			u-gap.retrieval-gap(height="0" bgColor="#ffffff")
+			up-gap.retrieval-gap(height="0" bgColor="#ffffff")
 			view.retrieval-content-item
 				view.retrieval-title 服务/折扣
 				view.retrieval-list
@@ -45,11 +45,11 @@ view.vmall-search-tab
 						:key="index",
 						:class="item.checked ? 'retrieval-active' : ''",
 						@click="onServiceCheck(index, item.checked)") {{ item.name }}
-			u-gap.retrieval-gap(height="10" bgColor="#ededed")
+			up-gap.retrieval-gap(height="10" bgColor="#ededed")
 			view.retrieval-price-range
 				view.retrieval-title 价格区间
 				view.content
-					u--input.input(
+					up-input.input(
 						placeholder="最低价",
 						border="surround",
 						shape="circle",
@@ -57,14 +57,14 @@ view.vmall-search-tab
 						type="number",
 						v-model="lowestPrice")
 					text.interval —
-					u--input.input(
+					up-input.input(
 						placeholder="最高价",
 						border="surround",
 						shape="circle",
 						fontSize="12px",
 						type="number",
 						v-model="highestPrice")
-			u-gap.retrieval-gap(height="10" bgColor="#ededed")
+			up-gap.retrieval-gap(height="10" bgColor="#ededed")
 			view.retrieval-content-item
 				view.retrieval-title 品牌
 				view.retrieval-list
@@ -73,7 +73,7 @@ view.vmall-search-tab
 						:key="index",
 						:class="item.checked ? 'retrieval-active' : ''",
 						@click="onBrandCheck(index, item.checked)") {{ item.name }}
-			u-gap.retrieval-gap(height="10" bgColor="#ededed")
+			up-gap.retrieval-gap(height="10" bgColor="#ededed")
 			view.retrieval-content-item
 				view.retrieval-title 发货地
 				view.retrieval-list
@@ -82,7 +82,7 @@ view.vmall-search-tab
 						:key="index",
 						:class="item.checked ? 'retrieval-active' : ''",
 						@click="onAddressCheck(index, item.checked)") {{ item.name }}
-			u-gap.retrieval-gap(height="10" bgColor="#ededed")
+			up-gap.retrieval-gap(height="10" bgColor="#ededed")
 			view.retrieval-content-item
 				view.retrieval-title 适合肤质
 				view.retrieval-list
@@ -91,7 +91,7 @@ view.vmall-search-tab
 						:key="index",
 						:class="item.checked ? 'retrieval-active' : ''",
 						@click="onSkinCheck(index, item.checked)") {{ item.name }}
-			u-gap.retrieval-gap(height="10" bgColor="#ededed")
+			up-gap.retrieval-gap(height="10" bgColor="#ededed")
 			view.retrieval-content-item
 				view.retrieval-title 适用人群
 				view.retrieval-list
@@ -100,7 +100,7 @@ view.vmall-search-tab
 						:key="index",
 						:class="item.checked ? 'retrieval-active' : ''",
 						@click="onCrowdCheck(index, item.checked)") {{ item.name }}
-			u-gap.retrieval-gap(height="10" bgColor="#ededed")
+			up-gap.retrieval-gap(height="10" bgColor="#ededed")
 			view.retrieval-content-item
 				view.retrieval-title 类别
 				view.retrieval-list
@@ -111,8 +111,8 @@ view.vmall-search-tab
 						@click="onCategoryCheck(index, item.checked)") {{ item.name }}
 		//- 筛选确认
 		view.retrieval-btn
-			u-button(shape="circle" text="重置" @click="onReset")
-			u-button(color="#fa3534" shape="circle" text="确定(10+件商品)" @click="onConfirm")
+			up-button(shape="circle" text="重置" @click="onReset")
+			up-button(color="#fa3534" shape="circle" text="确定(10+件商品)" @click="onConfirm")
 </template>
 
 <script setup>
@@ -509,7 +509,7 @@ const onConfirm = () => {
     .item {
       margin: 20rpx 10rpx 0rpx 0rpx;
       width: 24%;
-      padding: 12rpx 20rpx;
+      padding: 16rpx 20rpx;
       background: #ededed;
       border: 2rpx solid #ededed;
       font-size: 24rpx;
