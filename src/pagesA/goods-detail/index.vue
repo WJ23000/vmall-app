@@ -355,14 +355,18 @@ const onPayShow = () => {
 // 打开会话列表
 const openConversationList = () => {
   // 1v1 chat: conversationID = `C2C${userID}`
-  const conversationID = `C2Ca001`;
+  let conversationID = `C2Ca002`;
   // group chat: conversationID = `GROUP${groupID}`
-  // const conversationID = `GROUP@TGS#146FYPGPO`;
+  // let conversationID = `GROUP@TGS#146FYPGPO`;
   uni.navigateTo({
     url: `/TUIKit/components/TUIChat/index?conversationID=${conversationID}`
   });
 
+  // 打开会话列表
   // uni.navigateTo({ url: "/TUIKit/components/TUIConversation/index" });
+
+  // 打开联系人
+  // uni.navigateTo({ url: "/TUIKit/components/TUIContact/index" });
 };
 
 // 跳到购物车
