@@ -301,7 +301,7 @@ onPageScroll((e) => {
     if (current.value != 0) current.value = 0;
   } else if (top >= scrollHeight.value.evaluateHeight && top < scrollHeight.value.recommendHeight) {
     if (current.value != 1) current.value = 1;
-  } else if (top >= scrollHeight.value.recommendHeight && top < scrollHeight.value.detailHeight) {
+  } else if (top >= scrollHeight.value.recommendHeight && top + 1 < scrollHeight.value.detailHeight) {
     if (current.value != 2) current.value = 2;
   } else {
     if (current.value != 3) current.value = 3;

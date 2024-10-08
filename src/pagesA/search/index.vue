@@ -1,37 +1,42 @@
 <template lang="pug">
 view.vmall-search(:class="{'popup-show': popupShow}")
-	status-bar
-	view.header
-		<!-- #ifdef H5 || APP-PLUS -->
-		up-icon.arrow-left(name="arrow-left", @click="onGoBack", size="22")
-		<!-- #endif -->
-		up-search(
-			placeholder="护肤品",
-			v-model="keyword",
-			@custom="onSearch",
-			@search="onSearch",
-			@clear="onClearSearch")
-	view.search-result(
-		:class="{'search-sesult-index': popupShow}"
-		v-if="isSearchResult")
-		up-sticky(
-			:offsetTop="offsetTop",
-			:bgColor="stickyBgColor")
-			SearchTab(ref="searchTabRef", @searchResultChange="searchResultChange")
-		SearchResult
-	view.history(v-else)
-		up-cell(title="搜索历史", :border="false")
-			up-icon(slot="right-icon", name="trash", @click="clearHistory")
-		view.content
-			view.item(
-				v-for="(item,index) in historyList",
-				:key="index",
-				@click="onSearch(item, 'btn')") {{  formatItem(item) }}
+  StatusBar
+  view.header
+    <!-- #ifdef H5 || APP-PLUS -->
+    up-icon.arrow-left(name="arrow-left", @click="onGoBack", size="22")
+    <!-- #endif -->
+    up-search(
+      placeholder="护肤品",
+      v-model="keyword",
+      @custom="onSearch",
+      @search="onSearch",
+      @clear="onClearSearch")
+  view.search-result(
+    :class="{'search-sesult-index': popupShow}"
+    v-if="isSearchResult")
+    up-sticky(
+      :offsetTop="offsetTop",
+      :bgColor="stickyBgColor")
+      SearchTab(ref="searchTabRef", @searchResultChange="searchResultChange")
+    Waterfall(ref="waterfallRef" :loadStatus="loadStatus" :flowList.sync="flowList" @addRandomData="addRandomData")
+  view.history(v-else)
+    up-cell(title="搜索历史", :border="false")
+      up-icon(slot="right-icon", name="trash", @click="clearHistory")
+    view.content
+      view.item(
+        v-for="(item,index) in historyList",
+        :key="index",
+        @click="onSearch(item, 'btn')") {{  formatItem(item) }}
+  BackTop(:backTop="backTop")
 </template>
 
 <script setup>
+import { random, guid } from "uview-plus";
+import StatusBar from "@/components/status-bar.vue";
 import SearchTab from "./components/tab.vue";
-import SearchResult from "./components/result.vue";
+import Waterfall from "@/components/waterfall.vue";
+import BackTop from "@/components/back-top.vue";
+import { GOODS_DATA } from "@/model";
 
 const keyword = ref("");
 const historyList = ref([]);
@@ -39,6 +44,13 @@ const isSearchResult = ref(false);
 const stickyBgColor = ref("#ffffff");
 const popupShow = ref(false);
 const offsetTop = ref("0");
+// 商品瀑布流列表
+const loadStatus = ref("loadmore");
+const flowList = ref([]);
+const goodsList = ref(GOODS_DATA);
+const waterfallRef = ref();
+// 返回顶部
+const backTop = ref(0);
 
 onLoad(() => {
   // #ifdef H5
@@ -53,6 +65,7 @@ onLoad(() => {
       historyList.value = res.data == null ? [] : res.data;
     }
   });
+  addRandomData();
 });
 
 // 返回上一页
@@ -105,8 +118,55 @@ const formatItem = (item) => {
   const length = item.length;
   return length > 23 ? item.substr(1, 11) + "..." + item.substr(-11, 11) : item;
 };
+
+// 监听页面滚动(tabs吸顶, 返回顶部)
+onPageScroll((e) => {
+  backTop.value = e.scrollTop;
+});
+
+// 触底加载
+onReachBottom(() => {
+  console.log("触底加载");
+  if (flowList.value.length > 32) {
+    loadStatus.value = "nomore";
+    return;
+  }
+  loadStatus.value = "loading";
+  addRandomData();
+});
+// 下拉刷新
+onPullDownRefresh(() => {
+  console.log("下拉刷新");
+  // 瀑布流数据清空
+  if (waterfallRef.value) {
+    waterfallRef.value.onClear();
+  }
+  // 正常情况下接口返回应该很会很快。故意延迟调用，让用户有在刷新的体验感
+  loadStatus.value = "loading";
+  flowList.value = [];
+  setTimeout(() => {
+    addRandomData();
+    uni.stopPullDownRefresh();
+  }, 300);
+});
+
+const addRandomData = () => {
+  for (let i = 0; i < 8; i++) {
+    let index = random(0, goodsList.value.length - 1);
+    // 先转成字符串再转成对象，避免数组对象引用导致数据混乱
+    let item = JSON.parse(JSON.stringify(goodsList.value[index]));
+    item.id = guid(20);
+    flowList.value.push(item);
+  }
+};
 </script>
 
+<style lang="scss">
+// APP窗口背景色默认白色，需用此种方式调整窗口背景色
+page {
+  background-color: #ededed;
+}
+</style>
 <style lang="scss" scoped>
 .vmall-search {
   .header {
@@ -140,7 +200,7 @@ const formatItem = (item) => {
     .item {
       display: inline-block;
       margin: 0rpx 20rpx 20rpx 0rpx;
-      padding: 6rpx 24rpx;
+      padding: 12rpx 24rpx;
       background: #ffffff;
       font-size: 26rpx;
       border: 2rpx solid #ededed;

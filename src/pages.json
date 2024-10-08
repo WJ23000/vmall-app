@@ -50,7 +50,8 @@
           "path": "search/index",
           "style": {
             "navigationBarTitleText": "搜索",
-            "titleNView": false
+            "titleNView": false,
+            "enablePullDownRefresh": true
           }
         },
         {

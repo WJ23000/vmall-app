@@ -315,7 +315,7 @@ const onTabItem = (value) => {
       tabActive.value = value;
       break;
     case "好评":
-      if (tabActive != value) {
+      if (tabActive.value != value) {
         maskShow.value = false;
         recommendSort.value = false;
       } else {

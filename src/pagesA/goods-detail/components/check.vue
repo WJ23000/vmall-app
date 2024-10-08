@@ -2,7 +2,7 @@
 view.shop-check
   up-popup(:show="show" :closeable="true" @close="onClose")
     view.px-20
-      view.flex.justify-start.mt-108
+      view.flex.justify-start.mt-100
         image.shop-img.mr-28(:src="specifList[current].image")
         view.flex.column
           view.price.f-40-B ￥{{specifList[current].price}}
