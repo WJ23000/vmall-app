@@ -2,7 +2,12 @@
 
 /* 解决H5端页面高度未超100%，出现滚动条问题 */
 #app, uni-app, uni-page, uni-page-wrapper {
-  height: auto;
+  height: 100%;
+}
+
+uni-page-body, html, body, page {
+  width: 100% !important;
+  height: 100% !important;
 }
 
 /* 解决APP端页面高度未超100%，出现滚动条问题 */

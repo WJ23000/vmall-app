@@ -118,7 +118,7 @@ view.andry-goods-detail
       view.item
         image(src="http://cdn.wjaxx.xyz/tabbar/home-black.png")
         text 首页
-    view.bottom-option
+    view.bottom-option(@click="openConversationList")
       view.item
         image(src="http://cdn.wjaxx.xyz/kefu.png")
         text 客服
@@ -350,6 +350,19 @@ const onCartShow = () => {
 const onPayShow = () => {
   specType.value = 2;
   shopCheckShow.value = true;
+};
+
+// 打开会话列表
+const openConversationList = () => {
+  // 1v1 chat: conversationID = `C2C${userID}`
+  const conversationID = `C2Ca001`;
+  // group chat: conversationID = `GROUP${groupID}`
+  // const conversationID = `GROUP@TGS#146FYPGPO`;
+  uni.navigateTo({
+    url: `/TUIKit/components/TUIChat/index?conversationID=${conversationID}`
+  });
+
+  // uni.navigateTo({ url: "/TUIKit/components/TUIConversation/index" });
 };
 
 // 跳到购物车

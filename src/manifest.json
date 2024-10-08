@@ -1,5 +1,5 @@
 {
-    "name" : "vmall-app",
+    "name" : "vmall-shop",
     "appid" : "__UNI__6BC2A77",
     "description" : "",
     "versionName" : "1.0.0",
@@ -89,8 +89,7 @@
         "usingComponents" : true,
         "optimization" : {
             "subPackages" : true
-        },
-        "lazyCodeLoading" : "requiredComponents"
+        }
     },
     "mp-alipay" : {
         "usingComponents" : true,
@@ -111,6 +110,11 @@
         "router" : {
             "mode" : "hash",
             "base" : "/vmall-shop/"
+        },
+        "optimization" : {
+            "treeShaking" : {
+                "enable" : false
+            }
         }
     }
 }
