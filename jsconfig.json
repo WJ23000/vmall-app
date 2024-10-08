@@ -1,11 +1,3 @@
-/*
- * @Author: WJ23000 624473119@qq.com
- * @Date: 2023-05-27 15:24:45
- * @LastEditors: 汪军 624473119@qq.com
- * @LastEditTime: 2023-10-22 19:54:31
- * @FilePath: \uni-template\jsconfig.json
- * @Description:
- */
 {
   "compilerOptions": {
     "target": "esnext",
