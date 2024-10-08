@@ -84,7 +84,7 @@
     "pug": "^3.0.3",
     "pug-plain-loader": "^1.1.0",
     "sass": "1.57.1",
-    "sass-loader": "^16.0.1",
+    "sass-loader": "8.0.0",
     "stylus": "^0.63.0",
     "stylus-loader": "^8.1.0",
     "unplugin-auto-import": "^0.18.2",
