@@ -147,6 +147,7 @@
             "treeShaking" : {
                 "enable" : false
             }
-        }
+        },
+        "favicon" : "/static/favicon.ico"
     }
 }
