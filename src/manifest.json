@@ -147,6 +147,7 @@
             "treeShaking" : {
                 "enable" : false
             }
-        }
+        },
+        "template" : "index.html"
     }
 }
